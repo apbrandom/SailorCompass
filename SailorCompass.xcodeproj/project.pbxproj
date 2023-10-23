@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */; };
+		CB67508D2AE699600049E7A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508C2AE699600049E7A8 /* ContentView.swift */; };
+		CB67508F2AE699610049E7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB67508E2AE699610049E7A8 /* Assets.xcassets */; };
+		CB6750922AE699610049E7A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6750912AE699610049E7A8 /* Preview Assets.xcassets */; };
+		CB6750942AE699610049E7A8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750932AE699610049E7A8 /* Persistence.swift */; };
+		CB6750972AE699610049E7A8 /* SailorCompass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB6750952AE699610049E7A8 /* SailorCompass.xcdatamodeld */; };
+		CB6750A32AE699610049E7A8 /* SailorCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750A22AE699610049E7A8 /* SailorCompassTests.swift */; };
+		CB6750AD2AE699610049E7A8 /* SailorCompassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */; };
+		CB6750AF2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CB67509F2AE699610049E7A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB67507F2AE699600049E7A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB6750862AE699600049E7A8;
+			remoteInfo = SailorCompass;
+		};
+		CB6750A92AE699610049E7A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CB67507F2AE699600049E7A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB6750862AE699600049E7A8;
+			remoteInfo = SailorCompass;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CB6750872AE699600049E7A8 /* SailorCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SailorCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassApp.swift; sourceTree = "<group>"; };
+		CB67508C2AE699600049E7A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CB67508E2AE699610049E7A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB6750912AE699610049E7A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CB6750932AE699610049E7A8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		CB6750962AE699610049E7A8 /* SailorCompass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SailorCompass.xcdatamodel; sourceTree = "<group>"; };
+		CB6750982AE699610049E7A8 /* SailorCompass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SailorCompass.entitlements; sourceTree = "<group>"; };
+		CB6750992AE699610049E7A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB67509E2AE699610049E7A8 /* SailorCompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SailorCompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6750A22AE699610049E7A8 /* SailorCompassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassTests.swift; sourceTree = "<group>"; };
+		CB6750A82AE699610049E7A8 /* SailorCompassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SailorCompassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITests.swift; sourceTree = "<group>"; };
+		CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CB6750842AE699600049E7A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB67509B2AE699610049E7A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6750A52AE699610049E7A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CB67507E2AE699600049E7A8 = {
+			isa = PBXGroup;
+			children = (
+				CB6750892AE699600049E7A8 /* SailorCompass */,
+				CB6750A12AE699610049E7A8 /* SailorCompassTests */,
+				CB6750AB2AE699610049E7A8 /* SailorCompassUITests */,
+				CB6750882AE699600049E7A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CB6750882AE699600049E7A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB6750872AE699600049E7A8 /* SailorCompass.app */,
+				CB67509E2AE699610049E7A8 /* SailorCompassTests.xctest */,
+				CB6750A82AE699610049E7A8 /* SailorCompassUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CB6750892AE699600049E7A8 /* SailorCompass */ = {
+			isa = PBXGroup;
+			children = (
+				CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */,
+				CB67508C2AE699600049E7A8 /* ContentView.swift */,
+				CB67508E2AE699610049E7A8 /* Assets.xcassets */,
+				CB6750932AE699610049E7A8 /* Persistence.swift */,
+				CB6750982AE699610049E7A8 /* SailorCompass.entitlements */,
+				CB6750992AE699610049E7A8 /* Info.plist */,
+				CB6750952AE699610049E7A8 /* SailorCompass.xcdatamodeld */,
+				CB6750902AE699610049E7A8 /* Preview Content */,
+			);
+			path = SailorCompass;
+			sourceTree = "<group>";
+		};
+		CB6750902AE699610049E7A8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CB6750912AE699610049E7A8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CB6750A12AE699610049E7A8 /* SailorCompassTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB6750A22AE699610049E7A8 /* SailorCompassTests.swift */,
+			);
+			path = SailorCompassTests;
+			sourceTree = "<group>";
+		};
+		CB6750AB2AE699610049E7A8 /* SailorCompassUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */,
+				CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */,
+			);
+			path = SailorCompassUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CB6750862AE699600049E7A8 /* SailorCompass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6750B22AE699610049E7A8 /* Build configuration list for PBXNativeTarget "SailorCompass" */;
+			buildPhases = (
+				CB6750832AE699600049E7A8 /* Sources */,
+				CB6750842AE699600049E7A8 /* Frameworks */,
+				CB6750852AE699600049E7A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SailorCompass;
+			productName = SailorCompass;
+			productReference = CB6750872AE699600049E7A8 /* SailorCompass.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CB67509D2AE699610049E7A8 /* SailorCompassTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6750B52AE699610049E7A8 /* Build configuration list for PBXNativeTarget "SailorCompassTests" */;
+			buildPhases = (
+				CB67509A2AE699610049E7A8 /* Sources */,
+				CB67509B2AE699610049E7A8 /* Frameworks */,
+				CB67509C2AE699610049E7A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB6750A02AE699610049E7A8 /* PBXTargetDependency */,
+			);
+			name = SailorCompassTests;
+			productName = SailorCompassTests;
+			productReference = CB67509E2AE699610049E7A8 /* SailorCompassTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CB6750A72AE699610049E7A8 /* SailorCompassUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB6750B82AE699610049E7A8 /* Build configuration list for PBXNativeTarget "SailorCompassUITests" */;
+			buildPhases = (
+				CB6750A42AE699610049E7A8 /* Sources */,
+				CB6750A52AE699610049E7A8 /* Frameworks */,
+				CB6750A62AE699610049E7A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB6750AA2AE699610049E7A8 /* PBXTargetDependency */,
+			);
+			name = SailorCompassUITests;
+			productName = SailorCompassUITests;
+			productReference = CB6750A82AE699610049E7A8 /* SailorCompassUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CB67507F2AE699600049E7A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					CB6750862AE699600049E7A8 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					CB67509D2AE699610049E7A8 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = CB6750862AE699600049E7A8;
+					};
+					CB6750A72AE699610049E7A8 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = CB6750862AE699600049E7A8;
+					};
+				};
+			};
+			buildConfigurationList = CB6750822AE699600049E7A8 /* Build configuration list for PBXProject "SailorCompass" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CB67507E2AE699600049E7A8;
+			productRefGroup = CB6750882AE699600049E7A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CB6750862AE699600049E7A8 /* SailorCompass */,
+				CB67509D2AE699610049E7A8 /* SailorCompassTests */,
+				CB6750A72AE699610049E7A8 /* SailorCompassUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CB6750852AE699600049E7A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB6750922AE699610049E7A8 /* Preview Assets.xcassets in Resources */,
+				CB67508F2AE699610049E7A8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB67509C2AE699610049E7A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6750A62AE699610049E7A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CB6750832AE699600049E7A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB6750942AE699610049E7A8 /* Persistence.swift in Sources */,
+				CB67508D2AE699600049E7A8 /* ContentView.swift in Sources */,
+				CB6750972AE699610049E7A8 /* SailorCompass.xcdatamodeld in Sources */,
+				CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB67509A2AE699610049E7A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB6750A32AE699610049E7A8 /* SailorCompassTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB6750A42AE699610049E7A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB6750AD2AE699610049E7A8 /* SailorCompassUITests.swift in Sources */,
+				CB6750AF2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB6750A02AE699610049E7A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB6750862AE699600049E7A8 /* SailorCompass */;
+			targetProxy = CB67509F2AE699610049E7A8 /* PBXContainerItemProxy */;
+		};
+		CB6750AA2AE699610049E7A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB6750862AE699600049E7A8 /* SailorCompass */;
+			targetProxy = CB6750A92AE699610049E7A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CB6750B02AE699610049E7A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CB6750B12AE699610049E7A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CB6750B32AE699610049E7A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SailorCompass/SailorCompass.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SailorCompass/Preview Content\"";
+				DEVELOPMENT_TEAM = 66HU5NYDZZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SailorCompass/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.apbrandom.SailorCompass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CB6750B42AE699610049E7A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SailorCompass/SailorCompass.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SailorCompass/Preview Content\"";
+				DEVELOPMENT_TEAM = 66HU5NYDZZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SailorCompass/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.apbrandom.SailorCompass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CB6750B62AE699610049E7A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66HU5NYDZZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.apbrandom.SailorCompassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SailorCompass.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SailorCompass";
+			};
+			name = Debug;
+		};
+		CB6750B72AE699610049E7A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66HU5NYDZZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.apbrandom.SailorCompassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SailorCompass.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SailorCompass";
+			};
+			name = Release;
+		};
+		CB6750B92AE699610049E7A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66HU5NYDZZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.apbrandom.SailorCompassUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SailorCompass;
+			};
+			name = Debug;
+		};
+		CB6750BA2AE699610049E7A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 66HU5NYDZZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.apbrandom.SailorCompassUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SailorCompass;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CB6750822AE699600049E7A8 /* Build configuration list for PBXProject "SailorCompass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6750B02AE699610049E7A8 /* Debug */,
+				CB6750B12AE699610049E7A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6750B22AE699610049E7A8 /* Build configuration list for PBXNativeTarget "SailorCompass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6750B32AE699610049E7A8 /* Debug */,
+				CB6750B42AE699610049E7A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6750B52AE699610049E7A8 /* Build configuration list for PBXNativeTarget "SailorCompassTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6750B62AE699610049E7A8 /* Debug */,
+				CB6750B72AE699610049E7A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB6750B82AE699610049E7A8 /* Build configuration list for PBXNativeTarget "SailorCompassUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB6750B92AE699610049E7A8 /* Debug */,
+				CB6750BA2AE699610049E7A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CB6750952AE699610049E7A8 /* SailorCompass.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CB6750962AE699610049E7A8 /* SailorCompass.xcdatamodel */,
+			);
+			currentVersion = CB6750962AE699610049E7A8 /* SailorCompass.xcdatamodel */;
+			path = SailorCompass.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CB67507F2AE699600049E7A8 /* Project object */;
+}

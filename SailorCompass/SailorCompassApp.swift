@@ -1,0 +1,20 @@
+//
+//  SailorCompassApp.swift
+//  SailorCompass
+//
+//  Created by Vadim Vinogradov on 23.10.2023.
+//
+
+import SwiftUI
+
+@main
+struct SailorCompassApp: App {
+    let persistenceController = PersistenceController.shared
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+        }
+    }
+}
