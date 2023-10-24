@@ -10,11 +10,13 @@ import SwiftUI
 struct TabBarView: View {
     var body: some View {
         TabView{
-            CatalogView()
-                .tabItem {
-                    Image(systemName: TabBar.catalog.iconName)
-                    Text(TabBar.catalog.title)
-                }
+            NavigationView {
+                CatalogTestsView()
+            }
+            .tabItem {
+                Image(systemName: TabBar.catalog.iconName)
+                Text(TabBar.catalog.title)
+            }
             MapView()
                 .tabItem {
                     Image(systemName: TabBar.map.iconName)

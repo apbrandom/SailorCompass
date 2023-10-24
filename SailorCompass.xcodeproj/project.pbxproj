@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */; };
-		CB67508D2AE699600049E7A8 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508C2AE699600049E7A8 /* CatalogView.swift */; };
+		CB67508D2AE699600049E7A8 /* MyListTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508C2AE699600049E7A8 /* MyListTestsView.swift */; };
 		CB67508F2AE699610049E7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB67508E2AE699610049E7A8 /* Assets.xcassets */; };
 		CB6750922AE699610049E7A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6750912AE699610049E7A8 /* Preview Assets.xcassets */; };
 		CB6750942AE699610049E7A8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750932AE699610049E7A8 /* Persistence.swift */; };
@@ -21,6 +21,11 @@
 		CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50372AE7CF9400088727 /* TabBar.swift */; };
 		CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50392AE7D1F800088727 /* MapView.swift */; };
 		CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503B2AE7D25800088727 /* ProfileView.swift */; };
+		CB8A503E2AE7D75A00088727 /* CatalogTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */; };
+		CB8A50402AE7DB9E00088727 /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503F2AE7DB9E00088727 /* NewView.swift */; };
+		CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */; };
+		CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */; };
+		CB8A504A2AE8096700088727 /* SharedTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50492AE8096700088727 /* SharedTestsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +48,7 @@
 /* Begin PBXFileReference section */
 		CB6750872AE699600049E7A8 /* SailorCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SailorCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassApp.swift; sourceTree = "<group>"; };
-		CB67508C2AE699600049E7A8 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
+		CB67508C2AE699600049E7A8 /* MyListTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTestsView.swift; sourceTree = "<group>"; };
 		CB67508E2AE699610049E7A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB6750912AE699610049E7A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB6750932AE699610049E7A8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -60,6 +65,11 @@
 		CB8A50372AE7CF9400088727 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		CB8A50392AE7D1F800088727 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		CB8A503B2AE7D25800088727 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTestsView.swift; sourceTree = "<group>"; };
+		CB8A503F2AE7DB9E00088727 /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
+		CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTestsViewModel.swift; sourceTree = "<group>"; };
+		CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTestsViewLabels.swift; sourceTree = "<group>"; };
+		CB8A50492AE8096700088727 /* SharedTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,7 @@
 			children = (
 				CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */,
 				CB8A50332AE7CE5C00088727 /* View */,
+				CB8A50412AE7FF4800088727 /* ViewModel */,
 				CB8A50362AE7CF6200088727 /* Utilities */,
 				CB67508E2AE699610049E7A8 /* Assets.xcassets */,
 				CB6750932AE699610049E7A8 /* Persistence.swift */,
@@ -152,10 +163,14 @@
 			isa = PBXGroup;
 			children = (
 				CB8A50342AE7CF0C00088727 /* TabBarView.swift */,
-				CB67508C2AE699600049E7A8 /* CatalogView.swift */,
+				CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */,
+				CB67508C2AE699600049E7A8 /* MyListTestsView.swift */,
+				CB8A50492AE8096700088727 /* SharedTestsView.swift */,
 				CB8A50392AE7D1F800088727 /* MapView.swift */,
 				CB8A503B2AE7D25800088727 /* ProfileView.swift */,
 				CB8A50312AE7CE4500088727 /* SettingsView.swift */,
+				CB8A503F2AE7DB9E00088727 /* NewView.swift */,
+				CB8A50462AE8062200088727 /* Components */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +181,22 @@
 				CB8A50372AE7CF9400088727 /* TabBar.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CB8A50412AE7FF4800088727 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB8A50462AE8062200088727 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,13 +330,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */,
+				CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */,
 				CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */,
 				CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */,
+				CB8A50402AE7DB9E00088727 /* NewView.swift in Sources */,
+				CB8A503E2AE7D75A00088727 /* CatalogTestsView.swift in Sources */,
 				CB6750942AE699610049E7A8 /* Persistence.swift in Sources */,
-				CB67508D2AE699600049E7A8 /* CatalogView.swift in Sources */,
+				CB67508D2AE699600049E7A8 /* MyListTestsView.swift in Sources */,
 				CB6750972AE699610049E7A8 /* SailorCompass.xcdatamodeld in Sources */,
+				CB8A504A2AE8096700088727 /* SharedTestsView.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
 				CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */,
+				CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */,
 				CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
