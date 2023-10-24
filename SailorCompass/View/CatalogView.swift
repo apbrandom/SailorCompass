@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct CatalogView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
@@ -24,6 +24,7 @@ struct ContentView: View {
                         Text("Item at \(item.timestamp!, formatter: itemFormatter)")
                     } label: {
                         Text(item.timestamp!, formatter: itemFormatter)
+                        Text(item.text!)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -46,6 +47,7 @@ struct ContentView: View {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
+            newItem.text = "Text2"
 
             do {
                 try viewContext.save()
@@ -82,5 +84,5 @@ private let itemFormatter: DateFormatter = {
 }()
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    CatalogView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

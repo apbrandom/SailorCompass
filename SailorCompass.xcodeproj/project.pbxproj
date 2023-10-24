@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */; };
-		CB67508D2AE699600049E7A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508C2AE699600049E7A8 /* ContentView.swift */; };
+		CB67508D2AE699600049E7A8 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508C2AE699600049E7A8 /* CatalogView.swift */; };
 		CB67508F2AE699610049E7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB67508E2AE699610049E7A8 /* Assets.xcassets */; };
 		CB6750922AE699610049E7A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB6750912AE699610049E7A8 /* Preview Assets.xcassets */; };
 		CB6750942AE699610049E7A8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750932AE699610049E7A8 /* Persistence.swift */; };
@@ -16,6 +16,11 @@
 		CB6750A32AE699610049E7A8 /* SailorCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750A22AE699610049E7A8 /* SailorCompassTests.swift */; };
 		CB6750AD2AE699610049E7A8 /* SailorCompassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */; };
 		CB6750AF2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */; };
+		CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50312AE7CE4500088727 /* SettingsView.swift */; };
+		CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50342AE7CF0C00088727 /* TabBarView.swift */; };
+		CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50372AE7CF9400088727 /* TabBar.swift */; };
+		CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50392AE7D1F800088727 /* MapView.swift */; };
+		CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503B2AE7D25800088727 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,7 @@
 /* Begin PBXFileReference section */
 		CB6750872AE699600049E7A8 /* SailorCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SailorCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassApp.swift; sourceTree = "<group>"; };
-		CB67508C2AE699600049E7A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CB67508C2AE699600049E7A8 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		CB67508E2AE699610049E7A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB6750912AE699610049E7A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CB6750932AE699610049E7A8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -50,6 +55,11 @@
 		CB6750A82AE699610049E7A8 /* SailorCompassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SailorCompassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITests.swift; sourceTree = "<group>"; };
 		CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CB8A50312AE7CE4500088727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CB8A50342AE7CF0C00088727 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		CB8A50372AE7CF9400088727 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		CB8A50392AE7D1F800088727 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		CB8A503B2AE7D25800088727 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */,
-				CB67508C2AE699600049E7A8 /* ContentView.swift */,
+				CB8A50332AE7CE5C00088727 /* View */,
+				CB8A50362AE7CF6200088727 /* Utilities */,
 				CB67508E2AE699610049E7A8 /* Assets.xcassets */,
 				CB6750932AE699610049E7A8 /* Persistence.swift */,
 				CB6750982AE699610049E7A8 /* SailorCompass.entitlements */,
@@ -135,6 +146,26 @@
 				CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */,
 			);
 			path = SailorCompassUITests;
+			sourceTree = "<group>";
+		};
+		CB8A50332AE7CE5C00088727 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A50342AE7CF0C00088727 /* TabBarView.swift */,
+				CB67508C2AE699600049E7A8 /* CatalogView.swift */,
+				CB8A50392AE7D1F800088727 /* MapView.swift */,
+				CB8A503B2AE7D25800088727 /* ProfileView.swift */,
+				CB8A50312AE7CE4500088727 /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB8A50362AE7CF6200088727 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CB8A50372AE7CF9400088727 /* TabBar.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,10 +298,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */,
+				CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */,
+				CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */,
 				CB6750942AE699610049E7A8 /* Persistence.swift in Sources */,
-				CB67508D2AE699600049E7A8 /* ContentView.swift in Sources */,
+				CB67508D2AE699600049E7A8 /* CatalogView.swift in Sources */,
 				CB6750972AE699610049E7A8 /* SailorCompass.xcdatamodeld in Sources */,
+				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
 				CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */,
+				CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +480,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,6 +512,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
