@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */; };
 		CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */; };
 		CB67508D2AE699600049E7A8 /* MyListTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508C2AE699600049E7A8 /* MyListTestsView.swift */; };
 		CB67508F2AE699610049E7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB67508E2AE699610049E7A8 /* Assets.xcassets */; };
@@ -22,10 +23,13 @@
 		CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50392AE7D1F800088727 /* MapView.swift */; };
 		CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503B2AE7D25800088727 /* ProfileView.swift */; };
 		CB8A503E2AE7D75A00088727 /* CatalogTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */; };
-		CB8A50402AE7DB9E00088727 /* NewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503F2AE7DB9E00088727 /* NewView.swift */; };
 		CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */; };
 		CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */; };
 		CB8A504A2AE8096700088727 /* SharedTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50492AE8096700088727 /* SharedTestsView.swift */; };
+		CB8A504C2AE80E6B00088727 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504B2AE80E6B00088727 /* Constants.swift */; };
+		CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504D2AE814BC00088727 /* NewTestView.swift */; };
+		CBAB26AF2AEA6ED200C72AE1 /* MyListQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */; };
+		CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuestionView.swift; sourceTree = "<group>"; };
 		CB6750872AE699600049E7A8 /* SailorCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SailorCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassApp.swift; sourceTree = "<group>"; };
 		CB67508C2AE699600049E7A8 /* MyListTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTestsView.swift; sourceTree = "<group>"; };
@@ -66,10 +71,13 @@
 		CB8A50392AE7D1F800088727 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		CB8A503B2AE7D25800088727 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTestsView.swift; sourceTree = "<group>"; };
-		CB8A503F2AE7DB9E00088727 /* NewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewView.swift; sourceTree = "<group>"; };
 		CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTestsViewModel.swift; sourceTree = "<group>"; };
 		CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTestsViewLabels.swift; sourceTree = "<group>"; };
 		CB8A50492AE8096700088727 /* SharedTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestsView.swift; sourceTree = "<group>"; };
+		CB8A504B2AE80E6B00088727 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CB8A504D2AE814BC00088727 /* NewTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestView.swift; sourceTree = "<group>"; };
+		CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionView.swift; sourceTree = "<group>"; };
+		CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,11 +173,13 @@
 				CB8A50342AE7CF0C00088727 /* TabBarView.swift */,
 				CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */,
 				CB67508C2AE699600049E7A8 /* MyListTestsView.swift */,
+				CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */,
 				CB8A50492AE8096700088727 /* SharedTestsView.swift */,
 				CB8A50392AE7D1F800088727 /* MapView.swift */,
 				CB8A503B2AE7D25800088727 /* ProfileView.swift */,
 				CB8A50312AE7CE4500088727 /* SettingsView.swift */,
-				CB8A503F2AE7DB9E00088727 /* NewView.swift */,
+				CB8A504D2AE814BC00088727 /* NewTestView.swift */,
+				CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */,
 				CB8A50462AE8062200088727 /* Components */,
 			);
 			path = View;
@@ -179,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8A50372AE7CF9400088727 /* TabBar.swift */,
+				CB8A504B2AE80E6B00088727 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -187,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */,
+				CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -330,12 +342,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */,
+				CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */,
 				CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */,
 				CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */,
 				CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */,
-				CB8A50402AE7DB9E00088727 /* NewView.swift in Sources */,
+				CB8A504C2AE80E6B00088727 /* Constants.swift in Sources */,
 				CB8A503E2AE7D75A00088727 /* CatalogTestsView.swift in Sources */,
 				CB6750942AE699610049E7A8 /* Persistence.swift in Sources */,
+				CBAB26AF2AEA6ED200C72AE1 /* MyListQuestionView.swift in Sources */,
+				CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */,
+				CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */,
 				CB67508D2AE699600049E7A8 /* MyListTestsView.swift in Sources */,
 				CB6750972AE699610049E7A8 /* SailorCompass.xcdatamodeld in Sources */,
 				CB8A504A2AE8096700088727 /* SharedTestsView.swift in Sources */,

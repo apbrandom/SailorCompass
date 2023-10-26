@@ -9,25 +9,27 @@ import SwiftUI
 
 struct CatalogTestsView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    private let gridItems = [GridItem(.adaptive(minimum: Constants.LayoutMetrics.catalogGridLayout))]
+    
     var body: some View {
         ScrollView(.vertical) {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], content: {
-                NavigationLink(
-                    destination:
-                        MyListTestsView(),
-                    label: {
-                        MyListTestsViewLabel()
-                    })
+            LazyVGrid(columns: gridItems) {
+                NavigationLink {
+                    MyListTestsView(viewModel: MyListTestsViewModel(context: viewContext))
+                } label: {
+                    MyListTestsViewLabel()
+                }
                 
-                NavigationLink(
-                    destination:
-                        MyListTestsView(),
-                    label: {
-                        SharedTestsViewLabel()
-                    })
-            })
+                NavigationLink {
+                    // TO DO
+                } label: {
+                    SharedTestsViewLabel()
+                }
+            }
         }
-        .navigationTitle("Catalog")
+        .navigationTitle(Constants.LocalizedStrings.catalog)
     }
 }
 
