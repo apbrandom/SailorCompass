@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewQuestionView: View {
     
+    var selectedTest: CDTest
+    
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
@@ -21,8 +23,9 @@ struct NewQuestionView: View {
                 .padding()
             
             Button("Save") {
-                let newTest = Question(context: viewContext)
-                newTest.text = questionText
+                let newQuestion = CDQuestion(context: viewContext)
+                newQuestion.text = questionText
+                newQuestion.test = selectedTest
                 
                 do {
                     try viewContext.save()
@@ -36,6 +39,11 @@ struct NewQuestionView: View {
     }
 }
 
-#Preview {
-    NewQuestionView()
-}
+//#Preview {
+//    let context = PersistenceController.preview.container.viewContext
+//    let test = Test(context: context)
+//    test.timestamp = Date()
+//    
+//    return NewQuestionView(selectedTest: test)
+//                .environment(\.managedObjectContext, context)
+//}

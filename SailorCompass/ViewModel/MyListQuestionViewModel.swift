@@ -8,20 +8,18 @@
 import CoreData
 import SwiftUI
 
-class MyListQuestionViewModel: ObservableObject {
-    
-    var selectedTest: Test
-    
-    @Published var viewContext: NSManagedObjectContext
-    var questions: FetchRequest<Question>
-
-    init(selectedTest: Test, context: NSManagedObjectContext) {
-        self.selectedTest = selectedTest
-        self.viewContext = context
-    }
+    class MyListQuestionViewModel: ObservableObject {
+        
+        var selectedTest: CDTest
+        @Published var viewContext: NSManagedObjectContext
+       
+        init(selectedTest: CDTest, context: NSManagedObjectContext) {
+            self.selectedTest = selectedTest
+            self.viewContext = context
+        }
 
     func addQuestion() {
-        let newQuestion = Question(context: viewContext)
+        let newQuestion = CDQuestion(context: viewContext)
         newQuestion.text = ""
         newQuestion.test = selectedTest
         do {
@@ -31,7 +29,7 @@ class MyListQuestionViewModel: ObservableObject {
         }
     }
 
-    func deleteQuestion(offsets: IndexSet, questions: FetchedResults<Question>) {
+    func deleteQuestion(offsets: IndexSet, questions: FetchedResults<CDQuestion>) {
         offsets.map { questions[$0] }.forEach(viewContext.delete)
 
         do {
@@ -40,5 +38,4 @@ class MyListQuestionViewModel: ObservableObject {
             print("Deleting question failed: \(error)")
         }
     }
-    
 }

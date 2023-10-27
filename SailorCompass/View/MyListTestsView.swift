@@ -13,16 +13,16 @@ struct MyListTestsView: View {
     @ObservedObject var viewModel: MyListTestsViewModel
 
     @FetchRequest(
-        entity: Test.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Test.timestamp, ascending: true)],
+        entity: CDTest.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \CDTest.timestamp, ascending: true)],
         animation: .default
     ) 
-    var tests: FetchedResults<Test>
-    
+    var tests: FetchedResults<CDTest>
+
     var body: some View {
         List {
             ForEach(tests) { test in
-                NavigationLink(destination: MyListQuestionView(viewModel: MyListQuestionViewModel(selectedTest: test, context: viewContext), selectedTest: test)) {
+                NavigationLink(destination: QuestionListView(selectedTest: test).environment(\.managedObjectContext, viewContext)) {
                     Text(test.title ?? "Unnamed Test")
                     Text(test.timestamp ?? Date(), formatter: viewModel.itemFormatter)
                 }

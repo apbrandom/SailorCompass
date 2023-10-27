@@ -17,7 +17,7 @@ class MyListTestsViewModel: ObservableObject {
     }
 
     func addTest() {
-        let newTest = Test(context: viewContext)
+        let newTest = CDTest(context: viewContext)
         newTest.timestamp = Date()
         newTest.title = ""
         do {
@@ -27,7 +27,7 @@ class MyListTestsViewModel: ObservableObject {
         }
     }
 
-    func deleteTests(offsets: IndexSet, tests: FetchedResults<Test>) {
+    func deleteTests(offsets: IndexSet, tests: FetchedResults<CDTest>) {
         offsets.map { tests[$0] }.forEach(viewContext.delete)
 
         do {

@@ -6,43 +6,71 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct MyListQuestionView: View {
-    
-    @ObservedObject var viewModel: MyListQuestionViewModel
-    
+struct QuestionListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    var selectedTest: CDTest
+    
     @FetchRequest(
-        entity: Question.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \Question.text, ascending: true)],
-        predicate: NSPredicate(format: "test == %@", viewModel.selectedTest),
+        entity: CDQuestion.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \CDQuestion.text, ascending: true)],
+        predicate: nil,
         animation: .default
     )
-    var questions: FetchedResults<Question>
+    private var fetchRequest: FetchedResults<CDQuestion>
+    
+    private var questions: [CDQuestion] {
+        fetchRequest.filter { $0.test == selectedTest }
+    }
     
     var body: some View {
         List {
             ForEach(questions) { question in
                 Text(question.text ?? "No Question Name")
             }
-            .onDelete { offsets in
-                viewModel.deleteQuestion(offsets: offsets, questions: questions)
-            }
+            .onDelete(perform: deleteQuestions)
         }
+        .navigationTitle("Question")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
             ToolbarItem {
-                NavigationLink(destination: NewQuestionView().environment(\.managedObjectContext, viewContext)) {
-                        Image(systemName: "plus")
-                    }
+                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)
+                                .environment(\.managedObjectContext, viewContext)) {
+                    Image(systemName: "plus")
+                }
             }
+        }
+    }
+    
+    
+    private func addQuestion() {
+        let newQuestion = CDQuestion(context: viewContext)
+        newQuestion.text = "New Question"
+        newQuestion.test = selectedTest
+        saveContext()
+    }
+    
+    private func deleteQuestions(offsets: IndexSet) {
+        offsets.map { questions[$0] }.forEach(viewContext.delete)
+        saveContext()
+    }
+    
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            print("Saving failed: \(error)")
         }
     }
 }
 
-#Preview {
-    MyListQuestionView(viewModel: MyListQuestionViewModel(selectedTest: Test(), context: PersistenceController.preview.container.viewContext))
-}
+
+//
+//
+//#Preview {
+//    MyListQuestionView(viewModel: MyListQuestionViewModel(selectedTest: Test(), questions: Question(), context: PersistenceController.preview.container.viewContext))
+//}

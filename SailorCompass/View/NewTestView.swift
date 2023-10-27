@@ -21,7 +21,7 @@ struct NewTestView: View {
                 .padding()
             
             Button("Save") {
-                let newTest = Test(context: viewContext)
+                let newTest = CDTest(context: viewContext)
                 newTest.timestamp = Date()
                 newTest.title = testName
                 
