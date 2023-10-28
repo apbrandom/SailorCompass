@@ -13,12 +13,25 @@ struct NewTestView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var testName = ""
+    @State private var testVersion = ""
+    @State private var isVersionEnable = false
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 30) {
+            
             TextField("Enter test name", text: $testName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+               
+            HStack(alignment: .bottom) {
+                if isVersionEnable {
+                    TextField("Enter test version", text: $testVersion)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                }
+                Toggle(isVersionEnable ? "" : "Test Version", isOn: $isVersionEnable)
+               
+                
+            }
+            .padding(.vertical)
             
             Button("Save") {
                 let newTest = CDTest(context: viewContext)
@@ -33,8 +46,18 @@ struct NewTestView: View {
                 
                 presentationMode.wrappedValue.dismiss()
             }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(LinearGradient(colors: [.green, .blue], startPoint: .leading, endPoint: .trailing))
+            .font(.title3.bold())
+            .foregroundStyle(.white)
+            .clipShape(.rect(cornerRadius: 10))
+            .contentShape(Rectangle())
+            
         }
+        .padding()
     }
+        
 }
 
 #Preview {
