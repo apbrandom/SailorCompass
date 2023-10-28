@@ -10,14 +10,26 @@ import SwiftUI
 struct TestRowView: View {
     
     @ObservedObject var test: CDTest
-        
+    
     var body: some View {
-        HStack {
-            Text(test.title)
-            Text(test.creationDate, formatter: itemFormatter)
-        }
-    }
         
+        VStack(alignment: .leading) {
+            Text(test.title)
+                .font(.title2.bold())
+            HStack {
+                Text("Questions: 25")
+                    
+                Spacer()
+                VStack(alignment: .leading) {
+                    Text("last Updated:")
+                    Text(test.creationDate, formatter: itemFormatter)
+                }
+                .font(.caption.italic())
+                .foregroundStyle(.gray)
+            }
+        }.padding()
+    }
+    
     let itemFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short

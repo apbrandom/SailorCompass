@@ -37,19 +37,15 @@ struct QuestionListView: View {
             ToolbarItem {
                 NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)
                                 .environment(\.managedObjectContext, viewContext)) {
-                    Image(systemName: "plus")
+                                    Image(systemName: Constants.iconName.plus)
                 }
             }
-            
         }        
     }
         
     private func deleteQuestions(offsets: IndexSet) {
         offsets.map { questions[$0] }.forEach(viewContext.delete)
-        saveContext()
-    }
-    
-    private func saveContext() {
+        
         do {
             try viewContext.save()
         } catch {
