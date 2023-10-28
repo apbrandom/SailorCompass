@@ -5,15 +5,15 @@
         <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDQuestion" inverseName="answers" inverseEntity="CDQuestion"/>
     </entity>
     <entity name="CDQuestion" representedClassName="CDQuestion" syncable="YES" codeGenerationType="class">
-        <attribute name="picture" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="picture" optional="YES" attributeType="Binary"/>
+        <attribute name="text_" optional="YES" attributeType="String"/>
         <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDAnswer" inverseName="question" inverseEntity="CDAnswer"/>
         <relationship name="test" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTest" inverseName="questions" inverseEntity="CDTest"/>
     </entity>
     <entity name="CDTest" representedClassName="CDTest" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="qcount" optional="YES" attributeType="String"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="title_" optional="YES" attributeType="String"/>
         <attribute name="version" optional="YES" attributeType="String"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDQuestion" inverseName="test" inverseEntity="CDQuestion"/>
     </entity>

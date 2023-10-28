@@ -16,13 +16,13 @@ struct NewTestView: View {
     
     var body: some View {
         VStack {
-            TextField("Test Name", text: $testName)
+            TextField("Enter test name", text: $testName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
             Button("Save") {
                 let newTest = CDTest(context: viewContext)
-                newTest.timestamp = Date()
+                newTest.creationDate = Date()
                 newTest.title = testName
                 
                 do {

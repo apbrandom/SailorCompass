@@ -15,7 +15,7 @@ struct QuestionListView: View {
     
     @FetchRequest(
         entity: CDQuestion.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \CDQuestion.text, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \CDQuestion.text_, ascending: true)],
         predicate: nil,
         animation: .default
     )
@@ -28,7 +28,7 @@ struct QuestionListView: View {
     var body: some View {
         List {
             ForEach(questions) { question in
-                Text(question.text ?? "No Question Name")
+                Text(question.text)
             }
             .onDelete(perform: deleteQuestions)
         }
@@ -44,14 +44,6 @@ struct QuestionListView: View {
                 }
             }
         }
-    }
-    
-    
-    private func addQuestion() {
-        let newQuestion = CDQuestion(context: viewContext)
-        newQuestion.text = "New Question"
-        newQuestion.test = selectedTest
-        saveContext()
     }
     
     private func deleteQuestions(offsets: IndexSet) {

@@ -17,7 +17,7 @@ struct CatalogTestsView: View {
         ScrollView(.vertical) {
             LazyVGrid(columns: gridItems) {
                 NavigationLink {
-                    MyListTestsView(viewModel: MyListTestsViewModel(context: viewContext))
+                    MyListTestsView()
                 } label: {
                     MyListTestsViewLabel()
                 }

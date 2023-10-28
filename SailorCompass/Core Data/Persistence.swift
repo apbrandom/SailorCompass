@@ -10,12 +10,13 @@ import CoreData
 struct PersistenceController {
     static let shared = PersistenceController()
 
+    //MARK: - Preview
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = CDTest(context: viewContext)
-            newItem.timestamp = Date()
+            newItem.creationDate = Date()
         }
         do {
             try viewContext.save()
@@ -54,3 +55,4 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 }
+

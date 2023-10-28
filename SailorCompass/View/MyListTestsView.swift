@@ -10,25 +10,24 @@ import SwiftUI
 struct MyListTestsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @ObservedObject var viewModel: MyListTestsViewModel
 
     @FetchRequest(
         entity: CDTest.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \CDTest.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \CDTest.creationDate_, ascending: true)],
         animation: .default
     ) 
+    
     var tests: FetchedResults<CDTest>
 
     var body: some View {
         List {
             ForEach(tests) { test in
                 NavigationLink(destination: QuestionListView(selectedTest: test).environment(\.managedObjectContext, viewContext)) {
-                    Text(test.title ?? "Unnamed Test")
-                    Text(test.timestamp ?? Date(), formatter: viewModel.itemFormatter)
+                    TestRowView(test: test)
                 }
             }
             .onDelete { offsets in
-                viewModel.deleteTests(offsets: offsets, tests: tests)
+                deleteTests(offsets: offsets, tests: tests)
             }
         }
         .navigationTitle("My Tests")
@@ -43,9 +42,19 @@ struct MyListTestsView: View {
             }
         }
     }
+    
+    func deleteTests(offsets: IndexSet, tests: FetchedResults<CDTest>) {
+        offsets.map { tests[$0] }.forEach(viewContext.delete)
+
+        do {
+            try viewContext.save()
+        } catch {
+            print("Deleting tests failed: \(error)")
+        }
+    }
+    
 }
 
-#Preview {
-    MyListTestsView(viewModel: MyListTestsViewModel(context: PersistenceController.preview.container.viewContext))
-                .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
+//#Preview {
+//    MyListTestsView(tests: FetchRequest<CDTest>)
+//}
