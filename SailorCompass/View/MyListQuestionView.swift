@@ -9,16 +9,13 @@ import SwiftUI
 import CoreData
 
 struct QuestionListView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     var selectedTest: CDTest
     
-    @FetchRequest(
-        entity: CDQuestion.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \CDQuestion.text_, ascending: true)],
-        predicate: nil,
-        animation: .default
-    )
+    @FetchRequest(fetchRequest: CDQuestion.fetch(), animation: .bouncy)
+    
     private var fetchRequest: FetchedResults<CDQuestion>
     
     private var questions: [CDQuestion] {
@@ -28,11 +25,11 @@ struct QuestionListView: View {
     var body: some View {
         List {
             ForEach(questions) { question in
-                Text(question.text)
+                QuestionRowView(question: question)
             }
             .onDelete(perform: deleteQuestions)
         }
-        .navigationTitle("Question")
+        .navigationTitle(selectedTest.title)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
@@ -43,9 +40,10 @@ struct QuestionListView: View {
                     Image(systemName: "plus")
                 }
             }
-        }
+            
+        }        
     }
-    
+        
     private func deleteQuestions(offsets: IndexSet) {
         offsets.map { questions[$0] }.forEach(viewContext.delete)
         saveContext()
@@ -60,9 +58,7 @@ struct QuestionListView: View {
     }
 }
 
-
-//
-//
-//#Preview {
-//    MyListQuestionView(viewModel: MyListQuestionViewModel(selectedTest: Test(), questions: Question(), context: PersistenceController.preview.container.viewContext))
-//}
+#Preview {
+    MyListTestsView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+}

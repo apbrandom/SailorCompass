@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
     var body: some View {
         TabView{
             NavigationView {
@@ -17,15 +18,15 @@ struct TabBarView: View {
                 Image(systemName: TabBar.catalog.iconName)
                 Text(TabBar.catalog.title)
             }
-            MapView()
-                .tabItem {
-                    Image(systemName: TabBar.map.iconName)
-                    Text(TabBar.map.title)
-                }
             ProfileView()
                 .tabItem {
                     Image(systemName: TabBar.profile.iconName)
                     Text(TabBar.profile.title)
+                }
+            MapView()
+                .tabItem {
+                    Image(systemName: TabBar.map.iconName)
+                    Text(TabBar.map.title)
                 }
             SettingsView()
                 .tabItem {

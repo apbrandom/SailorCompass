@@ -16,6 +16,7 @@ struct PersistenceController {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = CDTest(context: viewContext)
+            newItem.title = "New Test"
             newItem.creationDate = Date()
         }
         do {

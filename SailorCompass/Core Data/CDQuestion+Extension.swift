@@ -21,6 +21,18 @@ extension CDQuestion {
         
     }
     
+    static func delete(question: CDQuestion) {
+        guard let context = question.managedObjectContext else { return }
+        context.delete(question)
+    }
+    
+    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDQuestion> {
+        let request = CDQuestion.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \CDQuestion.text_, ascending: true)]
+        request.predicate = predicate
+        return request
+    }
+    
     static var example: CDQuestion {
         let context = PersistenceController.preview.container.viewContext
         let question = CDQuestion(text: "New Question", context: context)

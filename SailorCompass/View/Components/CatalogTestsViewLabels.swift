@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyListTestsViewLabel: View {
+    
     var body: some View {
         VStack {
             Image(systemName: "externaldrive.badge.person.crop")

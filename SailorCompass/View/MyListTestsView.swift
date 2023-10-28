@@ -10,19 +10,16 @@ import SwiftUI
 struct MyListTestsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        entity: CDTest.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \CDTest.creationDate_, ascending: true)],
-        animation: .default
-    ) 
+    @FetchRequest(fetchRequest: CDTest.fetch(), animation: .bouncy)
     
     var tests: FetchedResults<CDTest>
-
+    
     var body: some View {
         List {
             ForEach(tests) { test in
-                NavigationLink(destination: QuestionListView(selectedTest: test).environment(\.managedObjectContext, viewContext)) {
+                NavigationLink {
+                    QuestionListView(selectedTest: test)
+                } label: {
                     TestRowView(test: test)
                 }
             }
@@ -30,22 +27,22 @@ struct MyListTestsView: View {
                 deleteTests(offsets: offsets, tests: tests)
             }
         }
-        .navigationTitle("My Tests")
+        .navigationTitle(Constants.LocalizedStrings.myTests)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
             ToolbarItem {
                 NavigationLink(destination: NewTestView().environment(\.managedObjectContext, viewContext)) {
-                        Image(systemName: "plus")
-                    }
+                    Image(systemName: Constants.iconName.plus)
+                }
             }
         }
     }
     
     func deleteTests(offsets: IndexSet, tests: FetchedResults<CDTest>) {
         offsets.map { tests[$0] }.forEach(viewContext.delete)
-
+        
         do {
             try viewContext.save()
         } catch {
@@ -55,6 +52,7 @@ struct MyListTestsView: View {
     
 }
 
-//#Preview {
-//    MyListTestsView(tests: FetchRequest<CDTest>)
-//}
+#Preview {
+    MyListTestsView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+}

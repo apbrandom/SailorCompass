@@ -10,6 +10,7 @@ import SwiftUI
 enum Constants {
     enum LocalizedStrings {
         static let catalog = "Catalog"
+        static let myTests = "My Tests"
     }
     
     enum LayoutMetrics {
@@ -20,6 +21,10 @@ enum Constants {
     
     enum AppSettings {
 
+    }
+    
+    enum iconName {
+        static let plus = "plus"
     }
 
 }

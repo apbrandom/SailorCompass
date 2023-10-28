@@ -26,6 +26,19 @@ extension CDTest {
         self.creationDate = Date()
     }
     
+    static func delete(test: CDTest) {
+        guard let context = test.managedObjectContext else { return }
+        context.delete(test)
+    }
+    
+    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDTest> {
+        let request = CDTest.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \CDTest.creationDate_, ascending: true),
+                                   NSSortDescriptor(keyPath: \CDTest.title_, ascending: true)]
+        request.predicate = predicate
+        return request
+    }
+    
     static var example: CDTest {
         let context = PersistenceController.preview.container.viewContext
         let test = CDTest(title: "New Test", context: context)
