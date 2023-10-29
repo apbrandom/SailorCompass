@@ -20,9 +20,15 @@ extension CDTest {
         set { creationDate_ = newValue }
     }
     
-    convenience init(title: String, context: NSManagedObjectContext) {
+    var version: String {
+        get { version_ ?? "" }
+        set { version_ = newValue }
+    }
+    
+    convenience init(title: String, version: String, context: NSManagedObjectContext) {
         self.init(context: context)
         self.title = title
+        self.version = version
         self.creationDate = Date()
     }
     
@@ -41,7 +47,7 @@ extension CDTest {
     
     static var example: CDTest {
         let context = PersistenceController.preview.container.viewContext
-        let test = CDTest(title: "New Test", context: context)
+        let test = CDTest(title: "New Test", version: "2.5", context: context)
         return test
     }
 }

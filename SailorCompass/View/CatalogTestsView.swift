@@ -21,7 +21,6 @@ struct CatalogTestsView: View {
                 } label: {
                     MyListTestsViewLabel()
                 }
-                
                 NavigationLink {
                     // TO DO
                 } label: {

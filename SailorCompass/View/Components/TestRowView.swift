@@ -16,6 +16,9 @@ struct TestRowView: View {
         VStack(alignment: .leading) {
             Text(test.title)
                 .font(.title2.bold())
+            Spacer()
+            Text("V\(test.version)")
+            
             HStack {
                 Text("Questions: 25")
                     

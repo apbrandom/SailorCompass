@@ -9,41 +9,46 @@ import SwiftUI
 
 struct NewQuestionView: View {
     
-    var selectedTest: CDTest
-    
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
+    var selectedTest: CDTest
+    
     @State private var questionText = ""
+    @State private var answerText = ""
     
     var body: some View {
         VStack {
             TextField("Question text", text: $questionText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .textFieldStyle(.roundedBorder)
+            TextField("Answer", text: $answerText)
+                .textFieldStyle(.roundedBorder)
             
-            Button("Save") {
-                let newQuestion = CDQuestion(context: viewContext)
-                newQuestion.text = questionText
-                newQuestion.test = selectedTest
+            Button {
+                saveToCD()
                 
-                do {
-                    try viewContext.save()
-                } catch {
-                    print("Saving test failed: \(error)")
-                }
-                
-                presentationMode.wrappedValue.dismiss()
+            } label: {
+                CustomButtonLabel(text: "Save")
             }
         }
+        .navigationTitle("Creation of a new question")
+        .padding()
+    }
+    
+    func saveToCD() {
+        let newQuestion = CDQuestion(context: viewContext)
+        newQuestion.text = questionText
+        newQuestion.test = selectedTest
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Saving test failed: \(error)")
+        }
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
-//#Preview {
-//    let context = PersistenceController.preview.container.viewContext
-//    let test = Test(context: context)
-//    test.timestamp = Date()
-//    
-//    return NewQuestionView(selectedTest: test)
-//                .environment(\.managedObjectContext, context)
-//}
+#Preview {
+    NewQuestionView( selectedTest: CDTest.example)
+}
