@@ -11,4 +11,5 @@ extension NSPredicate {
     
     static let all = NSPredicate(format: "TRUEPREDICATE")
     static let none = NSPredicate(format: "FALSEPREDICATE")
+    static let isCorrect = NSPredicate(format: "question == %@ AND isCorrect == true")
 }

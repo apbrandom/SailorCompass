@@ -17,42 +17,40 @@ struct QuestionListView: View {
     @FetchRequest(fetchRequest: CDQuestion.fetch(), animation: .bouncy)
     
     private var fetchRequest: FetchedResults<CDQuestion>
-    
     private var questions: [CDQuestion] {
         fetchRequest.filter { $0.test == selectedTest }
     }
     
     var body: some View {
         List {
-            ForEach(questions) { question in
+            ForEach(questions, id: \.self) { question in
                 QuestionRowView(question: question)
             }
             .onDelete(perform: deleteQuestions)
         }
         .navigationTitle(selectedTest.title)
-        .toolbar {
+        .toolbar() {
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
             }
             ToolbarItem {
-                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)
-                                .environment(\.managedObjectContext, viewContext)) {
-                                    Image(systemName: Constants.iconName.plus)
+                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest).environment(\.managedObjectContext, viewContext)) {
+                    Image(systemName: Constants.iconName.plus)
                 }
             }
-        }        
+        }
     }
-        
+    
     private func deleteQuestions(offsets: IndexSet) {
-        offsets.map { questions[$0] }.forEach(viewContext.delete)
+        let questionsToDelete = offsets.map { questions[$0] }
+        questionsToDelete.forEach(viewContext.delete)
         
         do {
             try viewContext.save()
         } catch {
             print("Saving failed: \(error)")
         }
-    }
-}
+    }}
 
 #Preview {
     MyListTestsView()

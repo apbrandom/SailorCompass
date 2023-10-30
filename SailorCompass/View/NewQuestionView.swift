@@ -14,15 +14,41 @@ struct NewQuestionView: View {
     
     var selectedTest: CDTest
     
+    @State private var questionImage: Image?
     @State private var questionText = ""
-    @State private var answerText = ""
+    @State private var answers: [(text: String, isCorrect: Bool)] = [("", true)]
     
     var body: some View {
         VStack {
             TextField("Question text", text: $questionText)
                 .textFieldStyle(.roundedBorder)
-            TextField("Answer", text: $answerText)
-                .textFieldStyle(.roundedBorder)
+            ForEach(answers.indices, id: \.self) { index in
+                
+                HStack {
+                    Button {
+                        answers[index].isCorrect.toggle()
+                    } label: {
+                        CheckBoxButtonLabel(isCorrect: answers[index].isCorrect)
+                    }
+                    TextField("Answer", text: $answers[index].text)
+                        .textFieldStyle(.roundedBorder)
+                }
+                
+            }
+            
+            Button {
+                if answers.count < 10 {
+                    answers.append((text: "", isCorrect: false))
+                }
+            } label: {
+                Image(systemName: Constants.iconName.plus)
+            }
+
+            Button("Add Answer") {
+                    if answers.count < 10 {
+                        answers.append((text: "", isCorrect: false))
+                    }
+                }
             
             Button {
                 saveToCD()
@@ -38,6 +64,14 @@ struct NewQuestionView: View {
     func saveToCD() {
         let newQuestion = CDQuestion(context: viewContext)
         newQuestion.text = questionText
+        
+        for answer in answers {
+            let newAnswer = CDAnswer(context: viewContext)
+            newAnswer.text = answer.text
+            newAnswer.isCorrect = answer.isCorrect
+            newAnswer.question = newQuestion
+        }
+        
         newQuestion.test = selectedTest
         
         do {
@@ -49,6 +83,6 @@ struct NewQuestionView: View {
     }
 }
 
-#Preview {
-    NewQuestionView( selectedTest: CDTest.example)
-}
+//#Preview {
+//    NewQuestionView( selectedTest: CDTest.example)
+//}

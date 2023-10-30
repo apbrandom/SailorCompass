@@ -38,5 +38,4 @@ extension CDQuestion {
         let question = CDQuestion(text: "New Question", context: context)
         return question
     }
-    
 }

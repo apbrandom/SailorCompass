@@ -11,11 +11,23 @@ struct QuestionRowView: View {
     
     @ObservedObject var question: CDQuestion
     
+    @FetchRequest(fetchRequest: CDAnswer.fetch(), animation: .bouncy)
+    private var correctAnswers: FetchedResults<CDAnswer>
+    
+    private var correctAnswersForQuestion: [CDAnswer] {
+        correctAnswers.filter { $0.question == question && $0.isCorrect }
+    }
+    
     var body: some View {
-        Text(question.text)
+        VStack {
+            Text(question.text)
+            ForEach(correctAnswersForQuestion, id: \.self) { answer in
+                Text(answer.text)
+            }
+            
+        }
     }
 }
-
-#Preview {
-    QuestionRowView(question: CDQuestion.example)
-}
+    //#Preview {
+    //    QuestionRowView(question: CDQuestion.example)
+    //}
