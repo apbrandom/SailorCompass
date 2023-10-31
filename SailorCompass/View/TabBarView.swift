@@ -15,23 +15,23 @@ struct TabBarView: View {
                 CatalogTestsView()
             }
             .tabItem {
-                Image(systemName: TabBar.catalog.iconName)
-                Text(TabBar.catalog.title)
+                Image(systemName: TabBarItem.catalog.iconName)
+                Text(TabBarItem.catalog.title)
             }
             ProfileView()
                 .tabItem {
-                    Image(systemName: TabBar.profile.iconName)
-                    Text(TabBar.profile.title)
+                    Image(systemName: TabBarItem.profile.iconName)
+                    Text(TabBarItem.profile.title)
                 }
             MapView()
                 .tabItem {
-                    Image(systemName: TabBar.map.iconName)
-                    Text(TabBar.map.title)
+                    Image(systemName: TabBarItem.map.iconName)
+                    Text(TabBarItem.map.title)
                 }
             SettingsView()
                 .tabItem {
-                    Image(systemName: TabBar.settings.iconName)
-                    Text(TabBar.settings.title)
+                    Image(systemName: TabBarItem.settings.iconName)
+                    Text(TabBarItem.settings.title)
                 }
         }
     }

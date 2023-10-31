@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import SwiftUI
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -57,3 +58,13 @@ struct PersistenceController {
     }
 }
 
+extension PersistenceController {
+    func deleteEntities<T: NSManagedObject>(offsets: IndexSet, entities: FetchedResults<T>, in context: NSManagedObjectContext) {
+        offsets.map { entities[$0] }.forEach(context.delete)
+        do {
+            try context.save()
+        } catch {
+            print("Deleting failed: \(error)")
+        }
+    }
+}

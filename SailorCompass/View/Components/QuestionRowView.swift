@@ -23,11 +23,12 @@ struct QuestionRowView: View {
             Text(question.text)
             ForEach(correctAnswersForQuestion, id: \.self) { answer in
                 Text(answer.text)
+                    .foregroundStyle(.mint)
             }
             
         }
     }
 }
-    //#Preview {
-    //    QuestionRowView(question: CDQuestion.example)
-    //}
+    #Preview {
+        QuestionRowView(question: CDQuestion.example)
+    }

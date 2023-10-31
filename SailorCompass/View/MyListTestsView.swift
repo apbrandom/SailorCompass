@@ -24,9 +24,10 @@ struct MyListTestsView: View {
                 }
             }
             .onDelete { offsets in
-                deleteTests(offsets: offsets, tests: tests)
+                PersistenceController.shared.deleteEntities(offsets: offsets, entities: tests, in: viewContext)
             }
         }
+        .listStyle(.plain)
         .navigationTitle(Constants.LocalizedStrings.myTests)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

@@ -28,6 +28,7 @@ struct QuestionListView: View {
             }
             .onDelete(perform: deleteQuestions)
         }
+        .listStyle(.plain)
         .navigationTitle(selectedTest.title)
         .toolbar() {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -41,6 +42,7 @@ struct QuestionListView: View {
         }
     }
     
+    //TO DO
     private func deleteQuestions(offsets: IndexSet) {
         let questionsToDelete = offsets.map { questions[$0] }
         questionsToDelete.forEach(viewContext.delete)

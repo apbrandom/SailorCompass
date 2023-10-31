@@ -7,24 +7,12 @@
 
 import Foundation
 
-enum TabBar {
-    case catalog, map, profile, settings
+struct TabBarItem {
+    let title: String
+    let iconName: String
     
-    var title: String {
-        switch self {
-        case .catalog: return "Catalog"
-        case .map: return "Map"
-        case .profile: return "Profile"
-        case .settings: return "Settings"
-        }
-    }
-    
-    var iconName: String {
-        switch self {
-        case .catalog: return "menucard"
-        case .map: return "globe"
-        case .profile: return "person.circle"
-        case .settings: return "gear"
-        }
-    }
+    static let catalog = TabBarItem(title: "Catalog", iconName: "menucard")
+    static let map = TabBarItem(title: "Map", iconName: "globe")
+    static let profile = TabBarItem(title: "Profile", iconName: "person.circle")
+    static let settings = TabBarItem(title: "Settings", iconName: "gear")
 }
