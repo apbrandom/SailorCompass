@@ -19,31 +19,11 @@ struct NewTestView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 30) {
             
-            TextField("Enter test name", text: $testName)
-                .textFieldStyle(.roundedBorder)
-                .onChange(of: testName) { newValue in
-                    if newValue.count > 30 {
-                        testName = String(testName.prefix(30))
-                    }
-                }
+            TextFieldTestName(text: $testName)
             
             HStack(alignment: .bottom) {
                 if isVersionEnable {
-                    TextField("Enter test version", text: $testVersion)
-                        .textFieldStyle(.roundedBorder)
-                        .keyboardType(.decimalPad)
-                        .onChange(of: testVersion) { newValue in
-                            // Заменяем запятую на точку
-                            let replaced = newValue.replacingOccurrences(of: ",", with: ".")
-                            
-                            // Ограничиваем количество символов до 5
-                            if replaced.count > 5 {
-                                testVersion = String(replaced.prefix(5))
-                            } else {
-                                testVersion = replaced
-                            }
-                        }
-                        
+                    TextFieldTestVesrion(text: $testVersion)
                 }
                 Toggle(isVersionEnable ? "" : "Test Version", isOn: $isVersionEnable)
             }

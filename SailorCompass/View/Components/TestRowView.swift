@@ -17,11 +17,18 @@ struct TestRowView: View {
             Text(test.title)
                 .font(.title2.bold())
             Spacer()
-            Text("V\(test.version)")
+            
+            if let version = test.version, !version.isEmpty {
+                Text("Version \(version)")
+            }
             
             HStack {
-                Text("Questions: 25")
-                    
+                if let questionCount = test.questions?.count {
+                    Text("Questions: \(questionCount)")
+                } else {
+                    Text("Questions: 0")
+                }
+                
                 Spacer()
                 VStack(alignment: .leading) {
                     Text("last Updated:")

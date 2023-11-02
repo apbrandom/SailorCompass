@@ -16,7 +16,7 @@ struct MyListTestsView: View {
     
     var body: some View {
         List {
-            ForEach(tests) { test in
+            ForEach(tests, id: \.self) { test in
                 NavigationLink {
                     QuestionListView(selectedTest: test)
                 } label: {
@@ -24,7 +24,7 @@ struct MyListTestsView: View {
                 }
             }
             .onDelete { offsets in
-                PersistenceController.shared.deleteEntities(offsets: offsets, entities: tests, in: viewContext)
+                deleteTests(offsets: offsets, tests: tests)
             }
         }
         .listStyle(.plain)
@@ -40,6 +40,7 @@ struct MyListTestsView: View {
             }
         }
     }
+    
     
     func deleteTests(offsets: IndexSet, tests: FetchedResults<CDTest>) {
         offsets.map { tests[$0] }.forEach(viewContext.delete)

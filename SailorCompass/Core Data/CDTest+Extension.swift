@@ -20,10 +20,10 @@ extension CDTest {
         set { creationDate_ = newValue }
     }
     
-    var version: String {
-        get { version_ ?? "" }
-        set { version_ = newValue }
-    }
+//    var version: String {
+//        get { version_ ?? "" }
+//        set { version_ = newValue }
+//    }
     
     convenience init(title: String, version: String, context: NSManagedObjectContext) {
         self.init(context: context)
