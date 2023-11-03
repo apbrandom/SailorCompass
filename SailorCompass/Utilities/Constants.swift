@@ -8,9 +8,17 @@
 import SwiftUI
 
 enum Constants {
+    
+    static let emptyString = ""
+    
     enum LocalizedStrings {
         static let catalog = "Catalog"
         static let myTests = "My Tests"
+        static let newTest = "Creating a new test"
+        static let save = "Save"
+        static let alertTestName = "Please enter the test name"
+        static let alertVersionName = "Please enter the version name"
+        static let versionName = "Test Version"
     }
     
     enum LayoutMetrics {
