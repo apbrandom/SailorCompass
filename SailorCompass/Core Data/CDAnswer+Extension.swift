@@ -17,7 +17,7 @@ extension CDAnswer {
     
     //Preview
     static var example: CDAnswer {
-        let context = PersistenceController.preview.container.viewContext
+        let context = CoreDataController.preview.container.viewContext
         let answer = CDAnswer(text: "New Answer", context: context)
         return answer
     }

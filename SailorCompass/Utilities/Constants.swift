@@ -19,6 +19,7 @@ enum Constants {
         static let alertTestName = "Please enter the test name"
         static let alertVersionName = "Please enter the version name"
         static let versionName = "Test Version"
+        static let sameTestName = "A test with the same name already exists"
     }
     
     enum LayoutMetrics {

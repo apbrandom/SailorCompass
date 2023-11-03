@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct SailorCompassApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = CoreDataController.shared
 
     var body: some Scene {
         WindowGroup {

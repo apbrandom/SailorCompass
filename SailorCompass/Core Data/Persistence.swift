@@ -8,12 +8,13 @@
 import CoreData
 import SwiftUI
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+struct CoreDataController {
+    static let shared = CoreDataController()
+//    @Environment(\.managedObjectContext) private var viewContext
 
     //MARK: - Preview
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
+    static var preview: CoreDataController = {
+        let result = CoreDataController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = CDTest(context: viewContext)
@@ -58,13 +59,31 @@ struct PersistenceController {
     }
 }
 
-extension PersistenceController {
+//MARK: - Methods
+extension CoreDataController {
+    
     func deleteEntities<T: NSManagedObject>(offsets: IndexSet, entities: FetchedResults<T>, in context: NSManagedObjectContext) {
         offsets.map { entities[$0] }.forEach(context.delete)
         do {
             try context.save()
         } catch {
             print("Deleting failed: \(error)")
+        }
+    }
+    
+    func testWithNameExists(name: String, in context: NSManagedObjectContext) -> Bool {
+        let fetchRequest: NSFetchRequest<CDTest> = CDTest.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "title_ == %@", name)
+        fetchRequest.fetchLimit = 1  // Установите лимит выборки, чтобы ускорить процесс
+        
+        do {
+            let count = try context.count(for: fetchRequest)
+            return count > 0
+        } catch {
+            // Здесь должен быть код для обработки ошибок, например:
+            // показать alert с информацией об ошибке
+            print("Fetching test failed: \(error.localizedDescription)")
+            return false
         }
     }
 }

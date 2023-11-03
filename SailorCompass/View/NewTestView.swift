@@ -21,50 +21,57 @@ struct NewTestView: View {
     @State private var showingAlert = false
     
     var body: some View {
-        NavigationStack {
-            Form {
+        Form {
+            Section {
                 TextFieldTestName(text: $testName, isInvalid: $testNameInvalid)
-                    .padding(.vertical, 40)
-                HStack(alignment: .bottom) {
-                    if isVersionEnable {
-                        TextFieldTestVesrion(text: $testVersionName, isInvalid: $testVersionInvalid)
-                    }
-                    Toggle(isVersionEnable ? Constants.emptyString : Constants.LocalizedStrings.versionName, isOn: $isVersionEnable)
+                    .padding(.vertical, 30)
+            }
+            
+            HStack {
+                if isVersionEnable {
+                    TextFieldTestVesrion(text: $testVersionName, isInvalid: $testVersionInvalid)
                 }
-                .padding(.vertical)
-                
+                Toggle(isVersionEnable ? Constants.emptyString : Constants.LocalizedStrings.versionName, isOn: $isVersionEnable)
             }
-            Button(action: saveTest) {
-                CustomButtonLabel(text: Constants.LocalizedStrings.save)
+            .padding(.vertical, 30)
+            
+            HStack {
+                Button(action: saveTest) {
+                    CustomButtonLabel(text: Constants.LocalizedStrings.save)
+                }
+                .alert(alertMessage, isPresented: $showingAlert) { }
             }
-            .padding(.vertical, 40)
-            .alert(alertMessage, isPresented: $showingAlert) { }
-            .padding()
         }
         .navigationTitle(Constants.LocalizedStrings.newTest)
         .animation(.easeInOut, value: isVersionEnable)
-        
     }
     
     private func saveTest() {
-        
         if testName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            testNameInvalid = true
+            testNameInvalid.toggle()
             alertMessage = Constants.LocalizedStrings.alertTestName
-            showingAlert = true
+            showingAlert.toggle()
             return
         }
         
         if isVersionEnable && testVersionName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            testVersionInvalid = true
+            testVersionInvalid.toggle()
             alertMessage = Constants.LocalizedStrings.alertVersionName
-            showingAlert = true
+            showingAlert.toggle()
+            return
+        }
+        
+        if CoreDataController.shared.testWithNameExists(name: testName, in: viewContext) {
+            testNameInvalid.toggle()
+            alertMessage = Constants.LocalizedStrings.sameTestName
+            showingAlert.toggle()
             return
         }
         
         let newTest = CDTest(context: viewContext)
         newTest.creationDate = Date()
         newTest.title = testName
+        
         if isVersionEnable {
             newTest.version = testVersionName
         }
@@ -73,9 +80,8 @@ struct NewTestView: View {
             try viewContext.save()
             presentationMode.wrappedValue.dismiss()
         } catch {
-            // Здесь должен быть код для обработки ошибок, например:
-            // показать alert с информацией об ошибке
-            print("Saving test failed: \(error.localizedDescription)")
+            alertMessage = error.localizedDescription
+            showingAlert.toggle()
         }
     }
 }

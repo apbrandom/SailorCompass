@@ -34,7 +34,7 @@ extension CDQuestion {
     }
     
     static var example: CDQuestion {
-        let context = PersistenceController.preview.container.viewContext
+        let context = CoreDataController.preview.container.viewContext
         let question = CDQuestion(text: "New Question", context: context)
         return question
     }

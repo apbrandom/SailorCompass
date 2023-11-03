@@ -46,7 +46,7 @@ extension CDTest {
     }
     
     static var example: CDTest {
-        let context = PersistenceController.preview.container.viewContext
+        let context = CoreDataController.preview.container.viewContext
         let test = CDTest(title: "New Test", version: "2.5", context: context)
         return test
     }

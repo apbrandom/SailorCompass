@@ -49,5 +49,5 @@ struct QuestionListView: View {
 
 #Preview {
     MyListTestsView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }
