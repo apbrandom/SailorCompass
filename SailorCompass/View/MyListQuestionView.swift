@@ -29,7 +29,7 @@ struct QuestionListView: View {
             }
             ToolbarItem {
                 NavigationLink(destination: NewQuestionView(selectedTest: selectedTest).environment(\.managedObjectContext, viewContext)) {
-                    Image(systemName: Constants.iconName.plus)
+                    Image(systemName: Constants.icon.plus)
                 }
             }
         }

@@ -35,15 +35,18 @@ struct NewTestView: View {
             }
             .padding(.vertical, 30)
             
-            HStack {
-                Button(action: saveTest) {
-                    CustomButtonLabel(text: Constants.LocalizedStrings.save)
-                }
-                .alert(alertMessage, isPresented: $showingAlert) { }
-            }
+
         }
         .navigationTitle(Constants.LocalizedStrings.newTest)
         .animation(.easeInOut, value: isVersionEnable)
+        
+        VStack {
+            Button(action: saveTest) {
+                CustomButtonLabel(text: Constants.LocalizedStrings.save)
+            }
+            .alert(alertMessage, isPresented: $showingAlert) { }
+        }
+        .padding()
     }
     
     private func saveTest() {

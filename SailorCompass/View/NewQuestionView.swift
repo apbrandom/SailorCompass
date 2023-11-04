@@ -14,42 +14,48 @@ struct NewQuestionView: View {
     
     var selectedTest: CDTest
     
-    @State private var questionImage: Image?
     @State private var questionText = ""
     @State private var answers: [(text: String, isCorrect: Bool)] = [("", true)]
+    @State private var isFewAnswer = false
     
     var body: some View {
-        VStack {
-            TextField("Question text", text: $questionText)
-                .textFieldStyle(.roundedBorder)
-            ForEach(answers.indices, id: \.self) { index in
-                
-                HStack {
-                    Button {
-                        answers[index].isCorrect.toggle()
-                    } label: {
-                        CheckBoxButtonLabel(isCorrect: answers[index].isCorrect)
+        Form {
+            Section {
+                TextEditor(text: $questionText)
+                    .frame(height: 150)
+                    .textFieldStyle(.roundedBorder)
+            }
+            VStack {
+                ForEach(answers.indices, id: \.self) { index in
+                    HStack {
+                        Button {
+                            answers[index].isCorrect.toggle()
+                        } label: {
+                            CheckBoxButtonLabel(isCorrect: answers[index].isCorrect)
+                        }
+                        TextField("Answer", text: $answers[index].text)
+                            .textFieldStyle(.roundedBorder)
                     }
-                    TextField("Answer", text: $answers[index].text)
-                        .textFieldStyle(.roundedBorder)
                 }
-                
-            }
-            
-            Button {
-                if answers.count < 10 {
-                    answers.append((text: "", isCorrect: false))
-                }
-            } label: {
-                Image(systemName: Constants.iconName.plus)
-            }
-
-            Button("Add Answer") {
+                Button {
                     if answers.count < 10 {
                         answers.append((text: "", isCorrect: false))
                     }
+                } label: {
+                    Image(systemName: Constants.icon.plus)
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .padding()
                 }
-            
+            }
+            Section {
+                Toggle("Few correct Answer", isOn: $isFewAnswer)
+            }
+        }
+        .navigationTitle("Creation of a new question")
+        .navigationBarTitleDisplayMode(.inline)
+        
+        VStack {
             Button {
                 saveToCD()
                 
@@ -57,7 +63,6 @@ struct NewQuestionView: View {
                 CustomButtonLabel(text: "Save")
             }
         }
-        .navigationTitle("Creation of a new question")
         .padding()
     }
     
@@ -83,6 +88,6 @@ struct NewQuestionView: View {
     }
 }
 
-//#Preview {
-//    NewQuestionView( selectedTest: CDTest.example)
-//}
+#Preview {
+    NewQuestionView( selectedTest: CDTest.example)
+}

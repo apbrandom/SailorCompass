@@ -19,7 +19,7 @@ struct CatalogTestsView: View {
                 NavigationLink {
                     MyListTestsView()
                 } label: {
-                    MyListTestsViewLabel()
+                    CatalogCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
                 }
                 NavigationLink {
                     // TO DO

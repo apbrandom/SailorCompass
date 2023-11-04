@@ -14,7 +14,12 @@
 		CB0C516E2AF023100063C5AD /* QuestionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516D2AF023100063C5AD /* QuestionDetailView.swift */; };
 		CB0C51702AF0257E0063C5AD /* CDAnswer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */; };
 		CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */; };
+		CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A07742AF652B4007755C0 /* CatalogCell.swift */; };
+		CB3A07772AF655CC007755C0 /* GlassBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A07762AF655CC007755C0 /* GlassBackground.swift */; };
+		CB3A077B2AF65E11007755C0 /* CatalogIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */; };
 		CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */; };
+		CB4617972AF6C02E00AD5BA5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4617962AF6C02E00AD5BA5 /* ProfileViewModel.swift */; };
+		CB4617992AF6C0AB00AD5BA5 /* CircularProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4617982AF6C0AB00AD5BA5 /* CircularProfileImage.swift */; };
 		CB5E99732AED1E1600575C09 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */; };
 		CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */; };
 		CB61E3CA2AF1A7DA00B60328 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB61E3C92AF1A7DA00B60328 /* FilteredList.swift */; };
@@ -69,7 +74,12 @@
 		CB0C516D2AF023100063C5AD /* QuestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailView.swift; sourceTree = "<group>"; };
 		CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDAnswer+Extension.swift"; sourceTree = "<group>"; };
 		CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButtonLabel.swift; sourceTree = "<group>"; };
+		CB3A07742AF652B4007755C0 /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
+		CB3A07762AF655CC007755C0 /* GlassBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassBackground.swift; sourceTree = "<group>"; };
+		CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogIcon.swift; sourceTree = "<group>"; };
 		CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonLabel.swift; sourceTree = "<group>"; };
+		CB4617962AF6C02E00AD5BA5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		CB4617982AF6C0AB00AD5BA5 /* CircularProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImage.swift; sourceTree = "<group>"; };
 		CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuestionView.swift; sourceTree = "<group>"; };
 		CB61E3C92AF1A7DA00B60328 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
@@ -174,6 +184,7 @@
 				CB6750992AE699610049E7A8 /* Info.plist */,
 				CB6750952AE699610049E7A8 /* SailorCompass.xcdatamodeld */,
 				CB6750902AE699610049E7A8 /* Preview Content */,
+				CB4617962AF6C02E00AD5BA5 /* ProfileViewModel.swift */,
 			);
 			path = SailorCompass;
 			sourceTree = "<group>";
@@ -227,6 +238,8 @@
 			children = (
 				CB8A50372AE7CF9400088727 /* TabBar.swift */,
 				CB8A504B2AE80E6B00088727 /* Constants.swift */,
+				CB3A07762AF655CC007755C0 /* GlassBackground.swift */,
+				CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -251,6 +264,8 @@
 				CB61E3C92AF1A7DA00B60328 /* FilteredList.swift */,
 				CB9495FC2AF3F507007A850C /* TextFieldTestName.swift */,
 				CB9495FE2AF3F698007A850C /* TextFieldTestVesrion.swift */,
+				CB3A07742AF652B4007755C0 /* CatalogCell.swift */,
+				CB4617982AF6C0AB00AD5BA5 /* CircularProfileImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -395,9 +410,11 @@
 				CB03A3522AEC5ABA005C3157 /* CDTest+Extension.swift in Sources */,
 				CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */,
 				CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */,
+				CB3A07772AF655CC007755C0 /* GlassBackground.swift in Sources */,
 				CB8A504C2AE80E6B00088727 /* Constants.swift in Sources */,
 				CB8A503E2AE7D75A00088727 /* CatalogTestsView.swift in Sources */,
 				CB6750942AE699610049E7A8 /* Persistence.swift in Sources */,
+				CB3A077B2AF65E11007755C0 /* CatalogIcon.swift in Sources */,
 				CBAB26AF2AEA6ED200C72AE1 /* MyListQuestionView.swift in Sources */,
 				CB9495FF2AF3F698007A850C /* TextFieldTestVesrion.swift in Sources */,
 				CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */,
@@ -409,9 +426,12 @@
 				CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */,
 				CB61E3CA2AF1A7DA00B60328 /* FilteredList.swift in Sources */,
 				CB8A504A2AE8096700088727 /* SharedTestsView.swift in Sources */,
+				CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
 				CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */,
+				CB4617992AF6C0AB00AD5BA5 /* CircularProfileImage.swift in Sources */,
 				CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */,
+				CB4617972AF6C02E00AD5BA5 /* ProfileViewModel.swift in Sources */,
 				CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */,
 				CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */,
 				CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */,

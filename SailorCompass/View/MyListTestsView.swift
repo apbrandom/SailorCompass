@@ -35,12 +35,11 @@ struct MyListTestsView: View {
             }
             ToolbarItem {
                 NavigationLink(destination: NewTestView().environment(\.managedObjectContext, viewContext)) {
-                    Image(systemName: Constants.iconName.plus)
+                    Image(systemName: Constants.icon.plus)
                 }
             }
         }
     }
-    
     
     func deleteTests(offsets: IndexSet, tests: FetchedResults<CDTest>) {
         offsets.map { tests[$0] }.forEach(viewContext.delete)
@@ -51,7 +50,6 @@ struct MyListTestsView: View {
             print("Deleting tests failed: \(error)")
         }
     }
-    
 }
 
 #Preview {

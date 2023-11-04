@@ -32,8 +32,8 @@ enum Constants {
 
     }
     
-    enum iconName {
-        static let plus = "plus"
+    enum icon {
+        static let plus = "plus.circle"
     }
 
 }
