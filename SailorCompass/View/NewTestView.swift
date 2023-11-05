@@ -12,7 +12,7 @@ struct NewTestView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var testName = Constants.emptyString
+    @State private var testTitle = Constants.emptyString
     @State private var testVersionName = Constants.emptyString
     @State private var alertMessage = Constants.emptyString
     @State private var isVersionEnable = false
@@ -23,7 +23,7 @@ struct NewTestView: View {
     var body: some View {
         Form {
             Section {
-                TextFieldTestName(text: $testName, isInvalid: $testNameInvalid)
+                TextFieldTestName(text: $testTitle, isInvalid: $testNameInvalid)
                     .padding(.vertical, 30)
             }
             
@@ -50,7 +50,7 @@ struct NewTestView: View {
     }
     
     private func saveTest() {
-        if testName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if testTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             testNameInvalid.toggle()
             alertMessage = Constants.LocalizedStrings.alertTestName
             showingAlert.toggle()
@@ -64,7 +64,7 @@ struct NewTestView: View {
             return
         }
         
-        if CoreDataController.shared.testWithNameExists(name: testName, in: viewContext) {
+        if CoreDataController.shared.testWithNameExists(name: testTitle, in: viewContext) {
             testNameInvalid.toggle()
             alertMessage = Constants.LocalizedStrings.sameTestName
             showingAlert.toggle()
@@ -72,8 +72,9 @@ struct NewTestView: View {
         }
         
         let newTest = CDTest(context: viewContext)
+        newTest.id = UUID()
         newTest.creationDate = Date()
-        newTest.title = testName
+        newTest.title = testTitle
         
         if isVersionEnable {
             newTest.version = testVersionName

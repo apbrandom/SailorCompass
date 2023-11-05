@@ -11,41 +11,26 @@ import CoreData
 struct QuestionListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    
-    var selectedTest: CDTest
+    var selectedTest: CDTest  // Экземпляр выбранного теста передается в этот вид
     
     var body: some View {
-        
-        VStack {
-            FilteredList(with: selectedTest)
-                .environment(\.managedObjectContext, viewContext)
-            
-        }
-        .listStyle(.plain)
-        .navigationTitle(selectedTest.title)
-        .toolbar() {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-            ToolbarItem {
-                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest).environment(\.managedObjectContext, viewContext)) {
-                    Image(systemName: Constants.icon.plus)
+        NavigationView {  // Убедитесь, что ваш список находится внутри NavigationView
+            FilteredQuestionList(with: selectedTest)
+                .navigationTitle(selectedTest.title)  // Используйте имя теста в качестве заголовка
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: NewQuestionView(selectedTest: selectedTest).environment(\.managedObjectContext, viewContext)) {
+                            Label("Добавить вопрос", systemImage: Constants.icon.plus)
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        EditButton()
+                    }
                 }
-            }
         }
+        .environment(\.managedObjectContext, viewContext)  // Этот модификатор уже не нужен, так как мы используем @Environment для доступа к viewContext
     }
 }
-    //TO DO
-//    private func deleteQuestions(offsets: IndexSet) {
-//        let questionsToDelete = offsets.map { questions[$0] }
-//        questionsToDelete.forEach(viewContext.delete)
-//        
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            print("Saving failed: \(error)")
-//        }
-//    }}
 
 #Preview {
     MyListTestsView()

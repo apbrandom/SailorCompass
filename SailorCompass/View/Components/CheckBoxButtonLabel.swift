@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CheckBoxButtonLabel: View {
     
-    let isCorrect: Bool
+    var isCorrect: Bool
     
     var body: some View {
         Image(systemName: isCorrect ? "checkmark.square" : "square")

@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct QuestionDetailView: View {
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    var question: CDQuestion
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(question.text)
+        }
     }
+    
 }
 
-#Preview {
-    QuestionDetailView()
-}
+//#Preview {
+//    QuestionDetailView()
+//        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+//}
