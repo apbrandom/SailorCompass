@@ -24,7 +24,6 @@ struct CatalogCell: View {
         .frame(width: frame * 0.3, height: frame * 0.3)
         .background(RadialGradient(colors: [.clear, .myGlass], center: .center, startRadius: 1, endRadius: 100))
         .clipShape(.rect(cornerRadius: 16))
-//        .blur(radius: 0.1)
         .shadow(radius: 2)
     }
 }

@@ -24,7 +24,7 @@ struct CatalogTestsView: View {
                 NavigationLink {
                     // TO DO
                 } label: {
-                    SharedTestsViewLabel()
+                    CatalogCell(icon: CatalogIcon.sharedTest.icon, title: CatalogIcon.sharedTest.title)
                 }
             }
         }

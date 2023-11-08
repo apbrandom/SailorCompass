@@ -11,12 +11,12 @@ import CoreData
 struct QuestionListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    var selectedTest: CDTest  // Экземпляр выбранного теста передается в этот вид
+    
+    var selectedTest: CDTest
     
     var body: some View {
-        NavigationView {  // Убедитесь, что ваш список находится внутри NavigationView
             FilteredQuestionList(with: selectedTest)
-                .navigationTitle(selectedTest.title)  // Используйте имя теста в качестве заголовка
+                .navigationTitle(selectedTest.title)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: NewQuestionView(selectedTest: selectedTest).environment(\.managedObjectContext, viewContext)) {
@@ -27,12 +27,12 @@ struct QuestionListView: View {
                         EditButton()
                     }
                 }
-        }
-        .environment(\.managedObjectContext, viewContext)  // Этот модификатор уже не нужен, так как мы используем @Environment для доступа к viewContext
+        .environment(\.managedObjectContext, viewContext)
     }
 }
 
 #Preview {
-    MyListTestsView()
+    QuestionListView(selectedTest: CDTest.example)
         .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }
+

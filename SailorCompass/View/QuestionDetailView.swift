@@ -21,7 +21,7 @@ struct QuestionDetailView: View {
     
 }
 
-//#Preview {
-//    QuestionDetailView()
-//        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
-//}
+#Preview {
+    QuestionDetailView(question: CDQuestion.example)
+        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+}
