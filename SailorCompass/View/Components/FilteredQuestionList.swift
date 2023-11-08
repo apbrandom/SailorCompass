@@ -18,6 +18,11 @@ struct FilteredQuestionList: View {
               ForEach(fetchRequest, id: \.self) { question in
                   NavigationLink(destination: QuestionDetailView(question: question)) {
                       Text(question.text)
+                      HStack {
+                          Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "circle")
+                              .foregroundColor(answer.isCorrect ? .green : .secondary)
+                          Text(answer.text)
+                      }
                   }
               }
               .onDelete(perform: deleteItems)

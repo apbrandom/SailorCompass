@@ -26,20 +26,19 @@ struct QuestionListView: View {
         }
     
     var body: some View {
-        FilteredQuestionList(with: selectedTest)
-            .navigationTitle(selectedTest.title)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest).environment(\.managedObjectContext, viewContext)) {
-                        Label("Добавить вопрос", systemImage: Constants.icon.plus)
+            FilteredQuestionList(with: selectedTest)
+                .navigationTitle(selectedTest.title)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
+                    ToolbarItem() {
+                        NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+                            Label("Добавить вопрос", systemImage: "plus")
+                        }
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
-            }
-        .environment(\.managedObjectContext, viewContext)
-    }
+        }
 }
 
 #Preview {
