@@ -19,6 +19,6 @@ struct CheckBoxButtonLabel: View {
     }
 }
 
-//#Preview {
-//    CheckBoxView(checked: true)
-//}
+#Preview {
+    CheckBoxButtonLabel(isCorrect: true)
+}

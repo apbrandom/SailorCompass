@@ -35,7 +35,7 @@ extension CDQuestion {
     
     static var example: CDQuestion {
         let context = CoreDataController.preview.container.viewContext
-        let question = CDQuestion(text: "New Question", context: context)
+        let question = CDQuestion(text: "Example Question Text", context: context)
         return question
     }
 }

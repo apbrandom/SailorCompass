@@ -11,7 +11,6 @@
 		CB03A3522AEC5ABA005C3157 /* CDTest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3512AEC5ABA005C3157 /* CDTest+Extension.swift */; };
 		CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3532AECF644005C3157 /* CDQuestion+Extension.swift */; };
 		CB03A3562AECFDA3005C3157 /* TestRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3552AECFDA3005C3157 /* TestRowView.swift */; };
-		CB03A3582AED0E5A005C3157 /* QuestionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3572AED0E5A005C3157 /* QuestionRowView.swift */; };
 		CB0C516E2AF023100063C5AD /* QuestionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516D2AF023100063C5AD /* QuestionDetailView.swift */; };
 		CB0C51702AF0257E0063C5AD /* CDAnswer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */; };
 		CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */; };
@@ -75,7 +74,6 @@
 		CB03A3512AEC5ABA005C3157 /* CDTest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTest+Extension.swift"; sourceTree = "<group>"; };
 		CB03A3532AECF644005C3157 /* CDQuestion+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDQuestion+Extension.swift"; sourceTree = "<group>"; };
 		CB03A3552AECFDA3005C3157 /* TestRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRowView.swift; sourceTree = "<group>"; };
-		CB03A3572AED0E5A005C3157 /* QuestionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRowView.swift; sourceTree = "<group>"; };
 		CB0C516D2AF023100063C5AD /* QuestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailView.swift; sourceTree = "<group>"; };
 		CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDAnswer+Extension.swift"; sourceTree = "<group>"; };
 		CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButtonLabel.swift; sourceTree = "<group>"; };
@@ -286,10 +284,9 @@
 			children = (
 				CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */,
 				CB03A3552AECFDA3005C3157 /* TestRowView.swift */,
-				CB03A3572AED0E5A005C3157 /* QuestionRowView.swift */,
+				CB61E3C92AF1A7DA00B60328 /* FilteredQuestionList.swift */,
 				CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */,
 				CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */,
-				CB61E3C92AF1A7DA00B60328 /* FilteredQuestionList.swift */,
 				CB9495FC2AF3F507007A850C /* TextFieldTestName.swift */,
 				CB9495FE2AF3F698007A850C /* TextFieldTestVesrion.swift */,
 				CB3A07742AF652B4007755C0 /* CatalogCell.swift */,
@@ -430,7 +427,6 @@
 			files = (
 				CB5E99732AED1E1600575C09 /* NSPredicate+Extension.swift in Sources */,
 				CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */,
-				CB03A3582AED0E5A005C3157 /* QuestionRowView.swift in Sources */,
 				CB46179C2AF7B31E00AD5BA5 /* Answer.swift in Sources */,
 				CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */,
 				CB9495FD2AF3F507007A850C /* TextFieldTestName.swift in Sources */,

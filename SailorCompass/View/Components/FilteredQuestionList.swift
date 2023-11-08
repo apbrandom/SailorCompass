@@ -14,16 +14,18 @@ struct FilteredQuestionList: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     var body: some View {
-         List {
-             ForEach(fetchRequest, id: \.self) { question in
-                 Text(question.text)
-             }
-             .onDelete(perform: deleteItems)
-         }
-     }
+          List {
+              ForEach(fetchRequest, id: \.self) { question in
+                  NavigationLink(destination: QuestionDetailView(question: question)) {
+                      Text(question.text)
+                  }
+              }
+              .onDelete(perform: deleteItems)
+          }
+      }
     
     init(with selectedTest: CDTest) {
-        let sortDescriptor = NSSortDescriptor(keyPath: \CDQuestion.text_, ascending: true)
+        let sortDescriptor = NSSortDescriptor(keyPath: \CDQuestion.dateCreated, ascending: true)
         let predicate = NSPredicate(format: "test == %@", selectedTest)
         _fetchRequest = FetchRequest<CDQuestion>(sortDescriptors: [sortDescriptor], predicate: predicate)
     }

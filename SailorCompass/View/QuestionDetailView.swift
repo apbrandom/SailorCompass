@@ -11,17 +11,43 @@ struct QuestionDetailView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    var question: CDQuestion
+    @ObservedObject var question: CDQuestion
+    
+    @FetchRequest var answers: FetchedResults<CDAnswer>
+    
+    init(question: CDQuestion) {
+            self.question = question
+            self._answers = FetchRequest<CDAnswer>(
+                entity: CDAnswer.entity(),
+                sortDescriptors: [],
+                predicate: NSPredicate(format: "question == %@", question)
+            )
+        }
     
     var body: some View {
-        VStack {
-            Text(question.text)
+            List {
+                Section(header: Text("Question")) {
+                    Text(question.text)
+                        .font(.headline)
+                }
+
+                Section(header: Text("Answers")) {
+                    ForEach(answers, id: \.self) { answer in
+                        HStack {
+                            Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "circle")
+                                .foregroundColor(answer.isCorrect ? .green : .secondary)
+                            Text(answer.text)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Question Details")
+            .navigationBarTitleDisplayMode(.inline)
         }
-    }
     
 }
 
-#Preview {
-    QuestionDetailView(question: CDQuestion.example)
-        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
-}
+//#Preview {
+//    QuestionDetailView(question: CDQuestion.example)
+//        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+//}
