@@ -11,23 +11,33 @@ import SwiftUI
 struct FilteredQuestionList: View {
     
     @FetchRequest var fetchRequest: FetchedResults<CDQuestion>
+    
     @Environment(\.managedObjectContext) private var viewContext
     
+    
     var body: some View {
-          List {
-              ForEach(fetchRequest, id: \.self) { question in
-                  NavigationLink(destination: QuestionDetailView(question: question)) {
-                      Text(question.text)
-                      HStack {
-                          Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "circle")
-                              .foregroundColor(answer.isCorrect ? .green : .secondary)
-                          Text(answer.text)
-                      }
-                  }
-              }
-              .onDelete(perform: deleteItems)
-          }
-      }
+        List {
+            ForEach(fetchRequest, id: \.self) { question in
+                Section {
+                    NavigationLink(destination: QuestionDetailView(question: question)) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(question.text)
+                                .font(.headline)
+                            Divider()
+                            ForEach(question.sortedAnswers, id: \.self) { answer in
+                                HStack {
+                                    Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "circle")
+                                        .foregroundColor(answer.isCorrect ? .green : .secondary)
+                                    Text(answer.text)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .onDelete(perform: deleteItems)
+        }
+    }
     
     init(with selectedTest: CDTest) {
         let sortDescriptor = NSSortDescriptor(keyPath: \CDQuestion.dateCreated, ascending: true)
@@ -36,68 +46,22 @@ struct FilteredQuestionList: View {
     }
     
     private func deleteItems(offsets: IndexSet) {
-           withAnimation {
-               offsets.map { fetchRequest[$0] }.forEach(viewContext.delete)
-               
-               do {
-                   try viewContext.save()
-               } catch {
-                   // Здесь нужно обработать ошибку, например, показать какое-то предупреждение пользователю
-                   let nsError = error as NSError
-                   fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-               }
-           }
-       }
+        withAnimation {
+            offsets.map { fetchRequest[$0] }.forEach(viewContext.delete)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }
     
 }
-    
+
 //    #Preview {
-//        FilteredList(filter: <#String#>)
+//        FilteredQuestionList(with: CDQuestion.example)
 //    }
-//    
-    
-    
-    
-    
-    //import CoreData
-    //import SwiftUI
-    //
-    //struct FilteredList<T: NSManagedObject, Content: View>: View {
-    //
-    //    @Environment(\.managedObjectContext) var viewContext
-    //
-    //    @FetchRequest var fetchRequest: FetchedResults<T>
-    //    let content: (T) -> Content
-    //    var onDelete: (IndexSet) -> Void
-    //
-    //    var fetchedResults: FetchedResults<T> {
-    //        return fetchRequest
-    //    }
-    //
-    //    var body: some View {
-    //        List {
-    //            ForEach(fetchRequest, id: \.self) { item in
-    //                self.content(item)
-    //            }
-    //            .onDelete(perform: onDelete)
-    //        }
-    //    }
-    //
-    //    init(filterKey: String, filterValue: String, onDelete: @escaping (IndexSet) -> Void, @ViewBuilder content: @escaping (T) -> Content) {
-    //        _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
-    //        self.content = content
-    //        self.onDelete = onDelete
-    //    }
-    //
-    //    private func deleteItems(at offsets: IndexSet) {
-    //        withAnimation {
-    //            offsets.map { fetchRequest[$0] }.forEach(viewContext.delete)
-    //            do {
-    //                try viewContext.save()
-    //            } catch {
-    //                // Обработка ошибок здесь
-    //                print(error.localizedDescription)
-    //            }
-    //        }
-    //    }
-    //}
+//
+//

@@ -18,6 +18,9 @@ struct NewQuestionView: View {
     @State private var answers: [(text: String, isCorrect: Bool)] = [("", true)]
     @State private var isFewAnswer = false
     @State private var isAllAnswer = true
+    @State private var alertMessage = ""
+    @State private var questionTextInvalid = ""
+    @State private var answerTextInvalid = ""
     
     var body: some View {
         Form {

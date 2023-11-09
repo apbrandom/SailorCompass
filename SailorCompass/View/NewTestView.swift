@@ -12,9 +12,9 @@ struct NewTestView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var testTitle = Constants.emptyString
-    @State private var testVersionName = Constants.emptyString
-    @State private var alertMessage = Constants.emptyString
+    @State private var testTitle = ""
+    @State private var testVersionName = ""
+    @State private var alertMessage = ""
     @State private var isVersionEnable = false
     @State private var testNameInvalid = false
     @State private var testVersionInvalid = false
@@ -23,19 +23,16 @@ struct NewTestView: View {
     var body: some View {
         Form {
             Section {
-                TextFieldTestName(text: $testTitle, isInvalid: $testNameInvalid)
+                TestNameTextField(text: $testTitle, isInvalid: $testNameInvalid)
                     .padding(.vertical, 30)
             }
-            
             HStack {
                 if isVersionEnable {
                     TextFieldTestVesrion(text: $testVersionName, isInvalid: $testVersionInvalid)
                 }
-                Toggle(isVersionEnable ? Constants.emptyString : Constants.LocalizedStrings.versionName, isOn: $isVersionEnable)
+                Toggle(isVersionEnable ? "" : Constants.LocalizedStrings.versionName, isOn: $isVersionEnable)
             }
             .padding(.vertical, 30)
-            
-
         }
         .navigationTitle(Constants.LocalizedStrings.newTest)
         .animation(.easeInOut, value: isVersionEnable)

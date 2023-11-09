@@ -39,3 +39,10 @@ extension CDQuestion {
         return question
     }
 }
+
+extension CDQuestion {
+    var sortedAnswers: [CDAnswer] {
+        let set = answers as? Set<CDAnswer> ?? []
+        return set.sorted { $0.text < $1.text }
+    }
+}

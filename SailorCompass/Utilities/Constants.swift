@@ -9,8 +9,6 @@ import SwiftUI
 
 enum Constants {
     
-    static let emptyString = ""
-    
     enum LocalizedStrings {
         static let catalog = "Catalog"
         static let myTests = "My Tests"
@@ -33,7 +31,7 @@ enum Constants {
     }
     
     enum icon {
-        static let plus = "plus.circle"
+        static let plus = "plus"
         static let minus = "minus.circle"
     }
 
