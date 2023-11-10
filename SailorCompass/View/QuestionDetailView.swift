@@ -28,9 +28,7 @@ struct QuestionDetailView: View {
             List {
                 Section(header: Text("Question")) {
                     Text(question.text)
-                        .font(.headline)
                 }
-
                 Section(header: Text("Answers")) {
                     ForEach(answers, id: \.self) { answer in
                         HStack {
@@ -42,7 +40,6 @@ struct QuestionDetailView: View {
             .navigationTitle("Question Details")
             .navigationBarTitleDisplayMode(.inline)
         }
-    
 }
 
 #Preview {

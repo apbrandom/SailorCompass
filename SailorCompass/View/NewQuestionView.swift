@@ -16,8 +16,6 @@ struct NewQuestionView: View {
     
     @State private var questionText = ""
     @State private var answerText = ""
-    @State private var isFewAnswer = false
-    @State private var isAllAnswer = true
     @State private var alertMessage = ""
     @State private var showingAlert = false
     @State private var questionTextInvalid = false
@@ -54,7 +52,14 @@ struct NewQuestionView: View {
         
         if questionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             questionTextInvalid.toggle()
-            alertMessage = Constants.LocalizedStrings.alertQuestionText
+            alertMessage = Constants.LocalizedStrings.alertQuestion
+            showingAlert.toggle()
+            return
+        }
+        
+        if answerText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            answerTextInvalid.toggle()
+            alertMessage = Constants.LocalizedStrings.alertAnswer
             showingAlert.toggle()
             return
         }

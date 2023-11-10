@@ -11,8 +11,12 @@ struct MyListTestsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(fetchRequest: CDTest.fetch(), animation: .bouncy)
-    
+  
     var tests: FetchedResults<CDTest>
+    
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
+    @State private var deletionIndexSet: IndexSet?
     
     var body: some View {
         List {
@@ -24,9 +28,21 @@ struct MyListTestsView: View {
                 }
             }
             .onDelete { offsets in
-                deleteTests(offsets: offsets, tests: tests)
+                showingAlert = true
+                deletionIndexSet = offsets
             }
         }
+        .alert("Are you sure?", isPresented: $showingAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Delete", role: .destructive) {
+                if let offsets = deletionIndexSet {
+                    deleteTests(offsets: offsets)
+                }
+            }
+        } message: {
+            Text("This test will be deleted permanently.")
+        }
+        
         .listStyle(.plain)
         .navigationTitle(Constants.LocalizedStrings.myTests)
         .toolbar {
@@ -41,15 +57,15 @@ struct MyListTestsView: View {
         }
     }
     
-    func deleteTests(offsets: IndexSet, tests: FetchedResults<CDTest>) {
-        offsets.map { tests[$0] }.forEach(viewContext.delete)
-        
-        do {
-            try viewContext.save()
-        } catch {
-            print("Deleting tests failed: \(error)")
+    private func deleteTests(offsets: IndexSet) {
+            offsets.map { tests[$0] }.forEach(viewContext.delete)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                print("Deleting tests failed: \(error)")
+            }
         }
-    }
 }
 
 #Preview {

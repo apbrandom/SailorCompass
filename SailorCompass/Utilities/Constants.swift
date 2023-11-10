@@ -14,11 +14,12 @@ enum Constants {
         static let myTests = "My Tests"
         static let newTest = "Creating a new test"
         static let save = "Save"
-        static let alertTestName = "Please enter the test name"
-        static let alertVersionName = "Please enter the version name."
+        static let alertTestName = "Please enter the test name in the provied field."
+        static let alertVersionName = "Please enter the version name in the provied field."
         static let versionName = "Test Version"
         static let sameTestName = "A test with the same name already exists"
-        static let alertQuestionText = "Please enter a question in the provided field."
+        static let alertQuestion = "Please enter a question in the provided field."
+        static let alertAnswer = "Please enter a answer in the provied field."
     }
     
     enum LayoutMetrics {

@@ -23,8 +23,6 @@ struct ProfileView: View {
                     Text("User Name")
                     Text("Nationality")
                     Text("role on the ship")
-                    
-                    
                 }
                 .padding()
             }

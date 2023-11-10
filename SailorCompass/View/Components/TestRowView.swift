@@ -31,7 +31,7 @@ struct TestRowView: View {
                 
                 Spacer()
                 VStack(alignment: .leading) {
-                    Text("last Updated:")
+                    Text("Created at:")
                     Text(test.creationDate, formatter: itemFormatter)
                 }
                 .font(.caption.italic())

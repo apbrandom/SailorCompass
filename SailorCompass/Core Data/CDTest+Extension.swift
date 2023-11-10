@@ -39,7 +39,7 @@ extension CDTest {
     
     static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDTest> {
         let request = CDTest.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \CDTest.creationDate_, ascending: true),
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \CDTest.creationDate_, ascending: false),
                                    NSSortDescriptor(keyPath: \CDTest.title_, ascending: true)]
         request.predicate = predicate
         return request
