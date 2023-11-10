@@ -15,9 +15,10 @@ enum Constants {
         static let newTest = "Creating a new test"
         static let save = "Save"
         static let alertTestName = "Please enter the test name"
-        static let alertVersionName = "Please enter the version name"
+        static let alertVersionName = "Please enter the version name."
         static let versionName = "Test Version"
         static let sameTestName = "A test with the same name already exists"
+        static let alertQuestionText = "Please enter a question in the provided field."
     }
     
     enum LayoutMetrics {
@@ -32,7 +33,8 @@ enum Constants {
     
     enum icon {
         static let plus = "plus"
-        static let minus = "minus.circle"
+        static let plusCircle = "plus.circle"
+        static let minusCircle = "minus.circle"
     }
 
 }

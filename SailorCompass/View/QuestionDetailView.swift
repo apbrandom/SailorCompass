@@ -34,8 +34,6 @@ struct QuestionDetailView: View {
                 Section(header: Text("Answers")) {
                     ForEach(answers, id: \.self) { answer in
                         HStack {
-                            Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "circle")
-                                .foregroundColor(answer.isCorrect ? .green : .secondary)
                             Text(answer.text)
                         }
                     }
@@ -47,7 +45,6 @@ struct QuestionDetailView: View {
     
 }
 
-//#Preview {
-//    QuestionDetailView(question: CDQuestion.example)
-//        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
-//}
+#Preview {
+    QuestionDetailView(question: CDQuestion.example)
+}

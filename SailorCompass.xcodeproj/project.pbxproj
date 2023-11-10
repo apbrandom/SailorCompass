@@ -35,7 +35,8 @@
 		CB6750A32AE699610049E7A8 /* SailorCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750A22AE699610049E7A8 /* SailorCompassTests.swift */; };
 		CB6750AD2AE699610049E7A8 /* SailorCompassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */; };
 		CB6750AF2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */; };
-		CB7887CA2AFD23D800367B50 /* QuestionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7887C92AFD23D800367B50 /* QuestionTextField.swift */; };
+		CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */; };
+		CB7887CC2AFD2B2500367B50 /* AnswerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */; };
 		CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50312AE7CE4500088727 /* SettingsView.swift */; };
 		CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50342AE7CF0C00088727 /* TabBarView.swift */; };
 		CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50372AE7CF9400088727 /* TabBar.swift */; };
@@ -47,8 +48,8 @@
 		CB8A504A2AE8096700088727 /* SharedTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50492AE8096700088727 /* SharedTestsView.swift */; };
 		CB8A504C2AE80E6B00088727 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504B2AE80E6B00088727 /* Constants.swift */; };
 		CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504D2AE814BC00088727 /* NewTestView.swift */; };
-		CB9495FD2AF3F507007A850C /* TestNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FC2AF3F507007A850C /* TestNameTextField.swift */; };
-		CB9495FF2AF3F698007A850C /* TextFieldTestVesrion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FE2AF3F698007A850C /* TextFieldTestVesrion.swift */; };
+		CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */; };
+		CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */; };
 		CBAB26AF2AEA6ED200C72AE1 /* MyListQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */; };
 		CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -104,7 +105,8 @@
 		CB6750A82AE699610049E7A8 /* SailorCompassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SailorCompassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITests.swift; sourceTree = "<group>"; };
 		CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CB7887C92AFD23D800367B50 /* QuestionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTextField.swift; sourceTree = "<group>"; };
+		CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTextEditor.swift; sourceTree = "<group>"; };
+		CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTextField.swift; sourceTree = "<group>"; };
 		CB8A50312AE7CE4500088727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CB8A50342AE7CF0C00088727 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		CB8A50372AE7CF9400088727 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -116,8 +118,8 @@
 		CB8A50492AE8096700088727 /* SharedTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestsView.swift; sourceTree = "<group>"; };
 		CB8A504B2AE80E6B00088727 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB8A504D2AE814BC00088727 /* NewTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestView.swift; sourceTree = "<group>"; };
-		CB9495FC2AF3F507007A850C /* TestNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNameTextField.swift; sourceTree = "<group>"; };
-		CB9495FE2AF3F698007A850C /* TextFieldTestVesrion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTestVesrion.swift; sourceTree = "<group>"; };
+		CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTitleTextField.swift; sourceTree = "<group>"; };
+		CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVesrionTextField.swift; sourceTree = "<group>"; };
 		CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionView.swift; sourceTree = "<group>"; };
 		CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,16 +286,17 @@
 		CB8A50462AE8062200088727 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				CB3A07742AF652B4007755C0 /* CatalogCell.swift */,
 				CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */,
 				CB03A3552AECFDA3005C3157 /* TestRowView.swift */,
 				CB61E3C92AF1A7DA00B60328 /* FilteredQuestionList.swift */,
 				CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */,
 				CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */,
-				CB9495FC2AF3F507007A850C /* TestNameTextField.swift */,
-				CB9495FE2AF3F698007A850C /* TextFieldTestVesrion.swift */,
-				CB3A07742AF652B4007755C0 /* CatalogCell.swift */,
+				CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */,
+				CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */,
 				CB4617982AF6C0AB00AD5BA5 /* CircularProfileImage.swift */,
-				CB7887C92AFD23D800367B50 /* QuestionTextField.swift */,
+				CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */,
+				CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -429,10 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB5E99732AED1E1600575C09 /* NSPredicate+Extension.swift in Sources */,
+				CB7887CC2AFD2B2500367B50 /* AnswerTextField.swift in Sources */,
 				CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */,
 				CB46179C2AF7B31E00AD5BA5 /* Answer.swift in Sources */,
 				CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */,
-				CB9495FD2AF3F507007A850C /* TestNameTextField.swift in Sources */,
+				CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */,
 				CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */,
 				CB4617A02AF7C0B400AD5BA5 /* NewQuestionViewModel.swift in Sources */,
 				CB0C51702AF0257E0063C5AD /* CDAnswer+Extension.swift in Sources */,
@@ -446,7 +450,7 @@
 				CB6750942AE699610049E7A8 /* Persistence.swift in Sources */,
 				CB3A077B2AF65E11007755C0 /* CatalogIcon.swift in Sources */,
 				CBAB26AF2AEA6ED200C72AE1 /* MyListQuestionView.swift in Sources */,
-				CB9495FF2AF3F698007A850C /* TextFieldTestVesrion.swift in Sources */,
+				CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */,
 				CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */,
 				CB03A3562AECFDA3005C3157 /* TestRowView.swift in Sources */,
 				CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */,
@@ -457,7 +461,7 @@
 				CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */,
 				CB61E3CA2AF1A7DA00B60328 /* FilteredQuestionList.swift in Sources */,
 				CB8A504A2AE8096700088727 /* SharedTestsView.swift in Sources */,
-				CB7887CA2AFD23D800367B50 /* QuestionTextField.swift in Sources */,
+				CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */,
 				CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
 				CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */,

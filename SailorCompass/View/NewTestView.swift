@@ -23,12 +23,12 @@ struct NewTestView: View {
     var body: some View {
         Form {
             Section {
-                TestNameTextField(text: $testTitle, isInvalid: $testNameInvalid)
+                TestTitleTextField(text: $testTitle, isInvalid: $testNameInvalid)
                     .padding(.vertical, 30)
             }
             HStack {
                 if isVersionEnable {
-                    TextFieldTestVesrion(text: $testVersionName, isInvalid: $testVersionInvalid)
+                    TestVesrionTextField(text: $testVersionName, isInvalid: $testVersionInvalid)
                 }
                 Toggle(isVersionEnable ? "" : Constants.LocalizedStrings.versionName, isOn: $isVersionEnable)
             }

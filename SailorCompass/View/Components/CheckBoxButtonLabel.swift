@@ -9,16 +9,16 @@ import SwiftUI
 
 struct CheckBoxButtonLabel: View {
     
-    var isCorrect: Bool
+//    var isCorrect: Bool
     
     var body: some View {
-        Image(systemName: isCorrect ? "checkmark.square" : "square")
+        Image(systemName: "checkmark.square" )
             .resizable()
             .frame(width: 30, height: 30)
-            .foregroundColor(isCorrect ? .mint : .gray)
+            .foregroundColor(.mint)
     }
 }
 
 #Preview {
-    CheckBoxButtonLabel(isCorrect: true)
+    CheckBoxButtonLabel()
 }

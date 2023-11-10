@@ -15,82 +15,57 @@ struct NewQuestionView: View {
     var selectedTest: CDTest
     
     @State private var questionText = ""
-    @State private var answers: [(text: String, isCorrect: Bool)] = [("", true)]
+    @State private var answerText = ""
     @State private var isFewAnswer = false
     @State private var isAllAnswer = true
     @State private var alertMessage = ""
-    @State private var questionTextInvalid = ""
-    @State private var answerTextInvalid = ""
+    @State private var showingAlert = false
+    @State private var questionTextInvalid = false
+    @State private var answerTextInvalid = false
     
     var body: some View {
         Form {
-            TextEditor(text: $questionText)
-                .frame(height: 150)
-                .textFieldStyle(.roundedBorder)
+            QuestionTextEditor(text: $questionText, isInvalid: $questionTextInvalid)
             Section {
                 VStack {
-                    ForEach(answers.indices, id: \.self) { index in
                         HStack {
                             Button {
-                                answers[index].isCorrect.toggle()
                             } label: {
-                                CheckBoxButtonLabel(isCorrect: answers[index].isCorrect)
+                                CheckBoxButtonLabel()
                             }
-                            TextField("Answer", text: $answers[index].text)
-                                .textFieldStyle(.roundedBorder)
+                            AnswerTextField(text: $answerText, isInvalid: $answerTextInvalid)
                         }
-                    }
                 }
             }
-            Toggle("All Answers", isOn: $isAllAnswer)
-            Toggle("Multiple correct answers", isOn: $isFewAnswer)
         }
         .navigationTitle("Creation of a new question")
         .navigationBarTitleDisplayMode(.inline)
         
-        Group {
-            HStack {
-                Button {
-                    if answers.count < 10 {
-                        answers.append((text: "", isCorrect: false))
-                    }
-                } label: {
-                    Image(systemName: Constants.icon.plus)
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .padding()
-            }
-                Button {
-                    if answers.count > 1 {
-                        answers.removeLast()
-                    }
-                } label: {
-                    Image(systemName: Constants.icon.minus)
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .padding()
-                        .foregroundStyle(.red)
-            }
-            }
-        }
         Button {
             saveToCD()
         } label: {
-            CustomButtonLabel(text: "Save")
+            CustomButtonLabel(text: Constants.LocalizedStrings.save)
         }
+        .alert(alertMessage, isPresented: $showingAlert) { }
         .padding()
     }
     
     func saveToCD() {
-        let newQuestion = CDQuestion(context: viewContext)
-        newQuestion.text = questionText
         
-        for answer in answers {
-            let newAnswer = CDAnswer(context: viewContext)
-            newAnswer.text = answer.text
-            newAnswer.isCorrect = answer.isCorrect
-            newAnswer.question = newQuestion
+        if questionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            questionTextInvalid.toggle()
+            alertMessage = Constants.LocalizedStrings.alertQuestionText
+            showingAlert.toggle()
+            return
         }
+ 
+        let newQuestion = CDQuestion(context: viewContext)
+        let newAnswer = CDAnswer(context: viewContext)
+        newQuestion.text = questionText
+        newAnswer.question = newQuestion
+        newAnswer.isCorrect = true
+        newAnswer.text = answerText
+
         newQuestion.test = selectedTest
         
         do {

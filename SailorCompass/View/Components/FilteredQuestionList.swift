@@ -26,8 +26,6 @@ struct FilteredQuestionList: View {
                             Divider()
                             ForEach(question.sortedAnswers, id: \.self) { answer in
                                 HStack {
-                                    Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "circle")
-                                        .foregroundColor(answer.isCorrect ? .green : .secondary)
                                     Text(answer.text)
                                 }
                             }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TextFieldTestVesrion: View {
+struct TestVesrionTextField: View {
     @Binding var text: String
     @Binding var isInvalid: Bool
     let placeholder = "Enter Test version"
@@ -30,5 +30,5 @@ struct TextFieldTestVesrion: View {
 }
 
 #Preview {
-    TextFieldTestVesrion(text: .constant(""), isInvalid: .constant(false))
+    TestVesrionTextField(text: .constant(""), isInvalid: .constant(false))
 }

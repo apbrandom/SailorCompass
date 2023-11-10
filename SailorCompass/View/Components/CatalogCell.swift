@@ -22,7 +22,7 @@ struct CatalogCell: View {
             Text(title)
         }
         .frame(width: frame * 0.3, height: frame * 0.3)
-        .background(RadialGradient(colors: [.blue], center: .center, startRadius: 1, endRadius: 100))
+        .background(RadialGradient(colors: [.indigo, .orange], center: .center, startRadius: 1, endRadius: 100))
         .clipShape(.rect(cornerRadius: 16))
         .shadow(radius: 2)
     }

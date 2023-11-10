@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestNameTextField: View {
+struct TestTitleTextField: View {
     @Binding var text: String
     @Binding var isInvalid: Bool
     let placeholder = "Enter Test name"
@@ -26,5 +26,5 @@ struct TestNameTextField: View {
 }
 
 #Preview {
-    TestNameTextField(text: .constant(""), isInvalid: .constant(false))
+    TestTitleTextField(text: .constant(""), isInvalid: .constant(false))
 }
