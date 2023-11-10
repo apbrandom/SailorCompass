@@ -36,7 +36,7 @@ struct MyListTestsView: View {
             Button("Cancel", role: .cancel) { }
             Button("Delete", role: .destructive) {
                 if let offsets = deletionIndexSet {
-                    deleteTests(offsets: offsets)
+                    deleteItems(offsets: offsets)
                 }
             }
         } message: {
@@ -57,7 +57,7 @@ struct MyListTestsView: View {
         }
     }
     
-    private func deleteTests(offsets: IndexSet) {
+    private func deleteItems(offsets: IndexSet) {
             offsets.map { tests[$0] }.forEach(viewContext.delete)
             
             do {
