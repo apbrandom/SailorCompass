@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import CloudKit
 
 extension CDTest {
     
@@ -19,12 +20,7 @@ extension CDTest {
         get { creationDate_ ?? Date() }
         set { creationDate_ = newValue }
     }
-    
-//    var version: String {
-//        get { version_ ?? "" }
-//        set { version_ = newValue }
-//    }
-    
+        
     convenience init(title: String, version: String, context: NSManagedObjectContext) {
         self.init(context: context)
         self.title = title
@@ -49,5 +45,19 @@ extension CDTest {
         let context = CoreDataController.preview.container.viewContext
         let test = CDTest(context: context)
         return test
+    }
+}
+
+
+extension CDTest {
+    convenience init(record: CKRecord, context: NSManagedObjectContext) {
+        self.init(context: context)
+        self.title = record["title"] as? String ?? ""
+        // Предполагается, что у вас есть атрибуты version и creationDate в CDTest
+        // Используйте соответствующие поля из CKRecord для их инициализации
+        self.version = record["version"] as? String ?? ""
+        self.creationDate = record["creationDate"] as? Date ?? Date()
+        // Обратите внимание, что некоторые поля, такие как creationDate, могут быть автоматически установлены CloudKit
+        // Вам может потребоваться преобразовать их в соответствующий тип
     }
 }

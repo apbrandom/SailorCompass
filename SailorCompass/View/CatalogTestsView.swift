@@ -22,7 +22,7 @@ struct CatalogTestsView: View {
                     CatalogCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
                 }
                 NavigationLink {
-                    // TO DO
+                    PublicTestsView()
                 } label: {
                     CatalogCell(icon: CatalogIcon.sharedTest.icon, title: CatalogIcon.sharedTest.title)
                 }

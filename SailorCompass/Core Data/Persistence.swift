@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CoreDataController {
     static let shared = CoreDataController()
-//    @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.managedObjectContext) private var viewContext
 
     //MARK: - Preview
     static var preview: CoreDataController = {
@@ -24,8 +24,6 @@ struct CoreDataController {
         do {
             try viewContext.save()
         } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
@@ -41,21 +39,11 @@ struct CoreDataController {
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
 }
 
@@ -74,14 +62,12 @@ extension CoreDataController {
     func testWithNameExists(name: String, in context: NSManagedObjectContext) -> Bool {
         let fetchRequest: NSFetchRequest<CDTest> = CDTest.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "title_ == %@", name)
-        fetchRequest.fetchLimit = 1  // Установите лимит выборки, чтобы ускорить процесс
+        fetchRequest.fetchLimit = 1
         
         do {
             let count = try context.count(for: fetchRequest)
             return count > 0
         } catch {
-            // Здесь должен быть код для обработки ошибок, например:
-            // показать alert с информацией об ошибке
             print("Fetching test failed: \(error.localizedDescription)")
             return false
         }
