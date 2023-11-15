@@ -8,17 +8,17 @@
 import Foundation
 import CloudKit
 
-struct TestModel: Identifiable {
+struct CloudModel: Identifiable {
     let id: UUID
     var title: String
-    var creationDate: Date
+    var publicDate: Date
     var version: String
 
     init(record: CKRecord) {
-        self.id = UUID(uuidString: record.recordID.recordName) ?? UUID()// или преобразование recordID в UUID
-        self.title = record["title"] as? String ?? "Unknown Title"
-        self.creationDate = record.creationDate ?? Date()
-        self.version = record["version"] as? String ?? "Unknown Version"
+        self.id = UUID(uuidString: record.recordID.recordName) ?? UUID()
+        self.title = record["CD_title_"] as? String ?? "Unknown Title"
+        self.publicDate = record.creationDate ?? Date()
+        self.version = record["CD_version"] as? String ?? "Unknown Version"
     }
 }
 

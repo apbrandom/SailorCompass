@@ -10,13 +10,13 @@ import CloudKit
 
 struct PublicTestsView: View {
     
-    @State private var tests = [TestModel]()
+    @State private var tests = [CloudModel]()
     
     var body: some View {
         List(tests) { test in
             VStack(alignment: .leading) {
                 Text(test.title).font(.headline)
-                Text("Created: \(test.creationDate, formatter: DateFormatter.shortDate)")
+                Text("Created: \(test.publicDate, formatter: DateFormatter.shortDate)")
                 Text("Version: \(test.version)")
             }
         }
@@ -29,7 +29,7 @@ struct PublicTestsView: View {
             let queryOperation = CKQueryOperation(query: query)
             
             queryOperation.recordFetchedBlock = { record in
-                let test = TestModel(record: record)
+                let test = CloudModel(record: record)
                 DispatchQueue.main.async {
                     self.tests.append(test)
                 }

@@ -47,17 +47,3 @@ extension CDTest {
         return test
     }
 }
-
-
-extension CDTest {
-    convenience init(record: CKRecord, context: NSManagedObjectContext) {
-        self.init(context: context)
-        self.title = record["title"] as? String ?? ""
-        // Предполагается, что у вас есть атрибуты version и creationDate в CDTest
-        // Используйте соответствующие поля из CKRecord для их инициализации
-        self.version = record["version"] as? String ?? ""
-        self.creationDate = record["creationDate"] as? Date ?? Date()
-        // Обратите внимание, что некоторые поля, такие как creationDate, могут быть автоматически установлены CloudKit
-        // Вам может потребоваться преобразовать их в соответствующий тип
-    }
-}
