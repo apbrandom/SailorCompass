@@ -24,8 +24,14 @@ struct CatalogTestsView: View {
                 NavigationLink {
                     PublicTestsView()
                 } label: {
-                    CatalogCell(icon: CatalogIcon.sharedTest.icon, title: CatalogIcon.sharedTest.title)
+                    CatalogCell(icon: CatalogIcon.publicTest.icon, title: CatalogIcon.publicTest.title)
                 }
+                NavigationLink {
+                    PublicQuestionsView()
+                } label: {
+                    CatalogCell(icon: CatalogIcon.publicQuestion.icon, title: CatalogIcon.publicQuestion.title)
+                }
+
             }
         }
         .navigationTitle(Constants.LocalizedStrings.catalog)

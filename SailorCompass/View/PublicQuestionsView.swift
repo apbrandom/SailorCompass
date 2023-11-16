@@ -1,23 +1,22 @@
 //
-//  SharedTestsView.swift
+//  PublicQuestionsView.swift
 //  SailorCompass
 //
-//  Created by Vadim Vinogradov on 24.10.2023.
+//  Created by Vadim Vinogradov on 16.11.2023.
 //
 
 import SwiftUI
 import CloudKit
 
-struct PublicTestsView: View {
+struct PublicQuestionsView: View {
     
-    @State private var tests = [CloudTestModel]()
+    @State private var questions = [CloudQuestionModel]()
     
     var body: some View {
-        List(tests) { test in
+        List(questions) { question in
             VStack(alignment: .leading) {
-                Text(test.title).font(.headline)
-                Text("Created: \(test.publicDate, formatter: DateFormatter.shortDate)")
-                Text("Version: \(test.version)")
+                Text(question.text).font(.headline)
+                Text("Created: \(question.publicDate, formatter: DateFormatter.shortDate)")
             }
         }
         .onAppear(perform: fetchItems)
@@ -25,18 +24,17 @@ struct PublicTestsView: View {
     
     func fetchItems() {
             let predicate = NSPredicate(value: true)
-            let query = CKQuery(recordType: "CD_CDTest", predicate: predicate)
+            let query = CKQuery(recordType: "CD_CDQuestion", predicate: predicate)
             let queryOperation = CKQueryOperation(query: query)
             
             queryOperation.recordMatchedBlock = { (_, result) in
                 switch result {
                 case .success(let record):
-                    let test = CloudTestModel(record: record)
+                    let question = CloudQuestionModel(record: record)
                     DispatchQueue.main.async {
-                        self.tests.append(test)
+                        self.questions.append(question)
                     }
                 case .failure(let error):
-                    // Обработка ошибок
                     print(error.localizedDescription)
                 }
             }
@@ -54,5 +52,5 @@ struct PublicTestsView: View {
 }
 
 #Preview {
-    PublicTestsView()
+    PublicQuestionsView()
 }

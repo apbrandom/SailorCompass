@@ -8,7 +8,7 @@
 import Foundation
 import CloudKit
 
-struct CloudModel: Identifiable {
+struct CloudTestModel: Identifiable {
     let id: UUID
     var title: String
     var publicDate: Date

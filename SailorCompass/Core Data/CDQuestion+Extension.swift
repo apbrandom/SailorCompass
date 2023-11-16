@@ -18,7 +18,6 @@ extension CDQuestion {
     convenience init(text: String, context: NSManagedObjectContext) {
         self.init(context: context)
         self.text = text
-        
     }
     
     static func delete(question: CDQuestion) {

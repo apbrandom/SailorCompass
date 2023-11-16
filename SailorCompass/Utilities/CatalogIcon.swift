@@ -11,6 +11,7 @@ struct CatalogIcon {
     let icon: String
     let title: String
     
-    static let myTest = CatalogIcon(icon: "externaldrive.badge.person.crop", title: "My Tests")
-    static let sharedTest = CatalogIcon(icon: "externaldrive.badge.wifi", title: "All Tests")
+    static let myTest = CatalogIcon(icon: "folder.badge.person.crop", title: "My Tests")
+    static let publicTest = CatalogIcon(icon: "folder", title: "Public Tests")
+    static let publicQuestion = CatalogCell(icon: "folder.badge.questionmark", title: "Public Questions")
 }
