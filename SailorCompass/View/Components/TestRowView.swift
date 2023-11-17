@@ -14,10 +14,15 @@ struct TestRowView: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            Text(test.title)
-                .font(.title2.bold())
-            Spacer()
+            HStack {
+                Text(test.title)
+                    .font(.title2.bold())
+                Spacer()
+                Image(systemName: "checkmark.seal.fill")
+                    .foregroundColor(test.isPublished ? .green : .gray)
+            }
             
+            Spacer()
             if let version = test.version, !version.isEmpty {
                 Text("Version \(version)")
             }
@@ -38,6 +43,10 @@ struct TestRowView: View {
                 .foregroundStyle(.gray)
             }
         }.padding()
+    }
+    
+    private func publishTest(_ test: CDTest) {
+        
     }
     
     let itemFormatter: DateFormatter = {

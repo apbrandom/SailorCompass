@@ -44,6 +44,7 @@ extension CDTest {
     static var example: CDTest {
         let context = CoreDataController.preview.container.viewContext
         let test = CDTest(context: context)
+        test.title = "Title example"
         return test
     }
 }

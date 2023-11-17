@@ -61,13 +61,13 @@ struct QuestionListView: View {
         }
         .navigationTitle(selectedTest.title)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
             ToolbarItem() {
                 NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
                     Label("Добавить вопрос", systemImage: "plus")
                 }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
             }
         }
     }
