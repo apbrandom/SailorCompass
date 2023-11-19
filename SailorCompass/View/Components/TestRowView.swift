@@ -42,11 +42,11 @@ struct TestRowView: View {
                 .font(.caption.italic())
                 .foregroundStyle(.gray)
             }
+            Label(
+                title: { Text("\(test.likes)") },
+                icon: { Image(systemName: "ferry.fill") }
+            )
         }.padding()
-    }
-    
-    private func publishTest(_ test: CDTest) {
-        
     }
     
     let itemFormatter: DateFormatter = {

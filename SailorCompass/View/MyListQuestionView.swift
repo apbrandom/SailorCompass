@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import CloudKit
 
 struct QuestionListView: View {
     
@@ -14,7 +15,7 @@ struct QuestionListView: View {
     
     var selectedTest: CDTest
     
-    @FetchRequest var fetchRequest: FetchedResults<CDQuestion>
+    @FetchRequest var questions: FetchedResults<CDQuestion>
     
     @State private var showingAlert = false
     @State private var deletionIndexSet: IndexSet?
@@ -23,12 +24,12 @@ struct QuestionListView: View {
         self.selectedTest = selectedTest
         let sortDescriptor = NSSortDescriptor(keyPath: \CDQuestion.dateCreated, ascending: true)
         let predicate = NSPredicate(format: "test == %@", selectedTest)
-        _fetchRequest = FetchRequest<CDQuestion>(sortDescriptors: [sortDescriptor], predicate: predicate)
+        _questions = FetchRequest<CDQuestion>(sortDescriptors: [sortDescriptor], predicate: predicate)
     }
-
+    
     var body: some View {
         List {
-            ForEach(fetchRequest, id: \.self) { question in
+            ForEach(questions, id: \.self) { question in
                 Section {
                     NavigationLink(destination: QuestionDetailView(question: question)) {
                         VStack(alignment: .leading, spacing: 10) {
@@ -46,7 +47,7 @@ struct QuestionListView: View {
             }
             .onDelete { offsets in
                 deletionIndexSet = offsets
-                showingAlert = true 
+                showingAlert = true
             }
         }
         .alert("Are you sure?", isPresented: $showingAlert) {
@@ -61,34 +62,58 @@ struct QuestionListView: View {
         }
         .navigationTitle(selectedTest.title)
         .toolbar {
-            ToolbarItem() {
-                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-                    Label("Добавить вопрос", systemImage: "plus")
+            ToolbarItemGroup {
+                Button {
+                    publishTest(test: selectedTest)
+                } label: {
+                    Image(systemName: "paperplane.fill")
                 }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+                    Image(systemName: "plus")
+                }
                 EditButton()
             }
         }
     }
     
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { fetchRequest[$0] }.forEach(viewContext.delete)
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+    private func publishTest(test: CDTest) {
+        let publicTestRecord = CKRecord(recordType: "CDTest")
+        publicTestRecord["title"] = test.title
+        // ... установите другие атрибуты теста ...
+        
+        CKContainer.default().publicCloudDatabase.save(publicTestRecord) { record, error in
+            if let error = error {
+                print("Error saving to public database: \(error)")
+            } else {
+                viewContext.performAndWait {
+                    test.isPublished = true
+                    saveContext()
+                }
             }
         }
+    }
+    
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context: \(error)")
+        }
+    }
+    
+    private func deleteItems(offsets: IndexSet) {
+        showingAlert = true
+        for index in offsets {
+            let test = questions[index]
+            viewContext.delete(test)
+        }
+        saveContext()
     }
 }
 
 
 #Preview {
     QuestionListView(selectedTest: CDTest.example)
-//        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+    //        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }
 

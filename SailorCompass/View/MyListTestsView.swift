@@ -13,13 +13,13 @@ struct MyListTestsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(fetchRequest: CDTest.fetch(), animation: .bouncy)
-  
+    
     var tests: FetchedResults<CDTest>
     
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var deletionIndexSet: IndexSet?
-    @State private var selectedTest: CDTest? = nil
+    //    @State private var selectedTest: CDTest? = nil
     @State private var isPublishing = false
     @State private var showingPublishConfirmation = false
     
@@ -47,27 +47,25 @@ struct MyListTestsView: View {
         } message: {
             Text("This test will be deleted permanently.")
         }
+        //        .alert(isPresented: $showingPublishConfirmation) {
+        //            Alert(
+        //                title: Text("Publish Test"),
+        //                message: Text("Are you sure you want to publish '\(selectedTest?.title ?? "")'?"),
+        //                primaryButton: .destructive(Text("Publish")) {
+        //                    if let testToPublish = selectedTest {
+        //                        publishTest(test: testToPublish)
+        //                    }
+        //                },
+        //                secondaryButton: .cancel()
+        //            )
+        //        }
         
         .listStyle(.plain)
         .navigationTitle(Constants.LocalizedStrings.myTests)
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItemGroup {
                 EditButton()
-
-            }
-            
-            ToolbarItem {
-                Button(action: {
-                    if let testToPublish = selectedTest {
-                        publishTest(test: testToPublish, context: viewContext)
-                    }
-                }) {
-                    Image(systemName: "paperplane.fill")
-                }
-            }
-
-            ToolbarItem {
-                NavigationLink(destination: NewTestView().environment(\.managedObjectContext, viewContext)) {
+                NavigationLink(destination: NewTestView()) {
                     Image(systemName: Constants.icon.plus)
                 }
             }
@@ -75,6 +73,7 @@ struct MyListTestsView: View {
     }
     
     private func deleteItems(offsets: IndexSet) {
+        showingAlert = true
         for index in offsets {
             let test = tests[index]
             viewContext.delete(test)
@@ -82,33 +81,38 @@ struct MyListTestsView: View {
         saveContext()
     }
     
-   private func publishTest(test: CDTest, context: NSManagedObjectContext) {
-        let publicTestRecord = CKRecord(recordType: "CDTest")
-        publicTestRecord["title"] = test.title
-        // ... установите другие атрибуты теста ...
-
-        // Сохранение теста в Public Database
-        CKContainer.default().publicCloudDatabase.save(publicTestRecord) { record, error in
-            if let error = error {
-                // Обработка ошибки
-                print("Error saving to public database: \(error)")
-            } else {
-                // Обновление статуса теста в CoreData
-                context.performAndWait {
-                    test.isPublished = true
-                    try? context.save()
-                }
-            }
-        }
-    }
+    
+    
+    //    private func showPublishDialog() {
+    //        let options = tests.map { test in
+    //            Alert.Button.default(Text(test.title)) {
+    //                self.selectedTest = test
+    //                self.showingPublishConfirmation = true
+    //            }
+    //        }
+    //
+    //        let cancel = Alert.Button.cancel()
+    //
+    //        let alert = Alert(title: Text("Select Test to Publish"),
+    //                          message: Text("Please select a test you want to publish.")
+    //                          )
+    //
+    //        showAlert(alert: alert)
+    //    }
+    
+    //    private func showAlert(alert: Alert) {
+    //        // Установите параметры для отображения пользовательского Alert
+    //        // Например, установите состояние, которое контролирует, когда Alert должен быть показан
+    //    }
+    
     
     private func saveContext() {
-            do {
-                try viewContext.save()
-            } catch {
-                print("Error saving context: \(error)")
-            }
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context: \(error)")
         }
+    }
 }
 
 #Preview {
