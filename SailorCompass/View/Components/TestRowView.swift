@@ -28,11 +28,8 @@ struct TestRowView: View {
             }
             
             HStack {
-                if let questionCount = test.questions?.count {
-                    Text("Questions: \(questionCount)")
-                } else {
-                    Text("Questions: 0")
-                }
+                Text("Questions: \(test.qcount)")
+
                 
                 Spacer()
                 VStack(alignment: .leading) {

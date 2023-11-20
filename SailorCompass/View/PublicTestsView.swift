@@ -16,8 +16,10 @@ struct PublicTestsView: View {
         List(tests) { test in
             VStack(alignment: .leading) {
                 Text(test.title).font(.headline)
-                Text("Created: \(test.publicDate, formatter: DateFormatter.shortDate)")
-                Text("Version: \(test.version)")
+                if let version = test.version {
+                    Text("Version: \(version)")
+                }
+                Text("Publication date: \(test.publicDate, formatter: DateFormatter.shortDate)")
             }
         }
         .onAppear(perform: fetchItems)
@@ -25,7 +27,7 @@ struct PublicTestsView: View {
     
     func fetchItems() {
             let predicate = NSPredicate(value: true)
-            let query = CKQuery(recordType: "CD_CDTest", predicate: predicate)
+            let query = CKQuery(recordType: "CDTest", predicate: predicate)
             let queryOperation = CKQueryOperation(query: query)
             
             queryOperation.recordMatchedBlock = { (_, result) in

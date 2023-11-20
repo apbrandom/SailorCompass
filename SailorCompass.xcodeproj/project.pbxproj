@@ -163,7 +163,7 @@
 			path = CloudKit;
 			sourceTree = "<group>";
 		};
-		CB03A3502AEC5A77005C3157 /* Core Data */ = {
+		CB03A3502AEC5A77005C3157 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				CB6750932AE699610049E7A8 /* Persistence.swift */,
@@ -172,7 +172,7 @@
 				CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */,
 				CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */,
 			);
-			path = "Core Data";
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		CB46179A2AF7B2E800AD5BA5 /* Model */ = {
@@ -213,7 +213,7 @@
 				CB8A50412AE7FF4800088727 /* ViewModel */,
 				CB46179A2AF7B2E800AD5BA5 /* Model */,
 				CB8A50362AE7CF6200088727 /* Utilities */,
-				CB03A3502AEC5A77005C3157 /* Core Data */,
+				CB03A3502AEC5A77005C3157 /* CoreData */,
 				CB67508E2AE699610049E7A8 /* Assets.xcassets */,
 				CB6750982AE699610049E7A8 /* SailorCompass.entitlements */,
 				CB6750992AE699610049E7A8 /* Info.plist */,

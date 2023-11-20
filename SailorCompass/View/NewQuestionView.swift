@@ -67,6 +67,7 @@ struct NewQuestionView: View {
         let newQuestion = CDQuestion(context: viewContext)
         let newAnswer = CDAnswer(context: viewContext)
         newQuestion.text = questionText
+        selectedTest.qcount += 1
         newAnswer.question = newQuestion
         newAnswer.isCorrect = true
         newAnswer.text = answerText

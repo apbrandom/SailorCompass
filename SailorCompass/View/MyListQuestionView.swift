@@ -79,6 +79,8 @@ struct QuestionListView: View {
     private func publishTest(test: CDTest) {
         let publicTestRecord = CKRecord(recordType: "CDTest")
         publicTestRecord["title"] = test.title
+        publicTestRecord["version"] = test.version
+        publicTestRecord["questionCount"] = test.qcount
         // ... установите другие атрибуты теста ...
         
         CKContainer.default().publicCloudDatabase.save(publicTestRecord) { record, error in
@@ -104,8 +106,9 @@ struct QuestionListView: View {
     private func deleteItems(offsets: IndexSet) {
         showingAlert = true
         for index in offsets {
-            let test = questions[index]
-            viewContext.delete(test)
+            let question = questions[index]
+            selectedTest.qcount -= 1
+            viewContext.delete(question)
         }
         saveContext()
     }

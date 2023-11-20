@@ -47,19 +47,6 @@ struct MyListTestsView: View {
         } message: {
             Text("This test will be deleted permanently.")
         }
-        //        .alert(isPresented: $showingPublishConfirmation) {
-        //            Alert(
-        //                title: Text("Publish Test"),
-        //                message: Text("Are you sure you want to publish '\(selectedTest?.title ?? "")'?"),
-        //                primaryButton: .destructive(Text("Publish")) {
-        //                    if let testToPublish = selectedTest {
-        //                        publishTest(test: testToPublish)
-        //                    }
-        //                },
-        //                secondaryButton: .cancel()
-        //            )
-        //        }
-        
         .listStyle(.plain)
         .navigationTitle(Constants.LocalizedStrings.myTests)
         .toolbar {
