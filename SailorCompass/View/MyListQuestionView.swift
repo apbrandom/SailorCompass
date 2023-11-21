@@ -104,6 +104,8 @@ struct QuestionListView: View {
             for question in test.questions?.allObjects as? [CDQuestion] ?? [] {
                 let questionRecord = CKRecord(recordType: "CDQuestion")
                 questionRecord["text"] = question.text
+                questionRecord["testTitle"] = test.title
+//                questionRecord["AnswerText"] = 
                 questionRecord["test"] = CKRecord.Reference(recordID: testRecordID, action: .deleteSelf)
                 recordsToSave.append(questionRecord)
                 

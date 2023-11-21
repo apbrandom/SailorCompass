@@ -15,8 +15,9 @@ struct PublicQuestionsView: View {
     var body: some View {
         List(questions) { question in
             VStack(alignment: .leading) {
-                Text(question.text).font(.headline)
-                Text("Created: \(question.publicDate, formatter: DateFormatter.shortDate)")
+                Text(question.testTitle).font(.headline)
+                Text(question.text)
+                Text("Answer").font(.subheadline)
             }
         }
         .onAppear(perform: fetchItems)

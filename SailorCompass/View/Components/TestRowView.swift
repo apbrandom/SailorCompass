@@ -17,19 +17,20 @@ struct TestRowView: View {
             HStack {
                 Text(test.title)
                     .font(.title2.bold())
+                if let version = test.version, !version.isEmpty {
+                    Text("v\(version)")
+                        .font(.headline) // Меньший размер шрифта для версии
+                }
+                
                 Spacer()
                 Image(systemName: "checkmark.seal.fill")
                     .foregroundColor(test.isPublished ? .green : .gray)
             }
             
             Spacer()
-            if let version = test.version, !version.isEmpty {
-                Text("Version \(version)")
-            }
-            
             HStack {
                 Text("Questions: \(test.qcount)")
-
+                
                 
                 Spacer()
                 VStack(alignment: .leading) {
