@@ -19,7 +19,6 @@ struct MyListTestsView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var deletionIndexSet: IndexSet?
-    //    @State private var selectedTest: CDTest? = nil
     @State private var isPublishing = false
     @State private var showingPublishConfirmation = false
     
@@ -67,31 +66,6 @@ struct MyListTestsView: View {
         }
         saveContext()
     }
-    
-    
-    
-    //    private func showPublishDialog() {
-    //        let options = tests.map { test in
-    //            Alert.Button.default(Text(test.title)) {
-    //                self.selectedTest = test
-    //                self.showingPublishConfirmation = true
-    //            }
-    //        }
-    //
-    //        let cancel = Alert.Button.cancel()
-    //
-    //        let alert = Alert(title: Text("Select Test to Publish"),
-    //                          message: Text("Please select a test you want to publish.")
-    //                          )
-    //
-    //        showAlert(alert: alert)
-    //    }
-    
-    //    private func showAlert(alert: Alert) {
-    //        // Установите параметры для отображения пользовательского Alert
-    //        // Например, установите состояние, которое контролирует, когда Alert должен быть показан
-    //    }
-    
     
     private func saveContext() {
         do {

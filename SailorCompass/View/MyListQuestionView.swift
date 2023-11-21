@@ -17,7 +17,8 @@ struct QuestionListView: View {
     
     @FetchRequest var questions: FetchedResults<CDQuestion>
     
-    @State private var showingAlert = false
+    @State private var isShowingDeleteAlert = false
+    @State private var isShowingPublishAlert = false
     @State private var deletionIndexSet: IndexSet?
     
     init(selectedTest: CDTest) {
@@ -47,10 +48,10 @@ struct QuestionListView: View {
             }
             .onDelete { offsets in
                 deletionIndexSet = offsets
-                showingAlert = true
+                isShowingDeleteAlert = true
             }
         }
-        .alert("Are you sure?", isPresented: $showingAlert) {
+        .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
             Button("Cancel", role: .cancel) { }
             Button("Delete", role: .destructive) {
                 if let offsets = deletionIndexSet {
@@ -60,18 +61,31 @@ struct QuestionListView: View {
         } message: {
             Text("This question will be deleted permanently.")
         }
+        .alert("Are you sure?", isPresented: $isShowingPublishAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Yes") {
+                publishTest(test: selectedTest)
+            }
+        } message: {
+            Text("This test will be published permanently, and you won't be able to modify it in the future.")
+        }
         .navigationTitle(selectedTest.title)
         .toolbar {
             ToolbarItemGroup {
-                Button {
-                    publishTest(test: selectedTest)
-                } label: {
-                    Image(systemName: "paperplane.fill")
+                if selectedTest.isPublished {
+                    Image(systemName: "checkmark.seal.fill")
+                        .foregroundStyle(.green)
+                } else {
+                    Button {
+                        isShowingPublishAlert = true
+                    } label: {
+                        Image(systemName: "paperplane.fill")
+                    }
+                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+                        Image(systemName: "plus")
+                    }
+                    EditButton()
                 }
-                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-                    Image(systemName: "plus")
-                }
-                EditButton()
             }
         }
     }
@@ -118,11 +132,11 @@ struct QuestionListView: View {
                     }
                 }
             }
-
+            
             CKContainer.default().publicCloudDatabase.add(modifyRecordsOperation)
         }
     }
-
+    
     private func saveContext() {
         do {
             try viewContext.save()
@@ -132,7 +146,7 @@ struct QuestionListView: View {
     }
     
     private func deleteItems(offsets: IndexSet) {
-        showingAlert = true
+        //        showingAlert = true
         for index in offsets {
             let question = questions[index]
             selectedTest.qcount -= 1
