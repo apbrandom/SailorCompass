@@ -77,24 +77,52 @@ struct QuestionListView: View {
     }
     
     private func publishTest(test: CDTest) {
-        let publicTestRecord = CKRecord(recordType: "CDTest")
-        publicTestRecord["title"] = test.title
-        publicTestRecord["version"] = test.version
-        publicTestRecord["questionCount"] = test.qcount
-        // ... установите другие атрибуты теста ...
-        
-        CKContainer.default().publicCloudDatabase.save(publicTestRecord) { record, error in
-            if let error = error {
-                print("Error saving to public database: \(error)")
-            } else {
-                viewContext.performAndWait {
-                    test.isPublished = true
-                    saveContext()
+        DispatchQueue.global(qos: .background).async {
+            let publicTestRecord = CKRecord(recordType: "CDTest")
+            publicTestRecord["title"] = test.title
+            publicTestRecord["version"] = test.version
+            publicTestRecord["questionCount"] = test.qcount
+            
+            let testRecordID = publicTestRecord.recordID
+            
+            var recordsToSave: [CKRecord] = [publicTestRecord]
+            
+            for question in test.questions?.allObjects as? [CDQuestion] ?? [] {
+                let questionRecord = CKRecord(recordType: "CDQuestion")
+                questionRecord["text"] = question.text
+                questionRecord["test"] = CKRecord.Reference(recordID: testRecordID, action: .deleteSelf)
+                recordsToSave.append(questionRecord)
+                
+                let questionRecordID = questionRecord.recordID
+                
+                for answer in question.answers?.allObjects as? [CDAnswer] ?? [] {
+                    let answerRecord = CKRecord(recordType: "CDAnswer")
+                    answerRecord["text"] = answer.text
+                    answerRecord["isCorrect"] = answer.isCorrect
+                    answerRecord["question"] = CKRecord.Reference(recordID: questionRecordID, action: .deleteSelf)
+                    recordsToSave.append(answerRecord)
                 }
             }
+            
+            let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: nil)
+            modifyRecordsOperation.modifyRecordsResultBlock = { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        self.viewContext.performAndWait {
+                            test.isPublished = true
+                            self.saveContext()
+                        }
+                    case .failure(let error):
+                        print("Error saving to public database: \(error)")
+                    }
+                }
+            }
+
+            CKContainer.default().publicCloudDatabase.add(modifyRecordsOperation)
         }
     }
-    
+
     private func saveContext() {
         do {
             try viewContext.save()

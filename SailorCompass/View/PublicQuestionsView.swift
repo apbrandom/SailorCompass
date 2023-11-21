@@ -24,7 +24,7 @@ struct PublicQuestionsView: View {
     
     func fetchItems() {
             let predicate = NSPredicate(value: true)
-            let query = CKQuery(recordType: "CD_CDQuestion", predicate: predicate)
+            let query = CKQuery(recordType: "CDQuestion", predicate: predicate)
             let queryOperation = CKQueryOperation(query: query)
             
             queryOperation.recordMatchedBlock = { (_, result) in
