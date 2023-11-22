@@ -77,7 +77,7 @@ struct NewQuestionView: View {
         do {
             try viewContext.save()
         } catch {
-            print("Saving test failed: \(error)")
+            print("Saving test failed: \(error.localizedDescription)")
         }
         presentationMode.wrappedValue.dismiss()
     }

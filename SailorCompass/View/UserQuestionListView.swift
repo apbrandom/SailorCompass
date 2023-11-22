@@ -90,53 +90,64 @@ struct UserQuestionListView: View {
     
     private func publishTest(test: Test) {
         DispatchQueue.global(qos: .background).async {
-            let publicTestRecord = CKRecord(recordType: "PublicTest")
-            publicTestRecord["title"] = test.title
-            publicTestRecord["version"] = test.version
-            publicTestRecord["questionCount"] = test.qcount
-            
-            let testRecordID = publicTestRecord.recordID
-            
-            var recordsToSave: [CKRecord] = [publicTestRecord]
-            
-            for question in test.questions?.allObjects as? [Question] ?? [] {
-                let questionRecord = CKRecord(recordType: "PublicQuestion")
-                questionRecord["text"] = question.text
-                questionRecord["testTitle"] = test.title
-                if let answers = question.answers as? Set<Answer>,
-                   let correctAnswer = answers.first(where: { $0.isCorrect }) {
-                    questionRecord["correctAnswer"] = correctAnswer.text
+            CKContainer.default().fetchUserRecordID { (recordID, error) in
+                guard let userID = recordID, error == nil else {
+                    print("Error fetching user record ID: \(String(describing: error))")
+                    return
                 }
-                questionRecord["test"] = CKRecord.Reference(recordID: testRecordID, action: .deleteSelf)
-                recordsToSave.append(questionRecord)
                 
-                let questionRecordID = questionRecord.recordID
+                let publicTestRecord = CKRecord(recordType: "PublicTest")
+                publicTestRecord["title"] = test.title
+                publicTestRecord["version"] = test.version
+                publicTestRecord["questionCount"] = test.qcount
+                publicTestRecord["UserID"] = userID.recordName
+                publicTestRecord["likeCount"] = 0
+                let testRecordID = publicTestRecord.recordID
                 
-                for answer in question.answers?.allObjects as? [Answer] ?? [] {
-                    let answerRecord = CKRecord(recordType: "PublicAnswer")
-                    answerRecord["text"] = answer.text
-                    answerRecord["isCorrect"] = answer.isCorrect
-                    answerRecord["question"] = CKRecord.Reference(recordID: questionRecordID, action: .deleteSelf)
-                    recordsToSave.append(answerRecord)
-                }
-            }
-            
-            let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: nil)
-            modifyRecordsOperation.modifyRecordsResultBlock = { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(_):
-                        self.viewContext.performAndWait {
-                            test.isPublished = true
-                            self.saveContext()
-                        }
-                    case .failure(let error):
-                        print("Error saving to public database: \(error)")
+                var recordsToSave: [CKRecord] = [publicTestRecord]
+                
+                for question in test.questions?.allObjects as? [Question] ?? [] {
+                    let questionRecord = CKRecord(recordType: "PublicQuestion")
+                    questionRecord["text"] = question.text
+                    questionRecord["testTitle"] = test.title
+                    questionRecord["UserID"] = userID.recordName
+                    if let answers = question.answers as? Set<Answer>,
+                       let correctAnswer = answers.first(where: { $0.isCorrect }) {
+                        questionRecord["correctAnswer"] = correctAnswer.text
+                    }
+                    
+                    questionRecord["test"] = CKRecord.Reference(recordID: testRecordID, action: .deleteSelf)
+                    recordsToSave.append(questionRecord)
+                    
+                    let questionRecordID = questionRecord.recordID
+                    
+                    for answer in question.answers?.allObjects as? [Answer] ?? [] {
+                        let answerRecord = CKRecord(recordType: "PublicAnswer")
+                        answerRecord["text"] = answer.text
+                        answerRecord["isCorrect"] = answer.isCorrect
+                        answerRecord["userID"] = userID.recordName
+                        answerRecord["question"] = CKRecord.Reference(recordID: questionRecordID, action: .deleteSelf)
+                        recordsToSave.append(answerRecord)
                     }
                 }
+                
+                let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: nil)
+                modifyRecordsOperation.modifyRecordsResultBlock = { result in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .success(_):
+                            self.viewContext.performAndWait {
+                                test.isPublished = true
+                                self.saveContext()
+                            }
+                        case .failure(let error):
+                            print("Error saving to public database: \(error)")
+                        }
+                    }
+                }
+                
+                CKContainer.default().publicCloudDatabase.add(modifyRecordsOperation)
             }
-            
-            CKContainer.default().publicCloudDatabase.add(modifyRecordsOperation)
         }
     }
     
@@ -161,6 +172,6 @@ struct UserQuestionListView: View {
 
 #Preview {
     UserQuestionListView(selectedTest: Test.example)
-    //        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+    //            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }
 
