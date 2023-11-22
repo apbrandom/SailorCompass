@@ -11,7 +11,7 @@ struct AnswerTextField: View {
     @Binding var text: String
     @Binding var isInvalid: Bool
     let placeholder = "Answer"
-    let maxLength: Int = 70
+    let maxLength: Int = 120
     
     var body: some View {
         TextField(placeholder, text: $text)

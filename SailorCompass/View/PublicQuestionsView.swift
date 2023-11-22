@@ -15,9 +15,18 @@ struct PublicQuestionsView: View {
     var body: some View {
         List(questions) { question in
             VStack(alignment: .leading) {
-                Text(question.testTitle).font(.headline)
+                Text(question.testTitle)
+                    .font(.headline)
+                    .foregroundColor(.blue)
+                    .padding(.bottom, 2)
+
                 Text(question.text)
-                Text("Answer").font(.subheadline)
+                    .padding(.bottom, 2)
+
+                Text(question.correctAnswer)
+                    .font(.subheadline)
+                    .foregroundColor(.green)
+                    .padding(.bottom, 2)
             }
         }
         .onAppear(perform: fetchItems)

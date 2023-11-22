@@ -12,12 +12,14 @@ struct CloudQuestionModel: Identifiable {
     let id: UUID
     var testTitle: String
     var text: String
+    var correctAnswer: String
     var publicDate: Date
 
     init(record: CKRecord) {
         self.id = UUID(uuidString: record.recordID.recordName) ?? UUID()
         self.testTitle = record["testTitle"] as? String ?? "Unknown Test Title"
         self.text = record["text"] as? String ?? "Unknown Text"
+        self.correctAnswer = record["correctAnswer"] as? String ?? "Unknown Answer"
         self.publicDate = record.creationDate ?? Date()
     }
 }

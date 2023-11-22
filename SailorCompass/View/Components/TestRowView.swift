@@ -19,19 +19,25 @@ struct TestRowView: View {
                     .font(.title2.bold())
                 if let version = test.version, !version.isEmpty {
                     Text("v\(version)")
-                        .font(.headline) // Меньший размер шрифта для версии
+                        .font(.headline)
                 }
                 
                 Spacer()
-                Image(systemName: "checkmark.seal.fill")
-                    .foregroundColor(test.isPublished ? .green : .gray)
+                Image(systemName: test.isPublished ? "checkmark.seal.fill" : "")
+                    .foregroundColor(.green)
             }
             
             Spacer()
             HStack {
-                Text("Questions: \(test.qcount)")
-                
-                
+                Image(systemName: "doc.questionmark.fill")
+                Text("\(test.qcount)")
+    
+            }
+            HStack {
+                HStack {
+                    Image(systemName: "ferry.fill")
+                    Text("\(test.likes)")
+                }
                 Spacer()
                 VStack(alignment: .leading) {
                     Text("Created at:")
@@ -40,10 +46,6 @@ struct TestRowView: View {
                 .font(.caption.italic())
                 .foregroundStyle(.gray)
             }
-            Label(
-                title: { Text("\(test.likes)") },
-                icon: { Image(systemName: "ferry.fill") }
-            )
         }.padding()
     }
     

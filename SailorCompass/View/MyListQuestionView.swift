@@ -105,7 +105,10 @@ struct QuestionListView: View {
                 let questionRecord = CKRecord(recordType: "CDQuestion")
                 questionRecord["text"] = question.text
                 questionRecord["testTitle"] = test.title
-//                questionRecord["AnswerText"] = 
+                if let answers = question.answers as? Set<CDAnswer>,
+                   let correctAnswer = answers.first(where: { $0.isCorrect }) {
+                    questionRecord["correctAnswer"] = correctAnswer.text
+                }
                 questionRecord["test"] = CKRecord.Reference(recordID: testRecordID, action: .deleteSelf)
                 recordsToSave.append(questionRecord)
                 
