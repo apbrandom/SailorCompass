@@ -8,11 +8,16 @@
 import Foundation
 import CoreData
 
-extension CDQuestion {
+extension Question {
     
     var text: String {
-        get { text_ ?? "" }
+        get { text_ ?? "Unknown Text" }
         set { text_ = newValue }
+    }
+    
+    var correctAnswer: String {
+        get { correctAnswer_ ?? "Unknown Answer" }
+        set { correctAnswer_ = newValue }
     }
     
     convenience init(text: String, context: NSManagedObjectContext) {
@@ -20,28 +25,28 @@ extension CDQuestion {
         self.text = text
     }
     
-    static func delete(question: CDQuestion) {
+    static func delete(question: Question) {
         guard let context = question.managedObjectContext else { return }
         context.delete(question)
     }
     
-    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDQuestion> {
-        let request = CDQuestion.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \CDQuestion.text_, ascending: true)]
+    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<Question> {
+        let request = Question.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Question.text_, ascending: true)]
         request.predicate = predicate
         return request
     }
     
-    static var example: CDQuestion {
+    static var example: Question {
         let context = CoreDataController.preview.container.viewContext
-        let question = CDQuestion(context: context)
+        let question = Question(context: context)
         return question
     }
 }
 
-extension CDQuestion {
-    var sortedAnswers: [CDAnswer] {
-        let set = answers as? Set<CDAnswer> ?? []
+extension Question {
+    var sortedAnswers: [Answer] {
+        let set = answers as? Set<Answer> ?? []
         return set.sorted { $0.text < $1.text }
     }
 }

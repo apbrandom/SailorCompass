@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-extension CDAnswer {
+extension Answer {
     
     var text: String {
         get { text_ ?? "" }
@@ -16,9 +16,9 @@ extension CDAnswer {
     }
     
     //Preview
-    static var example: CDAnswer {
+    static var example: Answer {
         let context = CoreDataController.preview.container.viewContext
-        let answer = CDAnswer(text: "New Answer", context: context)
+        let answer = Answer(text: "New Answer", context: context)
         return answer
     }
     
@@ -27,8 +27,8 @@ extension CDAnswer {
         self.text = text
     }
     
-    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDAnswer> {
-        let request = CDAnswer.fetchRequest()
+    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<Answer> {
+        let request = Answer.fetchRequest()
         request.sortDescriptors = []
         request.predicate = predicate
         return request

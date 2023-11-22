@@ -17,7 +17,7 @@ struct CoreDataController {
         let result = CoreDataController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = CDTest(context: viewContext)
+            let newItem = Test(context: viewContext)
             newItem.title = "New Test"
             newItem.creationDate = Date()
         }
@@ -60,7 +60,7 @@ extension CoreDataController {
     }
     
     func testWithNameExists(name: String, in context: NSManagedObjectContext) -> Bool {
-        let fetchRequest: NSFetchRequest<CDTest> = CDTest.fetchRequest()
+        let fetchRequest: NSFetchRequest<Test> = Test.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "title_ == %@", name)
         fetchRequest.fetchLimit = 1
         

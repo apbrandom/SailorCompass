@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import CloudKit
 
-extension CDTest {
+extension Test {
     
     var title: String {
         get { title_ ?? "" }
@@ -34,22 +34,22 @@ extension CDTest {
         self.creationDate = Date()
     }
     
-    static func delete(test: CDTest) {
+    static func delete(test: Test) {
         guard let context = test.managedObjectContext else { return }
         context.delete(test)
     }
     
-    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDTest> {
-        let request = CDTest.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(keyPath: \CDTest.creationDate_, ascending: false),
-                                   NSSortDescriptor(keyPath: \CDTest.title_, ascending: true)]
+    static func fetch(_ predicate: NSPredicate = .all) -> NSFetchRequest<Test> {
+        let request = Test.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Test.creationDate_, ascending: false),
+                                   NSSortDescriptor(keyPath: \Test.title_, ascending: true)]
         request.predicate = predicate
         return request
     }
     
-    static var example: CDTest {
+    static var example: Test {
         let context = CoreDataController.preview.container.viewContext
-        let test = CDTest(context: context)
+        let test = Test(context: context)
         test.title = "Title example"
         return test
     }

@@ -68,7 +68,7 @@ struct NewTestView: View {
             return
         }
         
-        let newTest = CDTest(context: viewContext)
+        let newTest = Test(context: viewContext)
         newTest.id = UUID()
         newTest.creationDate = Date()
         newTest.title = testTitle

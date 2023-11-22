@@ -12,7 +12,7 @@ struct NewQuestionView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
     
-    var selectedTest: CDTest
+    var selectedTest: Test
     
     @State private var questionText = ""
     @State private var answerText = ""
@@ -40,7 +40,7 @@ struct NewQuestionView: View {
         .navigationBarTitleDisplayMode(.inline)
         
         Button {
-            saveToCD()
+            saveToCoreData()
         } label: {
             CustomButtonLabel(text: Constants.LocalizedStrings.save)
         }
@@ -48,8 +48,7 @@ struct NewQuestionView: View {
         .padding()
     }
     
-    func saveToCD() {
-        
+    func saveToCoreData() {
         if questionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             questionTextInvalid.toggle()
             alertMessage = Constants.LocalizedStrings.alertQuestion
@@ -64,9 +63,10 @@ struct NewQuestionView: View {
             return
         }
  
-        let newQuestion = CDQuestion(context: viewContext)
-        let newAnswer = CDAnswer(context: viewContext)
+        let newQuestion = Question(context: viewContext)
+        let newAnswer = Answer(context: viewContext)
         newQuestion.text = questionText
+        newQuestion.correctAnswer = answerText
         selectedTest.qcount += 1
         newAnswer.question = newQuestion
         newAnswer.isCorrect = true
@@ -84,5 +84,5 @@ struct NewQuestionView: View {
 }
 
 #Preview {
-    NewQuestionView( selectedTest: CDTest.example)
+    NewQuestionView( selectedTest: Test.example)
 }

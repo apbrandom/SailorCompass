@@ -11,14 +11,14 @@ struct QuestionDetailView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @ObservedObject var question: CDQuestion
+    @ObservedObject var question: Question
     
-    @FetchRequest var answers: FetchedResults<CDAnswer>
+    @FetchRequest var answers: FetchedResults<Answer>
     
-    init(question: CDQuestion) {
+    init(question: Question) {
             self.question = question
-            self._answers = FetchRequest<CDAnswer>(
-                entity: CDAnswer.entity(),
+            self._answers = FetchRequest<Answer>(
+                entity: Answer.entity(),
                 sortDescriptors: [],
                 predicate: NSPredicate(format: "question == %@", question)
             )
@@ -43,5 +43,5 @@ struct QuestionDetailView: View {
 }
 
 #Preview {
-    QuestionDetailView(question: CDQuestion.example)
+    QuestionDetailView(question: Question.example)
 }

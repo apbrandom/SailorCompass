@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TestRowView: View {
     
-    @ObservedObject var test: CDTest
+    @ObservedObject var test: Test
     
     var body: some View {
         
@@ -17,9 +17,11 @@ struct TestRowView: View {
             HStack {
                 Text(test.title)
                     .font(.title2.bold())
+                    .foregroundColor(.blue)
                 if let version = test.version, !version.isEmpty {
                     Text("v\(version)")
                         .font(.headline)
+                    
                 }
                 
                 Spacer()
@@ -57,5 +59,5 @@ struct TestRowView: View {
 }
 
 #Preview {
-    TestRowView(test: CDTest.example)
+    TestRowView(test: Test.example)
 }

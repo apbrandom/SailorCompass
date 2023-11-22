@@ -22,12 +22,12 @@ struct CatalogTestsView: View {
                     CatalogCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
                 }
                 NavigationLink {
-                    PublicTestsView()
+                    PublicTestsListView()
                 } label: {
                     CatalogCell(icon: CatalogIcon.publicTest.icon, title: CatalogIcon.publicTest.title)
                 }
                 NavigationLink {
-                    PublicQuestionsView()
+                    PublicQuestionsListView()
                 } label: {
                     CatalogCell(icon: CatalogIcon.publicQuestion.icon, title: CatalogIcon.publicQuestion.title)
                 }

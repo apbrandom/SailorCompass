@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23B81" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
-    <entity name="CDAnswer" representedClassName="CDAnswer" syncable="YES" codeGenerationType="class">
+    <entity name="Answer" representedClassName="Answer" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isCorrect" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text_" optional="YES" attributeType="String"/>
-        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDQuestion" inverseName="answers" inverseEntity="CDQuestion"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question"/>
     </entity>
-    <entity name="CDQuestion" representedClassName="CDQuestion" syncable="YES" codeGenerationType="class">
+    <entity name="Question" representedClassName="Question" syncable="YES" codeGenerationType="class">
+        <attribute name="correctAnswer_" optional="YES" attributeType="String"/>
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="picture_" optional="YES" attributeType="Binary"/>
         <attribute name="text_" optional="YES" attributeType="String"/>
-        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDAnswer" inverseName="question" inverseEntity="CDAnswer"/>
-        <relationship name="test" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDTest" inverseName="questions" inverseEntity="CDTest"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answer" inverseName="question" inverseEntity="Answer"/>
+        <relationship name="test" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Test" inverseName="questions" inverseEntity="Test"/>
     </entity>
-    <entity name="CDTest" representedClassName="CDTest" syncable="YES" codeGenerationType="class">
+    <entity name="Test" representedClassName="Test" syncable="YES" codeGenerationType="class">
         <attribute name="creationDate_" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isPublished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -22,6 +23,6 @@
         <attribute name="qcount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title_" optional="YES" attributeType="String"/>
         <attribute name="version" optional="YES" attributeType="String"/>
-        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDQuestion" inverseName="test" inverseEntity="CDQuestion"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="test" inverseEntity="Question"/>
     </entity>
 </model>

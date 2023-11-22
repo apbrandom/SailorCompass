@@ -9,23 +9,23 @@ import SwiftUI
 import CoreData
 import CloudKit
 
-struct QuestionListView: View {
+struct UserQuestionListView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    var selectedTest: CDTest
+    var selectedTest: Test
     
-    @FetchRequest var questions: FetchedResults<CDQuestion>
+    @FetchRequest var questions: FetchedResults<Question>
     
     @State private var isShowingDeleteAlert = false
     @State private var isShowingPublishAlert = false
     @State private var deletionIndexSet: IndexSet?
     
-    init(selectedTest: CDTest) {
+    init(selectedTest: Test) {
         self.selectedTest = selectedTest
-        let sortDescriptor = NSSortDescriptor(keyPath: \CDQuestion.dateCreated, ascending: true)
+        let sortDescriptor = NSSortDescriptor(keyPath: \Question.dateCreated, ascending: true)
         let predicate = NSPredicate(format: "test == %@", selectedTest)
-        _questions = FetchRequest<CDQuestion>(sortDescriptors: [sortDescriptor], predicate: predicate)
+        _questions = FetchRequest<Question>(sortDescriptors: [sortDescriptor], predicate: predicate)
     }
     
     var body: some View {
@@ -33,15 +33,13 @@ struct QuestionListView: View {
             ForEach(questions, id: \.self) { question in
                 Section {
                     NavigationLink(destination: QuestionDetailView(question: question)) {
-                        VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading) {
                             Text(question.text)
-                                .font(.headline)
-                            Divider()
-                            ForEach(question.sortedAnswers, id: \.self) { answer in
-                                HStack {
-                                    Text(answer.text)
-                                }
-                            }
+                                .padding(.bottom, 2)
+                            Text(question.correctAnswer)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .padding(.bottom, 2)
                         }
                     }
                 }
@@ -90,9 +88,9 @@ struct QuestionListView: View {
         }
     }
     
-    private func publishTest(test: CDTest) {
+    private func publishTest(test: Test) {
         DispatchQueue.global(qos: .background).async {
-            let publicTestRecord = CKRecord(recordType: "CDTest")
+            let publicTestRecord = CKRecord(recordType: "PublicTest")
             publicTestRecord["title"] = test.title
             publicTestRecord["version"] = test.version
             publicTestRecord["questionCount"] = test.qcount
@@ -101,11 +99,11 @@ struct QuestionListView: View {
             
             var recordsToSave: [CKRecord] = [publicTestRecord]
             
-            for question in test.questions?.allObjects as? [CDQuestion] ?? [] {
-                let questionRecord = CKRecord(recordType: "CDQuestion")
+            for question in test.questions?.allObjects as? [Question] ?? [] {
+                let questionRecord = CKRecord(recordType: "PublicQuestion")
                 questionRecord["text"] = question.text
                 questionRecord["testTitle"] = test.title
-                if let answers = question.answers as? Set<CDAnswer>,
+                if let answers = question.answers as? Set<Answer>,
                    let correctAnswer = answers.first(where: { $0.isCorrect }) {
                     questionRecord["correctAnswer"] = correctAnswer.text
                 }
@@ -114,8 +112,8 @@ struct QuestionListView: View {
                 
                 let questionRecordID = questionRecord.recordID
                 
-                for answer in question.answers?.allObjects as? [CDAnswer] ?? [] {
-                    let answerRecord = CKRecord(recordType: "CDAnswer")
+                for answer in question.answers?.allObjects as? [Answer] ?? [] {
+                    let answerRecord = CKRecord(recordType: "PublicAnswer")
                     answerRecord["text"] = answer.text
                     answerRecord["isCorrect"] = answer.isCorrect
                     answerRecord["question"] = CKRecord.Reference(recordID: questionRecordID, action: .deleteSelf)
@@ -151,7 +149,6 @@ struct QuestionListView: View {
     }
     
     private func deleteItems(offsets: IndexSet) {
-        //        showingAlert = true
         for index in offsets {
             let question = questions[index]
             selectedTest.qcount -= 1
@@ -163,7 +160,7 @@ struct QuestionListView: View {
 
 
 #Preview {
-    QuestionListView(selectedTest: CDTest.example)
+    UserQuestionListView(selectedTest: Test.example)
     //        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }
 

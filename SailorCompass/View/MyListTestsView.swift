@@ -12,9 +12,9 @@ import CloudKit
 struct MyListTestsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(fetchRequest: CDTest.fetch(), animation: .bouncy)
+    @FetchRequest(fetchRequest: Test.fetch(), animation: .bouncy)
     
-    var tests: FetchedResults<CDTest>
+    var tests: FetchedResults<Test>
     
     @State private var showingAlert = false
     @State private var alertMessage = ""
@@ -26,7 +26,7 @@ struct MyListTestsView: View {
         List {
             ForEach(tests, id: \.self) { test in
                 NavigationLink {
-                    QuestionListView(selectedTest: test)
+                    UserQuestionListView(selectedTest: test)
                 } label: {
                     TestRowView(test: test)
                 }

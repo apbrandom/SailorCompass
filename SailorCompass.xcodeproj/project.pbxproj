@@ -19,16 +19,14 @@
 		CB3A077B2AF65E11007755C0 /* CatalogIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */; };
 		CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */; };
 		CB4617972AF6C02E00AD5BA5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4617962AF6C02E00AD5BA5 /* ProfileViewModel.swift */; };
-		CB4617992AF6C0AB00AD5BA5 /* CircularProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4617982AF6C0AB00AD5BA5 /* CircularProfileImage.swift */; };
 		CB46179C2AF7B31E00AD5BA5 /* CloudQuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB46179B2AF7B31E00AD5BA5 /* CloudQuestionModel.swift */; };
 		CB46179E2AF7BC8B00AD5BA5 /* AnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB46179D2AF7BC8B00AD5BA5 /* AnswerViewModel.swift */; };
 		CB4617A02AF7C0B400AD5BA5 /* NewQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB46179F2AF7C0B400AD5BA5 /* NewQuestionViewModel.swift */; };
 		CB564F5F2B05094F00F70C66 /* CloudTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB564F5E2B05094F00F70C66 /* CloudTestModel.swift */; };
 		CB564F612B05165B00F70C66 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB564F602B05165B00F70C66 /* Tools.swift */; };
-		CB564F632B0630A500F70C66 /* PublicQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB564F622B0630A500F70C66 /* PublicQuestionsView.swift */; };
+		CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB564F622B0630A500F70C66 /* PublicQuestionsListView.swift */; };
 		CB5E99732AED1E1600575C09 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */; };
 		CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */; };
-		CB61E3CA2AF1A7DA00B60328 /* FilteredQuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB61E3C92AF1A7DA00B60328 /* FilteredQuestionList.swift */; };
 		CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */; };
 		CB67508D2AE699600049E7A8 /* MyListTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508C2AE699600049E7A8 /* MyListTestsView.swift */; };
 		CB67508F2AE699610049E7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB67508E2AE699610049E7A8 /* Assets.xcassets */; };
@@ -48,12 +46,12 @@
 		CB8A503E2AE7D75A00088727 /* CatalogTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */; };
 		CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */; };
 		CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */; };
-		CB8A504A2AE8096700088727 /* PublicTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50492AE8096700088727 /* PublicTestsView.swift */; };
+		CB8A504A2AE8096700088727 /* PublicTestsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50492AE8096700088727 /* PublicTestsListView.swift */; };
 		CB8A504C2AE80E6B00088727 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504B2AE80E6B00088727 /* Constants.swift */; };
 		CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504D2AE814BC00088727 /* NewTestView.swift */; };
 		CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */; };
 		CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */; };
-		CBAB26AF2AEA6ED200C72AE1 /* MyListQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */; };
+		CBAB26AF2AEA6ED200C72AE1 /* UserQuestionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */; };
 		CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,16 +85,14 @@
 		CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogIcon.swift; sourceTree = "<group>"; };
 		CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonLabel.swift; sourceTree = "<group>"; };
 		CB4617962AF6C02E00AD5BA5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		CB4617982AF6C0AB00AD5BA5 /* CircularProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImage.swift; sourceTree = "<group>"; };
 		CB46179B2AF7B31E00AD5BA5 /* CloudQuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudQuestionModel.swift; sourceTree = "<group>"; };
 		CB46179D2AF7BC8B00AD5BA5 /* AnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewModel.swift; sourceTree = "<group>"; };
 		CB46179F2AF7C0B400AD5BA5 /* NewQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuestionViewModel.swift; sourceTree = "<group>"; };
 		CB564F5E2B05094F00F70C66 /* CloudTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudTestModel.swift; sourceTree = "<group>"; };
 		CB564F602B05165B00F70C66 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
-		CB564F622B0630A500F70C66 /* PublicQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicQuestionsView.swift; sourceTree = "<group>"; };
+		CB564F622B0630A500F70C66 /* PublicQuestionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicQuestionsListView.swift; sourceTree = "<group>"; };
 		CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuestionView.swift; sourceTree = "<group>"; };
-		CB61E3C92AF1A7DA00B60328 /* FilteredQuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredQuestionList.swift; sourceTree = "<group>"; };
 		CB6750872AE699600049E7A8 /* SailorCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SailorCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassApp.swift; sourceTree = "<group>"; };
 		CB67508C2AE699600049E7A8 /* MyListTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTestsView.swift; sourceTree = "<group>"; };
@@ -121,12 +117,12 @@
 		CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTestsView.swift; sourceTree = "<group>"; };
 		CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTestsViewModel.swift; sourceTree = "<group>"; };
 		CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTestsViewLabels.swift; sourceTree = "<group>"; };
-		CB8A50492AE8096700088727 /* PublicTestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTestsView.swift; sourceTree = "<group>"; };
+		CB8A50492AE8096700088727 /* PublicTestsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTestsListView.swift; sourceTree = "<group>"; };
 		CB8A504B2AE80E6B00088727 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB8A504D2AE814BC00088727 /* NewTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestView.swift; sourceTree = "<group>"; };
 		CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTitleTextField.swift; sourceTree = "<group>"; };
 		CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVesrionTextField.swift; sourceTree = "<group>"; };
-		CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionView.swift; sourceTree = "<group>"; };
+		CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionListView.swift; sourceTree = "<group>"; };
 		CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -255,10 +251,10 @@
 				CB8A50342AE7CF0C00088727 /* TabBarView.swift */,
 				CB8A503D2AE7D75A00088727 /* CatalogTestsView.swift */,
 				CB67508C2AE699600049E7A8 /* MyListTestsView.swift */,
-				CBAB26AE2AEA6ED200C72AE1 /* MyListQuestionView.swift */,
+				CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */,
 				CB0C516D2AF023100063C5AD /* QuestionDetailView.swift */,
-				CB8A50492AE8096700088727 /* PublicTestsView.swift */,
-				CB564F622B0630A500F70C66 /* PublicQuestionsView.swift */,
+				CB8A50492AE8096700088727 /* PublicTestsListView.swift */,
+				CB564F622B0630A500F70C66 /* PublicQuestionsListView.swift */,
 				CB8A503B2AE7D25800088727 /* ProfileView.swift */,
 				CB8A50392AE7D1F800088727 /* MapView.swift */,
 				CB8A50312AE7CE4500088727 /* SettingsView.swift */,
@@ -298,12 +294,10 @@
 				CB3A07742AF652B4007755C0 /* CatalogCell.swift */,
 				CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */,
 				CB03A3552AECFDA3005C3157 /* TestRowView.swift */,
-				CB61E3C92AF1A7DA00B60328 /* FilteredQuestionList.swift */,
 				CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */,
 				CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */,
 				CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */,
 				CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */,
-				CB4617982AF6C0AB00AD5BA5 /* CircularProfileImage.swift */,
 				CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */,
 				CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */,
 			);
@@ -458,7 +452,7 @@
 				CB8A503E2AE7D75A00088727 /* CatalogTestsView.swift in Sources */,
 				CB6750942AE699610049E7A8 /* Persistence.swift in Sources */,
 				CB3A077B2AF65E11007755C0 /* CatalogIcon.swift in Sources */,
-				CBAB26AF2AEA6ED200C72AE1 /* MyListQuestionView.swift in Sources */,
+				CBAB26AF2AEA6ED200C72AE1 /* UserQuestionListView.swift in Sources */,
 				CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */,
 				CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */,
 				CB564F5F2B05094F00F70C66 /* CloudTestModel.swift in Sources */,
@@ -469,14 +463,12 @@
 				CB6750972AE699610049E7A8 /* SailorCompass.xcdatamodeld in Sources */,
 				CB0087562AFAD9A900B92075 /* CloudKitUser.swift in Sources */,
 				CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */,
-				CB61E3CA2AF1A7DA00B60328 /* FilteredQuestionList.swift in Sources */,
-				CB8A504A2AE8096700088727 /* PublicTestsView.swift in Sources */,
+				CB8A504A2AE8096700088727 /* PublicTestsListView.swift in Sources */,
 				CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */,
 				CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */,
-				CB564F632B0630A500F70C66 /* PublicQuestionsView.swift in Sources */,
+				CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
 				CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */,
-				CB4617992AF6C0AB00AD5BA5 /* CircularProfileImage.swift in Sources */,
 				CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */,
 				CB4617972AF6C02E00AD5BA5 /* ProfileViewModel.swift in Sources */,
 				CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */,

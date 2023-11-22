@@ -1,25 +1,32 @@
 //
-//  SharedTestsView.swift
+//  PublicQuestionsView.swift
 //  SailorCompass
 //
-//  Created by Vadim Vinogradov on 24.10.2023.
+//  Created by Vadim Vinogradov on 16.11.2023.
 //
 
 import SwiftUI
 import CloudKit
 
-struct PublicTestsView: View {
+struct PublicQuestionsListView: View {
     
-    @State private var tests = [CloudTestModel]()
+    @State private var questions = [CloudQuestionModel]()
     
     var body: some View {
-        List(tests) { test in
+        List(questions) { question in
             VStack(alignment: .leading) {
-                Text(test.title).font(.headline)
-                if let version = test.version {
-                    Text("Version: \(version)")
-                }
-                Text("Publication date: \(test.publicDate, formatter: DateFormatter.shortDate)")
+                Text(question.testTitle)
+                    .font(.headline)
+                    .foregroundColor(.blue)
+                    .padding(.bottom, 2)
+
+                Text(question.text)
+                    .padding(.bottom, 2)
+
+                Text(question.correctAnswer)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom, 2)
             }
         }
         .onAppear(perform: fetchItems)
@@ -27,18 +34,17 @@ struct PublicTestsView: View {
     
     func fetchItems() {
             let predicate = NSPredicate(value: true)
-            let query = CKQuery(recordType: "CDTest", predicate: predicate)
+            let query = CKQuery(recordType: "PublicQuestion", predicate: predicate)
             let queryOperation = CKQueryOperation(query: query)
             
             queryOperation.recordMatchedBlock = { (_, result) in
                 switch result {
                 case .success(let record):
-                    let test = CloudTestModel(record: record)
+                    let question = CloudQuestionModel(record: record)
                     DispatchQueue.main.async {
-                        self.tests.append(test)
+                        self.questions.append(question)
                     }
                 case .failure(let error):
-                    // Обработка ошибок
                     print(error.localizedDescription)
                 }
             }
@@ -46,7 +52,7 @@ struct PublicTestsView: View {
             queryOperation.queryResultBlock = { result in
                 switch result {
                 case .success(_):
-                    print("Запрос успешно завершен")
+                    print("PublicQuestionList request succses")
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -56,5 +62,5 @@ struct PublicTestsView: View {
 }
 
 #Preview {
-    PublicTestsView()
+    PublicQuestionsListView()
 }
