@@ -18,9 +18,17 @@ struct ProfileView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 80, height: 80)
-                
+                Spacer()
                 VStack(alignment: .leading) {
-                    Text("User Name")
+                    HStack {
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            Text(viewModel.userName)
+                            Text(viewModel.userLastName)
+                        }
+
+                    }
                     Text("Nationality")
                     Text("role on the ship")
                 }
@@ -38,8 +46,10 @@ struct ProfileView: View {
                 Text("IS SIGNED IN :\(viewModel.isSignednToCloud.description) ")
                 Text(viewModel.error)
             }
+            Spacer()
         }
         .padding()
+        
     }
 }
 

@@ -12,11 +12,14 @@ import CloudKit
 class CloudKitUserViewModel: ObservableObject {
     
     @Published var isSignednToCloud = false
+    @Published var userName = "Emtpty Name"
+    @Published var userLastName = "Empty Name"
+    @Published var isLoading = true
     @Published var error = ""
-    
     
     init() {
         getCloudKitStatus()
+        discoverCloudUser()
     }
     
     private func getCloudKitStatus() {
@@ -62,8 +65,41 @@ class CloudKitUserViewModel: ObservableObject {
     }
     
     func discoverCloudUser() {
-        
-    }
+            CKContainer.default().fetchUserRecordID { [weak self] recordID, error in
+                guard let recordID = recordID, error == nil else {
+                    DispatchQueue.main.async {
+                        self?.error = error?.localizedDescription ?? "Unknown error"
+                        self?.isLoading = false
+                    }
+                    return
+                }
+
+                let operation = CKDiscoverUserIdentitiesOperation(userIdentityLookupInfos: [.init(userRecordID: recordID)])
+                operation.userIdentityDiscoveredBlock = { identity, _ in
+                    DispatchQueue.main.async {
+                        self?.userName = identity.nameComponents?.givenName ?? "Unknown"
+                        self?.userLastName = identity.nameComponents?.familyName ?? "Unknown"
+                        self?.isLoading = false
+                    }
+                }
+
+                operation.discoverUserIdentitiesResultBlock = { result in
+                    switch result {
+                    case .success():
+                        // Обработка успешного завершения операции
+                        break
+                    case .failure(let error):
+                        DispatchQueue.main.async {
+                            self?.error = error.localizedDescription
+                            self?.isLoading = false
+                        }
+                    }
+                }
+
+                CKContainer.default().add(operation)
+            }
+        }
+
 }
 
 struct CloudKitUser: View {
