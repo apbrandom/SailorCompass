@@ -25,6 +25,7 @@
 		CB564F5F2B05094F00F70C66 /* CloudTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB564F5E2B05094F00F70C66 /* CloudTestModel.swift */; };
 		CB564F612B05165B00F70C66 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB564F602B05165B00F70C66 /* Tools.swift */; };
 		CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB564F622B0630A500F70C66 /* PublicQuestionsListView.swift */; };
+		CB568DDF2B1299DF00D8B799 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB568DDE2B1299DF00D8B799 /* Colors.swift */; };
 		CB5E99732AED1E1600575C09 /* NSPredicate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */; };
 		CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */; };
 		CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */; };
@@ -91,6 +92,7 @@
 		CB564F5E2B05094F00F70C66 /* CloudTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudTestModel.swift; sourceTree = "<group>"; };
 		CB564F602B05165B00F70C66 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		CB564F622B0630A500F70C66 /* PublicQuestionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicQuestionsListView.swift; sourceTree = "<group>"; };
+		CB568DDE2B1299DF00D8B799 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+Extension.swift"; sourceTree = "<group>"; };
 		CB6046A92AEAA85F004727A2 /* NewQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuestionView.swift; sourceTree = "<group>"; };
 		CB6750872AE699600049E7A8 /* SailorCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SailorCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +275,7 @@
 				CB3A07762AF655CC007755C0 /* GlassBackground.swift */,
 				CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */,
 				CB564F602B05165B00F70C66 /* Tools.swift */,
+				CB568DDE2B1299DF00D8B799 /* Colors.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */,
 				CB8A504A2AE8096700088727 /* PublicTestsListView.swift in Sources */,
 				CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */,
+				CB568DDF2B1299DF00D8B799 /* Colors.swift in Sources */,
 				CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */,
 				CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,

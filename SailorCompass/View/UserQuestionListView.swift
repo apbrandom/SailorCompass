@@ -16,7 +16,6 @@ struct UserQuestionListView: View {
     var selectedTest: Test
     
     @FetchRequest var questions: FetchedResults<Question>
-    
     @State private var isShowingDeleteAlert = false
     @State private var isShowingPublishAlert = false
     @State private var deletionIndexSet: IndexSet?

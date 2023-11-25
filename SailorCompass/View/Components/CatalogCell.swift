@@ -18,15 +18,17 @@ struct CatalogCell: View {
                     Image(systemName: icon)
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: frame * 0.25)
+                        .frame(maxWidth: 40, maxHeight: 40)
+                        .padding()
                     Text(title)
                     Spacer()
                 }
                 .frame(height: 100)
-                //        .background(RadialGradient(colors: [.indigo, .orange], center: .center, startRadius: 1, endRadius: 100))
-                .clipShape(.rect(cornerRadius: 16))
-                .shadow(radius: 2)
-                .padding()
+                .background(.regularMaterial)
+                .clipShape(.rect(cornerRadius: 10))
+                .shadow(radius: 1.5)
+                .padding(.horizontal)
+                .padding(.vertical, 5)
         }
     }
 }

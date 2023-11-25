@@ -14,8 +14,8 @@ struct CatalogTestsView: View {
     private let gridItems = [GridItem(.adaptive(minimum: Constants.LayoutMetrics.catalogGridLayout))]
     
     var body: some View {
-        ScrollView(.vertical) {
-            LazyVGrid(columns: gridItems) {
+        ScrollView {
+//            LazyVGrid(columns: gridItems) {
                 NavigationLink {
                     MyListTestsView()
                 } label: {
@@ -31,8 +31,7 @@ struct CatalogTestsView: View {
                 } label: {
                     CatalogCell(icon: CatalogIcon.publicQuestion.icon, title: CatalogIcon.publicQuestion.title)
                 }
-
-            }
+//            }
         }
         .navigationTitle(Constants.LocalizedStrings.catalog)
     }
