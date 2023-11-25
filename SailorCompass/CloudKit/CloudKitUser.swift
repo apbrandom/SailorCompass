@@ -8,7 +8,6 @@
 import SwiftUI
 import CloudKit
 
-
 class CloudKitUserViewModel: ObservableObject {
     
     @Published var isSignednToCloud = false

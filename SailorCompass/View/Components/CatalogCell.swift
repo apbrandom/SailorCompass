@@ -14,17 +14,20 @@ struct CatalogCell: View {
     
     var body: some View {
         VStack {
-            Image(systemName: icon)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: frame * 0.25)
-                
-            Text(title)
+                HStack {
+                    Image(systemName: icon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: frame * 0.25)
+                    Text(title)
+                    Spacer()
+                }
+                .frame(height: 100)
+                //        .background(RadialGradient(colors: [.indigo, .orange], center: .center, startRadius: 1, endRadius: 100))
+                .clipShape(.rect(cornerRadius: 16))
+                .shadow(radius: 2)
+                .padding()
         }
-        .frame(width: frame * 0.3, height: frame * 0.3)
-        .background(RadialGradient(colors: [.indigo, .orange], center: .center, startRadius: 1, endRadius: 100))
-        .clipShape(.rect(cornerRadius: 16))
-        .shadow(radius: 2)
     }
 }
 
