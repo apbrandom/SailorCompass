@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CatalogTestsView: View {
+struct MainView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -15,7 +15,6 @@ struct CatalogTestsView: View {
     
     var body: some View {
         ScrollView {
-//            LazyVGrid(columns: gridItems) {
                 NavigationLink {
                     MyListTestsView()
                 } label: {
@@ -31,12 +30,12 @@ struct CatalogTestsView: View {
                 } label: {
                     CatalogCell(icon: CatalogIcon.publicQuestion.icon, title: CatalogIcon.publicQuestion.title)
                 }
-//            }
         }
-        .navigationTitle(Constants.LocalizedStrings.catalog)
+        .navigationTitle(Constants.LocalizedStrings.main)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
 #Preview {
-    CatalogTestsView()
+    MainView()
 }

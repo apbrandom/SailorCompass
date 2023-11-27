@@ -12,7 +12,7 @@ struct TabBarView: View {
     var body: some View {
         TabView{
             NavigationView {
-                CatalogTestsView()
+                MainView()
             }
             .tabItem {
                 Image(systemName: TabBarItem.catalog.iconName)

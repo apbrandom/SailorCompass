@@ -10,7 +10,7 @@ import SwiftUI
 enum Constants {
     
     enum LocalizedStrings {
-        static let catalog = "Catalog"
+        static let main = "Main"
         static let myTests = "My Tests"
         static let newTest = "Creating a new test"
         static let save = "Save"
