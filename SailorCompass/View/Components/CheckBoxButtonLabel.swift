@@ -9,8 +9,6 @@ import SwiftUI
 
 struct CheckBoxButtonLabel: View {
     
-//    var isCorrect: Bool
-    
     var body: some View {
         Image(systemName: "checkmark.square" )
             .resizable()

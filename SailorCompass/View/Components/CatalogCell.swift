@@ -26,7 +26,7 @@ struct CatalogCell: View {
                 .frame(height: 100)
                 .background(.regularMaterial)
                 .clipShape(.rect(cornerRadius: 10))
-                .shadow(radius: 1.5)
+                .shadow(color: .black.opacity(0.3), radius: 10)
                 .padding(.horizontal)
                 .padding(.vertical, 5)
         }

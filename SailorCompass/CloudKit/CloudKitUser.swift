@@ -10,25 +10,38 @@ import CloudKit
 
 class CloudKitUserViewModel: ObservableObject {
     
-    @Published var isSignednToCloud = false
+    let admin = "_0fec703d16870d299f25b91b66629fef"
+    
+    @Published var isSignedIn = false
+    @Published var isAdmin = false
+    @Published var permisionStatus = false
     @Published var userName = "Emtpty Name"
     @Published var userLastName = "Empty Name"
     @Published var isLoading = true
     @Published var error = ""
     
     init() {
-        getCloudKitStatus()
-        discoverCloudUser()
+        requestPermision()
+        getCloudStatus()
+        fetchCloudUserRecordID()
     }
     
-    private func getCloudKitStatus() {
+    enum CloudKitError: String, LocalizedError {
+        case iCloudAccontNotDetermined
+        case iCloudAccountUnkmown
+        case iCloudAccountRestricted
+        case iCloudAccountNotFound
+        case iCloudAccountTemporarilyUnavailable
+    }
+    
+    private func getCloudStatus() {
         CKContainer.default().accountStatus { [weak self] status, error in
             DispatchQueue.main.async {
                 switch status {
                 case .couldNotDetermine:
                     self?.error = CloudKitError.iCloudAccontNotDetermined.rawValue
                 case .available:
-                    self?.isSignednToCloud = true
+                    self?.isSignedIn = true
                 case .restricted:
                     self?.error = CloudKitError.iCloudAccountRestricted.rawValue
                 case .noAccount:
@@ -42,77 +55,101 @@ class CloudKitUserViewModel: ObservableObject {
         }
     }
     
-    enum CloudKitError: String, LocalizedError {
-        case iCloudAccontNotDetermined
-        case iCloudAccountUnkmown
-        case iCloudAccountRestricted
-        case iCloudAccountNotFound
-        case iCloudAccountTemporarilyUnavailable
-    }
-    
     func requestPermision() {
-    
-    }
-    
-    func fetchCloudRecord() {
-        
-        CKContainer.default().fetchUserRecordID { id, error in
+        CKContainer.default().requestApplicationPermission(.userDiscoverability) { [weak self] status, error in
             DispatchQueue.main.async {
-                
+                if status == .granted {
+                    self?.permisionStatus = true
+                }
             }
         }
     }
     
-    func discoverCloudUser() {
+    func fetchCloudUserRecordID() {
             CKContainer.default().fetchUserRecordID { [weak self] recordID, error in
-                guard let recordID = recordID, error == nil else {
-                    DispatchQueue.main.async {
-                        self?.error = error?.localizedDescription ?? "Unknown error"
-                        self?.isLoading = false
-                    }
-                    return
-                }
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
 
-                let operation = CKDiscoverUserIdentitiesOperation(userIdentityLookupInfos: [.init(userRecordID: recordID)])
-                operation.userIdentityDiscoveredBlock = { identity, _ in
-                    DispatchQueue.main.async {
-                        self?.userName = identity.nameComponents?.givenName ?? "Unknown"
-                        self?.userLastName = identity.nameComponents?.familyName ?? "Unknown"
-                        self?.isLoading = false
+                    if let error = error {
+                        self.error = error.localizedDescription
+                        self.isLoading = false
+                        return
                     }
-                }
 
-                operation.discoverUserIdentitiesResultBlock = { result in
-                    switch result {
-                    case .success():
-                        // Обработка успешного завершения операции
-                        break
-                    case .failure(let error):
-                        DispatchQueue.main.async {
-                            self?.error = error.localizedDescription
-                            self?.isLoading = false
-                        }
+                    guard let userID = recordID?.recordName else {
+                        self.error = "Unknown error: User ID is not available"
+                        self.isLoading = false
+                        return
                     }
-                }
 
-                CKContainer.default().add(operation)
+                    print("UserID: \(userID)")
+                    if userID == self.admin {
+                        self.isAdmin = true
+                    }
+
+                    if let unwrappedRecordID = recordID {
+                        self.discoverCloudUser(userID: unwrappedRecordID)
+                    } else {
+                        self.error = "Record ID is nil"
+                    }
+
+                    self.isLoading = false
+                }
             }
         }
-
+    
+    func discoverCloudUser(userID: CKRecord.ID) {
+        let operation = CKDiscoverUserIdentitiesOperation(userIdentityLookupInfos: [.init(userRecordID: userID)])
+        operation.userIdentityDiscoveredBlock = { identity, _ in
+            DispatchQueue.main.async {
+                self.userName = identity.nameComponents?.givenName ?? "Unknown"
+                self.userLastName = identity.nameComponents?.familyName ?? "Unknown"
+                self.isLoading = false
+            }
+        }
+        
+        operation.discoverUserIdentitiesResultBlock = { result in
+            switch result {
+            case .success():
+                // Обработка успешного завершения операции
+                break
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.error = error.localizedDescription
+                    self.isLoading = false
+                }
+            }
+        }
+        CKContainer.default().add(operation)
+    }
 }
 
 struct CloudKitUser: View {
     
-    @StateObject var viewModel = CloudKitUserViewModel()
+    @StateObject var vm = CloudKitUserViewModel()
     
     var body: some View {
         VStack {
-            Text("IS SIGNED IN :\(viewModel.isSignednToCloud.description) ")
-            Text(viewModel.error)
+            Text(vm.isAdmin ? "ADMIN" : "")
+            Text("IS SIGNED IN :\(vm.isSignedIn.description) ")
+            Text(vm.error)
         }
     }
 }
 
 #Preview {
     CloudKitUser()
+}
+
+extension CloudKitUserViewModel {
+    static var preview: CloudKitUserViewModel {
+        let viewModel = CloudKitUserViewModel()
+
+        viewModel.isAdmin = false
+        viewModel.userName = "John"
+        viewModel.userLastName = "Doe"
+        viewModel.isSignedIn = true
+
+        return viewModel
+    }
 }

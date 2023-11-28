@@ -9,50 +9,49 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @StateObject var viewModel = CloudKitUserViewModel()
+    @StateObject var vm = CloudKitUserViewModel()
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack(alignment: .top) {
-                Image(systemName: "person.crop.circle.badge.plus")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 80, height: 80)
-                Spacer()
-                VStack(alignment: .leading) {
-                    HStack {
-                        if viewModel.isLoading {
-                            ProgressView()
-                        } else {
-                            Text(viewModel.userName)
-                            Text(viewModel.userLastName)
-                        }
-
+        NavigationView {
+            Form {
+                Section("Personal information") {
+                    
+                    if vm.isLoading {
+                        ProgressView()
+                    } else {
+                        Text("\(vm.userName) \(vm.userLastName)")
                     }
                     Text("Nationality")
-                    Text("role on the ship")
+                    HStack {
+                        Text("iCloud Status")
+                        Spacer()
+                        Image(systemName: "checkmark.seal.fill")
+                            .foregroundStyle(vm.isSignedIn ? .green : .gray)
+                    }
+                    HStack {
+                        Text("Account status")
+                        Spacer()
+                        Text(vm.isAdmin ? "Admin" : "User")
+                    }
                 }
-                .padding()
+                Section("Sailnig") {
+                    Text("On vessel?")
+                    Text("Дата поскадки")
+                    Text("role on the ship")
+                    
+                    Text("Company")
+                    Text("Vessel")
+                    Text("Location")
+                    Text("Miles traveled")
+                    
+                    Text("дата списания")
+                }
+                .navigationTitle("Account")
             }
-            .padding()
-            Text("On vessel?")
-            Text("Company")
-            Text("Vessel")
-            Text("Location")
-            Text("Miles traveled")
-            Text("Дата поскадки")
-            Text("Примерная дата списания")
-            GroupBox {
-                Text("IS SIGNED IN :\(viewModel.isSignednToCloud.description) ")
-                Text(viewModel.error)
-            }
-            Spacer()
         }
-        .padding()
-        
     }
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(vm: .preview)
 }

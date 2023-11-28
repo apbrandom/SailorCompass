@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct QuestionTextEditor: View {
+    
     @Binding var text: String
     @Binding var isInvalid: Bool
+    
     let maxLength: Int = 150
     
     var body: some View {

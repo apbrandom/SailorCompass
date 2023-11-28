@@ -205,13 +205,13 @@
 		CB6750892AE699600049E7A8 /* SailorCompass */ = {
 			isa = PBXGroup;
 			children = (
-				CB0087542AFAD98D00B92075 /* CloudKit */,
 				CB67508A2AE699600049E7A8 /* SailorCompassApp.swift */,
 				CB8A50332AE7CE5C00088727 /* View */,
 				CB8A50412AE7FF4800088727 /* ViewModel */,
 				CB46179A2AF7B2E800AD5BA5 /* Model */,
 				CB8A50362AE7CF6200088727 /* Utilities */,
 				CB03A3502AEC5A77005C3157 /* CoreData */,
+				CB0087542AFAD98D00B92075 /* CloudKit */,
 				CB67508E2AE699610049E7A8 /* Assets.xcassets */,
 				CB6750982AE699610049E7A8 /* SailorCompass.entitlements */,
 				CB6750992AE699610049E7A8 /* Info.plist */,
