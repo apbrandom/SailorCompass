@@ -53,6 +53,8 @@
 		CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */; };
 		CBA8670F2B175BEA00C6A649 /* NationalityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */; };
 		CBA867112B175E6D00C6A649 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867102B175E6D00C6A649 /* Country.swift */; };
+		CBA867132B179C6E00C6A649 /* CrewRolePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */; };
+		CBA867152B179CA400C6A649 /* Crew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867142B179CA400C6A649 /* Crew.swift */; };
 		CBAB26AF2AEA6ED200C72AE1 /* UserQuestionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */; };
 		CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -126,6 +128,8 @@
 		CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVesrionTextField.swift; sourceTree = "<group>"; };
 		CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalityPicker.swift; sourceTree = "<group>"; };
 		CBA867102B175E6D00C6A649 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewRolePicker.swift; sourceTree = "<group>"; };
+		CBA867142B179CA400C6A649 /* Crew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crew.swift; sourceTree = "<group>"; };
 		CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionListView.swift; sourceTree = "<group>"; };
 		CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -279,6 +283,7 @@
 				CB564F602B05165B00F70C66 /* Tools.swift */,
 				CB568DDE2B1299DF00D8B799 /* Colors.swift */,
 				CBA867102B175E6D00C6A649 /* Country.swift */,
+				CBA867142B179CA400C6A649 /* Crew.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */,
 				CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */,
 				CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */,
+				CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				CB7887CC2AFD2B2500367B50 /* AnswerTextField.swift in Sources */,
 				CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */,
 				CB46179C2AF7B31E00AD5BA5 /* CloudQuestionModel.swift in Sources */,
+				CBA867132B179C6E00C6A649 /* CrewRolePicker.swift in Sources */,
 				CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */,
 				CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */,
 				CB4617A02AF7C0B400AD5BA5 /* NewQuestionViewModel.swift in Sources */,
@@ -461,6 +468,7 @@
 				CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */,
 				CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */,
 				CB564F5F2B05094F00F70C66 /* CloudTestModel.swift in Sources */,
+				CBA867152B179CA400C6A649 /* Crew.swift in Sources */,
 				CB03A3562AECFDA3005C3157 /* TestRowView.swift in Sources */,
 				CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */,
 				CB0C516E2AF023100063C5AD /* QuestionDetailView.swift in Sources */,

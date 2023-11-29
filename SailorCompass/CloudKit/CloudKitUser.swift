@@ -20,7 +20,10 @@ class CloudKitUserViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var error = ""
     @Published var isAtSea = false
-    @Published var selectedNationality = "🇺🇸"
+    @Published var signOnDate = Date()
+    @Published var signOfDate = Date()
+    @Published var vesselName = "No name"
+    @Published var crewRole = ""
     
     init() {
         requestPermision()
