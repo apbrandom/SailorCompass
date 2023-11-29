@@ -11,7 +11,7 @@ struct CrewRolePicker: View {
     let title = "Crew Role"
     let crew = Crew.role
     
-    @State var role = "Passanger"
+    @State var role = "Passenger"
     
     var body: some View {
         Picker(title, selection: $role) {

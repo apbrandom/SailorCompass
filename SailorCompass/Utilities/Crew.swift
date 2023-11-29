@@ -9,6 +9,7 @@ import Foundation
 
 struct Crew {
     static let role = [
+        "Passenger",
         "Capitan",
         "Chief Mate",
         "Chief Engineer",
