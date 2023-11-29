@@ -11,6 +11,8 @@ struct ProfileView: View {
     
     @StateObject var vm = CloudKitUserViewModel()
     
+//    @State private var selectedNationality = "🇺🇸"
+    
     var body: some View {
         NavigationView {
             Form {
@@ -21,32 +23,40 @@ struct ProfileView: View {
                     } else {
                         Text("\(vm.userName) \(vm.userLastName)")
                     }
-                    Text("Nationality")
+                    NationalityPicker()
+//                    Picker("Nationality", selection: $vm.selectedNationality) {
+//                        Text("🇺🇸").tag("🇺🇸") // США
+//                        Text("🇬🇧").tag("🇬🇧") // Великобритания
+//                        // Добавьте другие страны
+//                    }
                     HStack {
-                        Text("iCloud Status")
+                        Text("iCloud Authorization")
                         Spacer()
                         Image(systemName: "checkmark.seal.fill")
                             .foregroundStyle(vm.isSignedIn ? .green : .gray)
                     }
                     HStack {
-                        Text("Account status")
+                        Text("Account Status")
                         Spacer()
                         Text(vm.isAdmin ? "Admin" : "User")
                     }
                 }
-                Section("Sailnig") {
-                    Text("On vessel?")
-                    Text("Дата поскадки")
+                Section("Sailing") {
+                    Toggle(isOn: $vm.isAtSea) {
+                        Text("Currently at Sea")
+                    }
+                    Text("Sign-on Date")
+                    Text("Sign-off Date")
+                    Text("Vessel")
                     Text("role on the ship")
+
                     
                     Text("Company")
-                    Text("Vessel")
+                    
                     Text("Location")
                     Text("Miles traveled")
-                    
-                    Text("дата списания")
                 }
-                .navigationTitle("Account")
+                .navigationTitle("Profile")
             }
         }
     }

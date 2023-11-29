@@ -19,6 +19,8 @@ class CloudKitUserViewModel: ObservableObject {
     @Published var userLastName = "Empty Name"
     @Published var isLoading = true
     @Published var error = ""
+    @Published var isAtSea = false
+    @Published var selectedNationality = "🇺🇸"
     
     init() {
         requestPermision()

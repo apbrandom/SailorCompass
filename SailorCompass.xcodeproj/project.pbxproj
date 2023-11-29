@@ -46,12 +46,13 @@
 		CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503B2AE7D25800088727 /* ProfileView.swift */; };
 		CB8A503E2AE7D75A00088727 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A503D2AE7D75A00088727 /* MainView.swift */; };
 		CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */; };
-		CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */; };
 		CB8A504A2AE8096700088727 /* PublicTestsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50492AE8096700088727 /* PublicTestsListView.swift */; };
 		CB8A504C2AE80E6B00088727 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504B2AE80E6B00088727 /* Constants.swift */; };
 		CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504D2AE814BC00088727 /* NewTestView.swift */; };
 		CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */; };
 		CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */; };
+		CBA8670F2B175BEA00C6A649 /* NationalityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */; };
+		CBA867112B175E6D00C6A649 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867102B175E6D00C6A649 /* Country.swift */; };
 		CBAB26AF2AEA6ED200C72AE1 /* UserQuestionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */; };
 		CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -118,12 +119,13 @@
 		CB8A503B2AE7D25800088727 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CB8A503D2AE7D75A00088727 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CB8A50442AE8033500088727 /* MyListTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTestsViewModel.swift; sourceTree = "<group>"; };
-		CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTestsViewLabels.swift; sourceTree = "<group>"; };
 		CB8A50492AE8096700088727 /* PublicTestsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTestsListView.swift; sourceTree = "<group>"; };
 		CB8A504B2AE80E6B00088727 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CB8A504D2AE814BC00088727 /* NewTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestView.swift; sourceTree = "<group>"; };
 		CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTitleTextField.swift; sourceTree = "<group>"; };
 		CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVesrionTextField.swift; sourceTree = "<group>"; };
+		CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalityPicker.swift; sourceTree = "<group>"; };
+		CBA867102B175E6D00C6A649 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionListView.swift; sourceTree = "<group>"; };
 		CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -276,6 +278,7 @@
 				CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */,
 				CB564F602B05165B00F70C66 /* Tools.swift */,
 				CB568DDE2B1299DF00D8B799 /* Colors.swift */,
+				CBA867102B175E6D00C6A649 /* Country.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -295,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				CB3A07742AF652B4007755C0 /* CatalogCell.swift */,
-				CB8A50472AE8066200088727 /* CatalogTestsViewLabels.swift */,
 				CB03A3552AECFDA3005C3157 /* TestRowView.swift */,
 				CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */,
 				CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */,
@@ -303,6 +305,7 @@
 				CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */,
 				CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */,
 				CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */,
+				CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -443,7 +446,6 @@
 				CB46179C2AF7B31E00AD5BA5 /* CloudQuestionModel.swift in Sources */,
 				CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */,
 				CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */,
-				CB8A50482AE8066200088727 /* CatalogTestsViewLabels.swift in Sources */,
 				CB4617A02AF7C0B400AD5BA5 /* NewQuestionViewModel.swift in Sources */,
 				CB0C51702AF0257E0063C5AD /* CDAnswer+Extension.swift in Sources */,
 				CB03A3522AEC5ABA005C3157 /* CDTest+Extension.swift in Sources */,
@@ -467,11 +469,13 @@
 				CB0087562AFAD9A900B92075 /* CloudKitUser.swift in Sources */,
 				CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */,
 				CB8A504A2AE8096700088727 /* PublicTestsListView.swift in Sources */,
+				CBA867112B175E6D00C6A649 /* Country.swift in Sources */,
 				CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */,
 				CB568DDF2B1299DF00D8B799 /* Colors.swift in Sources */,
 				CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */,
 				CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
+				CBA8670F2B175BEA00C6A649 /* NationalityPicker.swift in Sources */,
 				CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */,
 				CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */,
 				CB4617972AF6C02E00AD5BA5 /* ProfileViewModel.swift in Sources */,
