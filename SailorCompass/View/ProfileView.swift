@@ -57,7 +57,12 @@ struct ProfileView: View {
             }
             .navigationTitle("Profile")
             .toolbar {
-                EditButton()
+                Button("Edit") {
+                    vm.showingEditScreen = true
+                }
+            }
+            .sheet(isPresented: $vm.showingEditScreen) {
+                EditProfileView(vm: vm)
             }
         }
     }

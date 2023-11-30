@@ -23,6 +23,7 @@ class CloudKitUserViewModel: ObservableObject {
     @Published var signOfDate = Date()
     @Published var vesselName = ""
     @Published var crewRole = ""
+    @Published var showingEditScreen = false
     
     init() {
         requestPermision()

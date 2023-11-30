@@ -16,6 +16,6 @@ struct EditProfileView: View {
     }
 }
 
-//#Preview {
-//    EditProfileView(vm: .preview)
-//}
+#Preview {
+    EditProfileView(vm: .preview)
+}
