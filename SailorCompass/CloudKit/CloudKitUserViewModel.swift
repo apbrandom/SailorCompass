@@ -131,23 +131,6 @@ class CloudKitUserViewModel: ObservableObject {
     }
 }
 
-struct CloudKitUser: View {
-    
-    @StateObject var vm = CloudKitUserViewModel()
-    
-    var body: some View {
-        VStack {
-            Text(vm.isAdmin ? "ADMIN" : "")
-            Text("IS SIGNED IN :\(vm.isSignedIn.description) ")
-            Text(vm.error)
-        }
-    }
-}
-
-#Preview {
-    CloudKitUser()
-}
-
 extension CloudKitUserViewModel {
     static var preview: CloudKitUserViewModel {
         let viewModel = CloudKitUserViewModel()
