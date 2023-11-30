@@ -11,29 +11,28 @@ struct ProfileView: View {
     
     @StateObject var vm = CloudKitUserViewModel()
     
+    @AppStorage("userName") var userName = "Edward"
+    @AppStorage("userLastName") var userLastName = "Teach"
+    @AppStorage("sailorNickName") var nickname = "Blackbeard"
+    
     var body: some View {
         NavigationView {
             Form {
                 Section("Personal information") {
-                    if vm.isLoading {
-                        ProgressView()
-                    } else {
-                        Text("\(vm.userName) \(vm.userLastName)")
-                    }
-                    NationalityPicker()
-                    
                     HStack {
-                        Text("iCloud Authorization")
-                        Spacer()
+                        Text("iCloud")
                         Image(systemName: "checkmark.seal.fill")
                             .foregroundStyle(vm.isSignedIn ? .green : .gray)
-                    }
-                    
-                    HStack {
-                        Text("Account Status")
                         Spacer()
                         Text(vm.isAdmin ? "Admin" : "User")
                     }
+                    if vm.isLoading {
+                        ProgressView()
+                    } else {
+                        Text("\(userName) \(userLastName)")
+                    }
+                    Text(nickname)
+                    FlagPicker()
                 }
                 
                 Section("Sailing") {
@@ -57,6 +56,9 @@ struct ProfileView: View {
                 }
             }
             .navigationTitle("Profile")
+            .toolbar {
+                EditButton()
+            }
         }
     }
 }

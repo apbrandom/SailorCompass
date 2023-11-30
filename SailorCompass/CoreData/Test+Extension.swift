@@ -21,12 +21,6 @@ extension Test {
         set { creationDate_ = newValue }
     }
     
-//    var questionCount: Int {
-//        get { Int(qcount_) ?? 0 }
-//        set { qcount_ = newValue }
-//    }
-    
-        
     convenience init(title: String, version: String, context: NSManagedObjectContext) {
         self.init(context: context)
         self.title = title

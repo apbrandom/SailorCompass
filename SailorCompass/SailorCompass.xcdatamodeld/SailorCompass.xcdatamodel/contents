@@ -24,5 +24,21 @@
         <attribute name="title_" optional="YES" attributeType="String"/>
         <attribute name="version" optional="YES" attributeType="String"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="test" inverseEntity="Question"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="tests" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="crewRole" optional="YES" attributeType="String"/>
+        <attribute name="currentLocation" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="flag" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isAtSea" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="milesTraveled" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="sailorNickName" optional="YES" attributeType="String"/>
+        <attribute name="signOfDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="signOnDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="userLastName" optional="YES" attributeType="String"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+        <attribute name="vesselName" optional="YES" attributeType="String"/>
+        <relationship name="tests" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Test" inverseName="user" inverseEntity="Test"/>
     </entity>
 </model>

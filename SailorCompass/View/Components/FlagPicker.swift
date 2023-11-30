@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct NationalityPicker: View {
-    let title = "Nationality"
+struct FlagPicker: View {
+    let title = "Flag"
     let countries = Country.Flags
     
     @State var flag = "🏴‍☠️"
@@ -23,7 +23,7 @@ struct NationalityPicker: View {
 }
 
 #Preview {
-    NationalityPicker()
+    FlagPicker()
 }
 
 

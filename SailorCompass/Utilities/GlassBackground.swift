@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct GlassBackground: View {
-//    let width: CGFloat
-//    let height: CGFloat
     let color: Color
 
     var body: some View {
@@ -24,10 +22,10 @@ struct GlassBackground: View {
         .opacity(0.2)
         
         .cornerRadius(10)
-//        .frame(width: width, height: height)
+
     }
 }
 
-//#Preview {
-//    GlassBackground()
-//}
+#Preview {
+    GlassBackground(color: .clear)
+}

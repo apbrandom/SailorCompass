@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CB0087562AFAD9A900B92075 /* CloudKitUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0087552AFAD9A900B92075 /* CloudKitUser.swift */; };
-		CB03A3522AEC5ABA005C3157 /* CDTest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3512AEC5ABA005C3157 /* CDTest+Extension.swift */; };
-		CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3532AECF644005C3157 /* CDQuestion+Extension.swift */; };
+		CB03A3522AEC5ABA005C3157 /* Test+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3512AEC5ABA005C3157 /* Test+Extension.swift */; };
+		CB03A3542AECF644005C3157 /* Question+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3532AECF644005C3157 /* Question+Extension.swift */; };
 		CB03A3562AECFDA3005C3157 /* TestRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB03A3552AECFDA3005C3157 /* TestRowView.swift */; };
 		CB0C516E2AF023100063C5AD /* QuestionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516D2AF023100063C5AD /* QuestionDetailView.swift */; };
-		CB0C51702AF0257E0063C5AD /* CDAnswer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */; };
+		CB0C51702AF0257E0063C5AD /* Answer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516F2AF0257E0063C5AD /* Answer+Extension.swift */; };
 		CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */; };
 		CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A07742AF652B4007755C0 /* CatalogCell.swift */; };
 		CB3A07772AF655CC007755C0 /* GlassBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A07762AF655CC007755C0 /* GlassBackground.swift */; };
@@ -51,7 +51,7 @@
 		CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A504D2AE814BC00088727 /* NewTestView.swift */; };
 		CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */; };
 		CB9495FF2AF3F698007A850C /* TestVesrionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */; };
-		CBA8670F2B175BEA00C6A649 /* NationalityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */; };
+		CBA8670F2B175BEA00C6A649 /* FlagPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8670E2B175BEA00C6A649 /* FlagPicker.swift */; };
 		CBA867112B175E6D00C6A649 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867102B175E6D00C6A649 /* Country.swift */; };
 		CBA867132B179C6E00C6A649 /* CrewRolePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */; };
 		CBA867152B179CA400C6A649 /* Crew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867142B179CA400C6A649 /* Crew.swift */; };
@@ -78,11 +78,11 @@
 
 /* Begin PBXFileReference section */
 		CB0087552AFAD9A900B92075 /* CloudKitUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitUser.swift; sourceTree = "<group>"; };
-		CB03A3512AEC5ABA005C3157 /* CDTest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDTest+Extension.swift"; sourceTree = "<group>"; };
-		CB03A3532AECF644005C3157 /* CDQuestion+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDQuestion+Extension.swift"; sourceTree = "<group>"; };
+		CB03A3512AEC5ABA005C3157 /* Test+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test+Extension.swift"; sourceTree = "<group>"; };
+		CB03A3532AECF644005C3157 /* Question+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Question+Extension.swift"; sourceTree = "<group>"; };
 		CB03A3552AECFDA3005C3157 /* TestRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRowView.swift; sourceTree = "<group>"; };
 		CB0C516D2AF023100063C5AD /* QuestionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailView.swift; sourceTree = "<group>"; };
-		CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDAnswer+Extension.swift"; sourceTree = "<group>"; };
+		CB0C516F2AF0257E0063C5AD /* Answer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Answer+Extension.swift"; sourceTree = "<group>"; };
 		CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButtonLabel.swift; sourceTree = "<group>"; };
 		CB3A07742AF652B4007755C0 /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
 		CB3A07762AF655CC007755C0 /* GlassBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassBackground.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		CB8A504D2AE814BC00088727 /* NewTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTestView.swift; sourceTree = "<group>"; };
 		CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTitleTextField.swift; sourceTree = "<group>"; };
 		CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVesrionTextField.swift; sourceTree = "<group>"; };
-		CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalityPicker.swift; sourceTree = "<group>"; };
+		CBA8670E2B175BEA00C6A649 /* FlagPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPicker.swift; sourceTree = "<group>"; };
 		CBA867102B175E6D00C6A649 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewRolePicker.swift; sourceTree = "<group>"; };
 		CBA867142B179CA400C6A649 /* Crew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crew.swift; sourceTree = "<group>"; };
@@ -171,9 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				CB6750932AE699610049E7A8 /* Persistence.swift */,
-				CB03A3512AEC5ABA005C3157 /* CDTest+Extension.swift */,
-				CB03A3532AECF644005C3157 /* CDQuestion+Extension.swift */,
-				CB0C516F2AF0257E0063C5AD /* CDAnswer+Extension.swift */,
+				CB03A3512AEC5ABA005C3157 /* Test+Extension.swift */,
+				CB03A3532AECF644005C3157 /* Question+Extension.swift */,
+				CB0C516F2AF0257E0063C5AD /* Answer+Extension.swift */,
 				CB5E99722AED1E1600575C09 /* NSPredicate+Extension.swift */,
 			);
 			path = CoreData;
@@ -310,7 +310,7 @@
 				CB9495FE2AF3F698007A850C /* TestVesrionTextField.swift */,
 				CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */,
 				CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */,
-				CBA8670E2B175BEA00C6A649 /* NationalityPicker.swift */,
+				CBA8670E2B175BEA00C6A649 /* FlagPicker.swift */,
 				CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */,
 			);
 			path = Components;
@@ -454,8 +454,8 @@
 				CB8A504E2AE814BC00088727 /* NewTestView.swift in Sources */,
 				CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */,
 				CB4617A02AF7C0B400AD5BA5 /* NewQuestionViewModel.swift in Sources */,
-				CB0C51702AF0257E0063C5AD /* CDAnswer+Extension.swift in Sources */,
-				CB03A3522AEC5ABA005C3157 /* CDTest+Extension.swift in Sources */,
+				CB0C51702AF0257E0063C5AD /* Answer+Extension.swift in Sources */,
+				CB03A3522AEC5ABA005C3157 /* Test+Extension.swift in Sources */,
 				CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */,
 				CB46179E2AF7BC8B00AD5BA5 /* AnswerViewModel.swift in Sources */,
 				CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */,
@@ -475,7 +475,7 @@
 				CB67508D2AE699600049E7A8 /* MyListTestsView.swift in Sources */,
 				CB6750972AE699610049E7A8 /* SailorCompass.xcdatamodeld in Sources */,
 				CB0087562AFAD9A900B92075 /* CloudKitUser.swift in Sources */,
-				CB03A3542AECF644005C3157 /* CDQuestion+Extension.swift in Sources */,
+				CB03A3542AECF644005C3157 /* Question+Extension.swift in Sources */,
 				CB8A504A2AE8096700088727 /* PublicTestsListView.swift in Sources */,
 				CBA867112B175E6D00C6A649 /* Country.swift in Sources */,
 				CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */,
@@ -483,7 +483,7 @@
 				CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */,
 				CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
-				CBA8670F2B175BEA00C6A649 /* NationalityPicker.swift in Sources */,
+				CBA8670F2B175BEA00C6A649 /* FlagPicker.swift in Sources */,
 				CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */,
 				CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */,
 				CB4617972AF6C02E00AD5BA5 /* ProfileViewModel.swift in Sources */,

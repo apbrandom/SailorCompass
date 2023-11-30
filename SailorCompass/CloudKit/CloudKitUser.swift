@@ -5,24 +5,23 @@
 //  Created by Vadim Vinogradov on 07.11.2023.
 //
 
+let admin = "_0fec703d16870d299f25b91b66629fef"
+
 import SwiftUI
+import CoreData
 import CloudKit
 
 class CloudKitUserViewModel: ObservableObject {
     
-    let admin = "_0fec703d16870d299f25b91b66629fef"
-    
     @Published var isSignedIn = false
     @Published var isAdmin = false
     @Published var permisionStatus = false
-    @Published var userName = "Emtpty Name"
-    @Published var userLastName = "Empty Name"
     @Published var isLoading = true
     @Published var error = ""
     @Published var isAtSea = false
     @Published var signOnDate = Date()
     @Published var signOfDate = Date()
-    @Published var vesselName = "No name"
+    @Published var vesselName = ""
     @Published var crewRole = ""
     
     init() {
@@ -71,44 +70,47 @@ class CloudKitUserViewModel: ObservableObject {
     }
     
     func fetchCloudUserRecordID() {
-            CKContainer.default().fetchUserRecordID { [weak self] recordID, error in
-                DispatchQueue.main.async {
-                    guard let self = self else { return }
-
-                    if let error = error {
-                        self.error = error.localizedDescription
-                        self.isLoading = false
-                        return
-                    }
-
-                    guard let userID = recordID?.recordName else {
-                        self.error = "Unknown error: User ID is not available"
-                        self.isLoading = false
-                        return
-                    }
-
-                    print("UserID: \(userID)")
-                    if userID == self.admin {
-                        self.isAdmin = true
-                    }
-
-                    if let unwrappedRecordID = recordID {
-                        self.discoverCloudUser(userID: unwrappedRecordID)
-                    } else {
-                        self.error = "Record ID is nil"
-                    }
-
+        CKContainer.default().fetchUserRecordID { [weak self] recordID, error in
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                
+                if let error = error {
+                    self.error = error.localizedDescription
                     self.isLoading = false
+                    return
                 }
+                
+                guard let userID = recordID?.recordName else {
+                    self.error = "Unknown error: User ID is not available"
+                    self.isLoading = false
+                    return
+                }
+                
+                print("UserID: \(userID)")
+                if userID == admin {
+                    self.isAdmin = true
+                }
+                
+                if let unwrappedRecordID = recordID {
+                    self.discoverCloudUser(userID: unwrappedRecordID)
+                } else {
+                    self.error = "Record ID is nil"
+                }
+                self.isLoading = false
             }
         }
+    }
     
     func discoverCloudUser(userID: CKRecord.ID) {
         let operation = CKDiscoverUserIdentitiesOperation(userIdentityLookupInfos: [.init(userRecordID: userID)])
         operation.userIdentityDiscoveredBlock = { identity, _ in
             DispatchQueue.main.async {
-                self.userName = identity.nameComponents?.givenName ?? "Unknown"
-                self.userLastName = identity.nameComponents?.familyName ?? "Unknown"
+                let newName = identity.nameComponents?.givenName ?? "Unknown"
+                let newLastName = identity.nameComponents?.familyName ?? "Unknown"
+                
+                UserDefaults.standard.set(newName, forKey: "userName")
+                UserDefaults.standard.set(newLastName, forKey: "userLastName")
+                
                 self.isLoading = false
             }
         }
@@ -149,12 +151,8 @@ struct CloudKitUser: View {
 extension CloudKitUserViewModel {
     static var preview: CloudKitUserViewModel {
         let viewModel = CloudKitUserViewModel()
-
         viewModel.isAdmin = false
-        viewModel.userName = "John"
-        viewModel.userLastName = "Doe"
         viewModel.isSignedIn = true
-
         return viewModel
     }
 }
