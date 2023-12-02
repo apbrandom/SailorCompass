@@ -13,4 +13,17 @@ extension DateFormatter {
         formatter.dateStyle = .short
         return formatter
     }()
+
+    static func stringFromDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM yyyy"
+        return formatter.string(from: date)
+    }
+    
+    static func dateFromString(_ dateString: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMM yyyy"
+        return formatter.date(from: dateString) ?? Date()
+    }
 }
+

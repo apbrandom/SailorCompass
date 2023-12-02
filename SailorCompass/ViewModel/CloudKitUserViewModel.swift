@@ -19,9 +19,6 @@ class CloudKitUserViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var error = ""
     @Published var isAtSea = false
-    @Published var signOnDate = Date()
-    @Published var signOfDate = Date()
-    
     @Published var crewRole = ""
     @Published var showingEditScreen = false
     
@@ -87,7 +84,7 @@ class CloudKitUserViewModel: ObservableObject {
                     return
                 }
                 
-                print("UserID: \(userID)")
+                // checking to admin
                 if userID == admin {
                     self.isAdmin = true
                 }

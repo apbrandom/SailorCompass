@@ -16,6 +16,8 @@ struct ProfileView: View {
     @AppStorage("sailorNickName") var nickname = "Blackbeard"
     @AppStorage("vesselName") var vesselName = "Adventure Galley"
     @AppStorage("flag") var flag = "🏴‍☠️"
+    @AppStorage("signOnDate") var signOnDate = ""
+    @AppStorage("signOfDate") var signOfDate = ""
     
     var body: some View {
         NavigationView {
@@ -40,20 +42,27 @@ struct ProfileView: View {
                     }
                 }
                 
+                Section("Achivment") {
+                    Text("Days at sea")
+                    Text("Miles traveled")
+                }
+                
                 Section("Sailing") {
                     Toggle(isOn: $vm.isAtSea) {
                         Text("Currently at Sea")
                     }
+                    
                     HStack {
                         Text("Sign-on Date")
                         Spacer()
-                        
+                        Text(signOnDate)
                     }
                     
-//                    DatePicker("Sign-on Date", selection: $vm.signOnDate, displayedComponents: .date)
-//                    DatePicker("Sign-off Date", selection: $vm.signOfDate, displayedComponents: .date)
-                    
-                   
+                    HStack {
+                        Text("Sign-off Date")
+                        Spacer()
+                        Text(signOfDate)
+                    }
                     
                     HStack {
                         Text("Vessel")
@@ -62,9 +71,7 @@ struct ProfileView: View {
                     }
                     
                     CrewRolePicker()
-                    
-                    Text("Days at sea")
-                    Text("Miles traveled")
+
                     Text("Location")
                 }
             }
@@ -78,12 +85,14 @@ struct ProfileView: View {
                 EditProfileView(vm: vm,
                                 nickname: $nickname,
                                 vesselName: $vesselName,
-                                flag: $flag)
+                                flag: $flag,
+                                signOnDate: $signOnDate,
+                                signOffDate: $signOfDate)
             }
         }
     }
 }
-
-#Preview {
-    ProfileView(vm: .preview)
-}
+//
+//#Preview {
+//    ProfileView(vm: .preview)
+//}
