@@ -11,11 +11,53 @@ struct EditProfileView: View {
     
     @ObservedObject var vm = CloudKitUserViewModel()
     
+    @Binding var nickname: String
+    @Binding var vesselName: String
+    @Binding var flag: String
+    
+    @State var tempNickname = ""
+    @State var tempVesselName = ""
+    @State var tempFlag = "🏴‍☠️"
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                TextField("Enter Nickname", text: $tempNickname)
+                
+                FlagPicker(flag: $tempFlag)
+                
+                
+                DatePicker("Sign-on Date", selection: $vm.signOnDate, displayedComponents: .date)
+                DatePicker("Sign-off Date", selection: $vm.signOfDate, displayedComponents: .date)
+                
+                TextField("Enter Vessel Name", text: $tempVesselName)
+            }
+            .navigationTitle("Edit Profile")
+            .toolbar() {
+                Button("Done") {
+                    nickname = tempNickname
+                    vesselName = tempVesselName
+                    flag = tempFlag
+                    
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+            .onAppear {
+                tempNickname = nickname
+                tempVesselName = vesselName
+                tempFlag = flag
+            }
+        }
     }
 }
 
-#Preview {
-    EditProfileView(vm: .preview)
-}
+//#Preview {
+//    EditProfileView(vm: CloudKitUserViewModel(), 
+//                    nickname: .constant("Blackbeard"),
+//                    vesselName: .constant("Adventure Galley"),
+//                    tempNickname = "Blackbeard",
+//                    tempVesselName: .constant("Adventure Galley")
+//    )
+//}

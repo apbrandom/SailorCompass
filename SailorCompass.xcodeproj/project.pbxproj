@@ -164,7 +164,6 @@
 		CB0087542AFAD98D00B92075 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				CB0087552AFAD9A900B92075 /* CloudKitUserViewModel.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -298,6 +297,7 @@
 				CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */,
 				CB46179D2AF7BC8B00AD5BA5 /* AnswerViewModel.swift */,
 				CB46179F2AF7C0B400AD5BA5 /* NewQuestionViewModel.swift */,
+				CB0087552AFAD9A900B92075 /* CloudKitUserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

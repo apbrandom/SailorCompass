@@ -9,7 +9,7 @@ import Foundation
 
 struct Country {
     static let Flags: [String: String] = [
-        "🏴‍☠️": "Pirate",
+        "🏴‍☠️": "Pirates",
         "🇺🇸": "United States",
         "🇬🇧": "United Kingdom",
         "🇨🇦": "Canada",

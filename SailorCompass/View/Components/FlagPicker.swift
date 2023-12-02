@@ -11,7 +11,7 @@ struct FlagPicker: View {
     let title = "Flag"
     let countries = Country.Flags
     
-    @State var flag = "🏴‍☠️"
+    @Binding var flag: String
     
     var body: some View {
         Picker(title, selection: $flag) {
@@ -23,7 +23,7 @@ struct FlagPicker: View {
 }
 
 #Preview {
-    FlagPicker()
+    FlagPicker(flag: .constant("🏴‍☠️"))
 }
 
 

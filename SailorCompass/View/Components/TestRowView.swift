@@ -37,8 +37,8 @@ struct TestRowView: View {
             }
             HStack {
                 HStack {
-                    Image(systemName: "ferry.fill")
-                    Text("\(test.likes)")
+//                    Image(systemName: "ferry.fill")
+//                    Text("\(test.likes)")
                 }
                 Spacer()
                 VStack(alignment: .leading) {

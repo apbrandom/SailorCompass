@@ -21,7 +21,7 @@ class CloudKitUserViewModel: ObservableObject {
     @Published var isAtSea = false
     @Published var signOnDate = Date()
     @Published var signOfDate = Date()
-    @Published var vesselName = ""
+    
     @Published var crewRole = ""
     @Published var showingEditScreen = false
     
