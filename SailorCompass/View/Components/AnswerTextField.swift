@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct AnswerTextField: View {
+    
     @Binding var text: String
     @Binding var isInvalid: Bool
+    
     let placeholder = "Answer"
     let maxLength: Int = 120
     

@@ -43,7 +43,7 @@ struct TestRowView: View {
                 Spacer()
                 VStack(alignment: .leading) {
                     Text("Created at:")
-                    Text(test.creationDate, formatter: itemFormatter)
+                    Text(test.creationDate, formatter: DateFormatter.shortDate)
                 }
                 .font(.caption.italic())
                 .foregroundStyle(.gray)
@@ -51,11 +51,11 @@ struct TestRowView: View {
         }.padding()
     }
     
-    let itemFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        return formatter
-    }()
+//    let itemFormatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .short
+//        return formatter
+//    }()
 }
 
 #Preview {

@@ -11,7 +11,6 @@ struct QuestionDetailView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    
     @ObservedObject var question: Question
     
     @FetchRequest var answers: FetchedResults<Answer>

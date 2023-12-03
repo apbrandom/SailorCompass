@@ -58,6 +58,8 @@
 		CBA867152B179CA400C6A649 /* Crew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867142B179CA400C6A649 /* Crew.swift */; };
 		CBAB26AF2AEA6ED200C72AE1 /* UserQuestionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */; };
 		CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */; };
+		CBF7545C2B1CF34900243978 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545B2B1CF34900243978 /* CloudKitService.swift */; };
+		CBF7545E2B1D145C00243978 /* CloudUserAdminIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545D2B1D145C00243978 /* CloudUserAdminIdModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		CBA867142B179CA400C6A649 /* Crew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crew.swift; sourceTree = "<group>"; };
 		CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionListView.swift; sourceTree = "<group>"; };
 		CBAB26B02AEA78D100C72AE1 /* MyListQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListQuestionViewModel.swift; sourceTree = "<group>"; };
+		CBF7545B2B1CF34900243978 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
+		CBF7545D2B1D145C00243978 /* CloudUserAdminIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUserAdminIdModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		CB0087542AFAD98D00B92075 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
+				CBF7545B2B1CF34900243978 /* CloudKitService.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CB46179B2AF7B31E00AD5BA5 /* CloudQuestionModel.swift */,
+				CBF7545D2B1D145C00243978 /* CloudUserAdminIdModel.swift */,
 				CB564F5E2B05094F00F70C66 /* CloudTestModel.swift */,
 			);
 			path = Model;
@@ -473,6 +479,7 @@
 				CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */,
 				CB564F5F2B05094F00F70C66 /* CloudTestModel.swift in Sources */,
 				CBA867152B179CA400C6A649 /* Crew.swift in Sources */,
+				CBF7545C2B1CF34900243978 /* CloudKitService.swift in Sources */,
 				CB03A3562AECFDA3005C3157 /* TestRowView.swift in Sources */,
 				CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */,
 				CB0C516E2AF023100063C5AD /* QuestionDetailView.swift in Sources */,
@@ -493,6 +500,7 @@
 				CB4617972AF6C02E00AD5BA5 /* ProfileViewModel.swift in Sources */,
 				CB67508B2AE699600049E7A8 /* SailorCompassApp.swift in Sources */,
 				CB564F612B05165B00F70C66 /* Tools.swift in Sources */,
+				CBF7545E2B1D145C00243978 /* CloudUserAdminIdModel.swift in Sources */,
 				CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */,
 				CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */,
 			);

@@ -5,13 +5,15 @@
 //  Created by Vadim Vinogradov on 07.11.2023.
 //
 
-let admin = "_0fec703d16870d299f25b91b66629fef"
+//let admin = "_0fec703d16870d299f25b91b66629fef"
 
 import SwiftUI
 import CoreData
 import CloudKit
 
 class CloudKitUserViewModel: ObservableObject {
+    
+    @State private var userIDs = [String]()
     
     @Published var isSignedIn = false
     @Published var isAdmin = false
@@ -84,17 +86,21 @@ class CloudKitUserViewModel: ObservableObject {
                     return
                 }
                 
-                // checking to admin
-                if userID == admin {
-                    self.isAdmin = true
+                CloudKitService.shared.fetchAdminUserIDs { result in
+                    switch result {
+                    case .success(let admins):
+                        self.isAdmin = admins.contains(userID)
+                    case .failure(let error):
+                        self.error = error.localizedDescription
+                    }
+                    
+                    if let unwrappedRecordID = recordID {
+                        self.discoverCloudUser(userID: unwrappedRecordID)
+                    } else {
+                        self.error = "Record ID is nil"
+                    }
+                    self.isLoading = false
                 }
-                
-                if let unwrappedRecordID = recordID {
-                    self.discoverCloudUser(userID: unwrappedRecordID)
-                } else {
-                    self.error = "Record ID is nil"
-                }
-                self.isLoading = false
             }
         }
     }
