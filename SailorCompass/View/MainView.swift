@@ -16,13 +16,13 @@ struct MainView: View {
     var body: some View {
         ScrollView {
             NavigationLink {
-                MyListTestsView()
+                SavedListTestsView()
             } label: {
                 CatalogCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
             }
             if vm.isAdmin {
                 NavigationLink {
-                    TestsToPublicListView()
+                    AdminPublicListView()
                 } label: {
                     CatalogCell(icon: CatalogIcon.publicTest.icon, title: CatalogIcon.publicTest.title)
                 }

@@ -56,6 +56,5 @@ class CloudKitService {
         }
         return newRecord
     }
-    
 }
 

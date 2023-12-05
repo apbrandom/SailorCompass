@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 import CloudKit
 
-struct MyListTestsView: View {
+struct SavedListTestsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(fetchRequest: Test.fetch(), animation: .bouncy)
@@ -77,6 +77,6 @@ struct MyListTestsView: View {
 }
 
 #Preview {
-    MyListTestsView()
+    SavedListTestsView()
         .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }

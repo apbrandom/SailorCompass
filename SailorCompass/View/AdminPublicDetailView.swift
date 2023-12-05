@@ -8,7 +8,7 @@
 import SwiftUI
 import CloudKit
 
-struct TestsToPublicDetailView: View {
+struct AdminPublicDetailView: View {
     
     var test: CloudTestModel
     
@@ -31,7 +31,7 @@ struct TestsToPublicDetailView: View {
     
     func fetchQuestions() {
         let predicate = NSPredicate(format: "test == %@", test.id)
-        let query = CKQuery(recordType: "PublicQuestion", predicate: predicate)
+        let query = CKQuery(recordType: "AdminPublicQuestion", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         
         queryOperation.recordMatchedBlock = { (_, result) in
@@ -49,7 +49,7 @@ struct TestsToPublicDetailView: View {
         queryOperation.queryResultBlock = { result in
             switch result {
             case .success(_):
-                print("Запрос успешно завершен")
+                print("fetch AdminPublicQuestion completed successfully")
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -59,5 +59,5 @@ struct TestsToPublicDetailView: View {
 }
 
 #Preview {
-    TestsToPublicDetailView(test: CloudTestModel(record: .init(recordType: "PublicQuestion")))
+    AdminPublicDetailView(test: CloudTestModel(record: .init(recordType: "PublicQuestion")))
 }

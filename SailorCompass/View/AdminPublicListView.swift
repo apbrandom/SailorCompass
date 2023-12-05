@@ -8,14 +8,14 @@
 import SwiftUI
 import CloudKit
 
-struct TestsToPublicListView: View {
+struct AdminPublicListView: View {
     
     @State private var tests = [CloudTestModel]()
     
     var body: some View {
             List(tests) { test in
                 NavigationLink {
-                    TestsToPublicDetailView(test: test)
+                    AdminPublicDetailView(test: test)
                 } label: {
                     VStack(alignment: .leading) {
                         Text(test.title).font(.headline)
@@ -32,7 +32,7 @@ struct TestsToPublicListView: View {
     func fetchItems() {
         self.tests = []
             let predicate = NSPredicate(value: true)
-            let query = CKQuery(recordType: "PublicTest", predicate: predicate)
+            let query = CKQuery(recordType: "AdminPublicTest", predicate: predicate)
             let queryOperation = CKQueryOperation(query: query)
             
             queryOperation.recordMatchedBlock = { (_, result) in
@@ -50,9 +50,9 @@ struct TestsToPublicListView: View {
             queryOperation.queryResultBlock = { result in
                 switch result {
                 case .success(_):
-                    print("Query from PublicTest completed successfully.")
+                    print("Query from AdminPublicTest completed successfully.")
                 case .failure(let error):
-                    print("Error in query result from PublicTest: \(error.localizedDescription)")
+                    print("Error in query result from AdminPublicTest: \(error.localizedDescription)")
                 }
             }
             CKContainer.default().publicCloudDatabase.add(queryOperation)
@@ -60,5 +60,5 @@ struct TestsToPublicListView: View {
 }
 
 #Preview {
-    TestsToPublicListView()
+    AdminPublicListView()
 }

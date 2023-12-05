@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-struct QuestionDetailView: View {
+struct UserQuestionDetailView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
     @ObservedObject var question: Question
     
     @FetchRequest var answers: FetchedResults<Answer>
-    
-    
     
     init(question: Question) {
         self.question = question
@@ -31,7 +29,7 @@ struct QuestionDetailView: View {
             Section(header: Text("Question")) {
                 Text(question.text)
             }
-            Section(header: Text("Answers")) {
+            Section(header: Text("Answer")) {
                 ForEach(answers, id: \.self) { answer in
                     HStack {
                         Text(answer.text)
@@ -41,10 +39,9 @@ struct QuestionDetailView: View {
         }
         .navigationTitle("Question Details")
         .navigationBarTitleDisplayMode(.inline)
-        
     }
 }
 
 #Preview {
-    QuestionDetailView(question: Question.example)
+    UserQuestionDetailView(question: Question.example)
 }

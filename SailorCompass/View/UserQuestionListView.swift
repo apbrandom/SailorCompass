@@ -44,7 +44,7 @@ struct UserQuestionListView: View {
         List {
             ForEach(filteredQuestions, id: \.self) { question in
                 Section {
-                    NavigationLink(destination: QuestionDetailView(question: question)) {
+                    NavigationLink(destination: UserQuestionDetailView(question: question)) {
                         VStack(alignment: .leading) {
                             Text(question.text)
                                 .padding(.bottom, 2)
@@ -109,7 +109,7 @@ struct UserQuestionListView: View {
                     return
                 }
                 
-                let publicTestRecord = CKRecord(recordType: "PublicTest")
+                let publicTestRecord = CKRecord(recordType: "AdminPublicTest")
                 publicTestRecord["title"] = test.title
                 publicTestRecord["version"] = test.version
                 publicTestRecord["questionCount"] = test.qcount
@@ -120,7 +120,7 @@ struct UserQuestionListView: View {
                 var recordsToSave: [CKRecord] = [publicTestRecord]
                 
                 for question in test.questions?.allObjects as? [Question] ?? [] {
-                    let questionRecord = CKRecord(recordType: "PublicQuestion")
+                    let questionRecord = CKRecord(recordType: "AdminPublicQuestion")
                     questionRecord["text"] = question.text
                     questionRecord["testTitle"] = test.title
                     questionRecord["UserID"] = userID.recordName
@@ -135,7 +135,7 @@ struct UserQuestionListView: View {
                     let questionRecordID = questionRecord.recordID
                     
                     for answer in question.answers?.allObjects as? [Answer] ?? [] {
-                        let answerRecord = CKRecord(recordType: "PublicAnswer")
+                        let answerRecord = CKRecord(recordType: "AdminPublicAnswer")
                         answerRecord["text"] = answer.text
                         answerRecord["isCorrect"] = answer.isCorrect
                         answerRecord["userID"] = userID.recordName
