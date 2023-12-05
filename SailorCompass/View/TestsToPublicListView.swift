@@ -8,24 +8,29 @@
 import SwiftUI
 import CloudKit
 
-struct PublicTestsListView: View {
+struct TestsToPublicListView: View {
     
     @State private var tests = [CloudTestModel]()
     
     var body: some View {
-        List(tests) { test in
-            VStack(alignment: .leading) {
-                Text(test.title).font(.headline)
-                if let version = test.version {
-                    Text("Version: \(version)")
+            List(tests) { test in
+                NavigationLink {
+                    TestsToPublicDetailView(test: test)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(test.title).font(.headline)
+                        if let version = test.version {
+                            Text("Version: \(version)")
+                        }
+                        Text("Publication date: \(test.publicDate, formatter: DateFormatter.shortDate)")
+                    }
                 }
-                Text("Publication date: \(test.publicDate, formatter: DateFormatter.shortDate)")
             }
-        }
-        .onAppear(perform: fetchItems)
+            .onAppear(perform: fetchItems)
     }
     
     func fetchItems() {
+        self.tests = []
             let predicate = NSPredicate(value: true)
             let query = CKQuery(recordType: "PublicTest", predicate: predicate)
             let queryOperation = CKQueryOperation(query: query)
@@ -38,17 +43,16 @@ struct PublicTestsListView: View {
                         self.tests.append(test)
                     }
                 case .failure(let error):
-                    // Обработка ошибок
-                    print(error.localizedDescription)
+                    print("Error fetching questions on TestsToPublicListView: \(error.localizedDescription)")
                 }
             }
             
             queryOperation.queryResultBlock = { result in
                 switch result {
                 case .success(_):
-                    print("Запрос успешно завершен")
+                    print("Query from PublicTest completed successfully.")
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    print("Error in query result from PublicTest: \(error.localizedDescription)")
                 }
             }
             CKContainer.default().publicCloudDatabase.add(queryOperation)
@@ -56,5 +60,5 @@ struct PublicTestsListView: View {
 }
 
 #Preview {
-    PublicTestsListView()
+    TestsToPublicListView()
 }

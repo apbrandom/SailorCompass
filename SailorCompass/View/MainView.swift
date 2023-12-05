@@ -22,7 +22,7 @@ struct MainView: View {
             }
             if vm.isAdmin {
                 NavigationLink {
-                    PublicTestsListView()
+                    TestsToPublicListView()
                 } label: {
                     CatalogCell(icon: CatalogIcon.publicTest.icon, title: CatalogIcon.publicTest.title)
                 }

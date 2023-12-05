@@ -15,31 +15,34 @@ struct QuestionDetailView: View {
     
     @FetchRequest var answers: FetchedResults<Answer>
     
+    
+    
     init(question: Question) {
-            self.question = question
-            self._answers = FetchRequest<Answer>(
-                entity: Answer.entity(),
-                sortDescriptors: [],
-                predicate: NSPredicate(format: "question == %@", question)
-            )
-        }
+        self.question = question
+        self._answers = FetchRequest<Answer>(
+            entity: Answer.entity(),
+            sortDescriptors: [],
+            predicate: NSPredicate(format: "question == %@", question)
+        )
+    }
     
     var body: some View {
-            List {
-                Section(header: Text("Question")) {
-                    Text(question.text)
-                }
-                Section(header: Text("Answers")) {
-                    ForEach(answers, id: \.self) { answer in
-                        HStack {
-                            Text(answer.text)
-                        }
+        List {
+            Section(header: Text("Question")) {
+                Text(question.text)
+            }
+            Section(header: Text("Answers")) {
+                ForEach(answers, id: \.self) { answer in
+                    HStack {
+                        Text(answer.text)
                     }
                 }
             }
-            .navigationTitle("Question Details")
-            .navigationBarTitleDisplayMode(.inline)
         }
+        .navigationTitle("Question Details")
+        .navigationBarTitleDisplayMode(.inline)
+        
+    }
 }
 
 #Preview {

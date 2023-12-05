@@ -19,6 +19,19 @@ struct UserQuestionListView: View {
     @State private var isShowingDeleteAlert = false
     @State private var isShowingPublishAlert = false
     @State private var deletionIndexSet: IndexSet?
+    @State private var searchTerm = ""
+    
+    //Searching Bar
+    var filteredQuestions: [Question] {
+        if searchTerm.isEmpty {
+            return Array(questions)
+        } else {
+            return questions.filter { question in
+                question.text.localizedCaseInsensitiveContains(searchTerm) ||
+                question.correctAnswer.localizedCaseInsensitiveContains(searchTerm)
+            }
+        }
+    }
     
     init(selectedTest: Test) {
         self.selectedTest = selectedTest
@@ -29,7 +42,7 @@ struct UserQuestionListView: View {
     
     var body: some View {
         List {
-            ForEach(questions, id: \.self) { question in
+            ForEach(filteredQuestions, id: \.self) { question in
                 Section {
                     NavigationLink(destination: QuestionDetailView(question: question)) {
                         VStack(alignment: .leading) {
@@ -67,6 +80,7 @@ struct UserQuestionListView: View {
             Text("This test will be published permanently, and you won't be able to modify it in the future.")
         }
         .navigationTitle(selectedTest.title)
+        .searchable(text: $searchTerm, prompt: "Serach Question")
         .toolbar {
             ToolbarItemGroup {
                 if selectedTest.isPublished {

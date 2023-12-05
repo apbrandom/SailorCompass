@@ -49,5 +49,13 @@ class CloudKitService {
         CKContainer.default().publicCloudDatabase.add(queryOperation)
     }
     
+    func cloneRecord(original: CKRecord, to newType: String) -> CKRecord {
+        let newRecord = CKRecord(recordType: newType)
+        original.allKeys().forEach { key in
+            newRecord[key] = original[key]
+        }
+        return newRecord
+    }
+    
 }
 
