@@ -106,7 +106,6 @@ struct AdminPublicDetailView: View {
         
         CKContainer.default().publicCloudDatabase.add(modifyOperation)
     }
-    
 }
 
 #Preview {

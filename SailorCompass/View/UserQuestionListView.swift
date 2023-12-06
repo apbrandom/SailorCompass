@@ -20,6 +20,8 @@ struct UserQuestionListView: View {
     @State private var isShowingPublishAlert = false
     @State private var deletionIndexSet: IndexSet?
     @State private var searchTerm = ""
+    @State private var alertMessage = ""
+    @State private var isShowingAlert = false
     
     //Searching Bar
     var filteredQuestions: [Question] {
@@ -42,7 +44,7 @@ struct UserQuestionListView: View {
     
     var body: some View {
         List {
-            ForEach(filteredQuestions, id: \.self) { question in
+            ForEach(filteredQuestions) { question in
                 Section {
                     NavigationLink(destination: UserQuestionDetailView(question: question)) {
                         VStack(alignment: .leading) {
@@ -61,6 +63,9 @@ struct UserQuestionListView: View {
                 isShowingDeleteAlert = true
             }
         }
+        .alert(alertMessage, isPresented: $isShowingAlert, actions: {
+            Button("Ok", role: .cancel, action: { })
+        })
         .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
             Button("Cancel", role: .cancel) { }
             Button("Delete", role: .destructive) {
@@ -106,6 +111,12 @@ struct UserQuestionListView: View {
             CKContainer.default().fetchUserRecordID { (recordID, error) in
                 guard let userID = recordID, error == nil else {
                     print("Error fetching user record ID: \(String(describing: error))")
+                    return
+                }
+                
+                if questions.isEmpty {
+                    alertMessage = "This test contains no questions. Please ensure at least one question is added."
+                    isShowingAlert = true
                     return
                 }
                 
