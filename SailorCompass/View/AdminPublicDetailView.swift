@@ -27,13 +27,18 @@ struct AdminPublicDetailView: View {
         }
         .navigationTitle(test.title)
         .onAppear(perform: fetchQuestions)
+        .toolbar {
+            Button("Move Questions", action: moveQuestionsToNewRecordType)
+        }
     }
     
+    // Загружает вопросы из CloudKit, соответствующие данному тесту.
     func fetchQuestions() {
         let predicate = NSPredicate(format: "test == %@", test.id)
         let query = CKQuery(recordType: "AdminPublicQuestion", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
         
+        // Обрабатывает каждую успешно полученную запись и добавляет вопросы в список.
         queryOperation.recordMatchedBlock = { (_, result) in
             switch result {
             case .success(let record):
@@ -46,6 +51,7 @@ struct AdminPublicDetailView: View {
             }
         }
         
+        // Оповещает о завершении запроса.
         queryOperation.queryResultBlock = { result in
             switch result {
             case .success(_):
@@ -56,6 +62,51 @@ struct AdminPublicDetailView: View {
         }
         CKContainer.default().publicCloudDatabase.add(queryOperation)
     }
+    
+    // Перемещаем вопросы в новый Record Type CloudKit.
+    func moveQuestionsToNewRecordType() {
+        var newRecords: [CKRecord] = []
+        let fetchGroup = DispatchGroup()
+        
+        // Перебирает вопросы и клонирует их в новый Record Type.
+        for question in questions {
+            fetchGroup.enter()
+            let originalRecordID = question.id
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID: originalRecordID) { record, error in
+                defer { fetchGroup.leave() }
+                if let record = record, error == nil {
+                    let newRecord = CloudKitService.shared.cloneRecord(original: record, to: "PublicQuestion")
+                    newRecords.append(newRecord)
+                } else {
+                    print("Error fetching while moveQuestionsToNewRecordType record: \(String(describing: error))")
+                }
+            }
+        }
+        
+        // Сохраняет клонированные записи.
+        fetchGroup.notify(queue: .main) {
+            self.saveNewRecords(records: newRecords)
+        }
+    }
+    
+    // Сохраняет переданные записи в CloudKit.
+    func saveNewRecords(records: [CKRecord]) {
+        // Создает операцию модификации для сохранения новых записей.
+        let modifyOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+        modifyOperation.modifyRecordsResultBlock = { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    print("Records successfully moved to new Record Type")
+                case .failure(let error):
+                    print("Error saving new records: \(error)")
+                }
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(modifyOperation)
+    }
+    
 }
 
 #Preview {
