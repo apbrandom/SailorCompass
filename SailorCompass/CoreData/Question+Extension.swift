@@ -38,8 +38,20 @@ extension Question {
     }
     
     static var example: Question {
+        
         let context = CoreDataController.preview.container.viewContext
         let question = Question(context: context)
+        question.text = "Example Question Text"
+        question.correctAnswer = "Correct Answer Example"
+        
+        // Создаем примеры ответов
+        for i in 1...3 {
+            let answer = Answer(context: context)
+            answer.text = "Answer \(i)"
+            answer.question = question
+            answer.isCorrect = (i == 1) // Допустим, первый ответ правильный
+        }
+        
         return question
     }
 }

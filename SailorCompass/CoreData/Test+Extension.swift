@@ -5,9 +5,7 @@
 //  Created by Vadim Vinogradov on 27.10.2023.
 //
 
-import Foundation
 import CoreData
-import CloudKit
 
 extension Test {
     
@@ -43,8 +41,21 @@ extension Test {
     
     static var example: Test {
         let context = CoreDataController.preview.container.viewContext
-        let test = Test(context: context)
-        test.title = "Title example"
-        return test
+                let test = Test(context: context)
+                test.title = "Title example"
+                test.version = "1.0"
+                test.qcount = 3
+                test.isPublished = false
+
+                let question1 = Question(context: context)
+                question1.text = "Question 1 Text"
+                question1.correctAnswer = "Answer 1"
+                question1.test = test
+
+                let question2 = Question(context: context)
+                question2.text = "Question 2 Text"
+                question2.correctAnswer = "Answer 2"
+                question2.test = test
+                return test
     }
 }

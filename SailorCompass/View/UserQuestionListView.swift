@@ -44,17 +44,13 @@ struct UserQuestionListView: View {
     
     var body: some View {
         List {
-            ForEach(filteredQuestions) { question in
-                Section {
-                    NavigationLink(destination: UserQuestionDetailView(question: question)) {
-                        VStack(alignment: .leading) {
-                            Text(question.text)
-                                .padding(.bottom, 2)
-                            Text(question.correctAnswer)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                                .padding(.bottom, 2)
-                        }
+            ForEach(filteredQuestions, id: \.self) { question in
+                NavigationLink(destination: UserQuestionDetailView(question: question)) {
+                    VStack(alignment: .leading) {
+                        Text(question.text)
+                        Text(question.correctAnswer)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
                 }
             }
@@ -196,6 +192,6 @@ struct UserQuestionListView: View {
 
 #Preview {
     UserQuestionListView(selectedTest: Test.example)
-    //            .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }
 

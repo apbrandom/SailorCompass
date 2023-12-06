@@ -17,9 +17,16 @@ struct CoreDataController {
         let result = CoreDataController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Test(context: viewContext)
-            newItem.title = "New Test"
-            newItem.creationDate = Date()
+            let newTest = Test(context: viewContext)
+            newTest.title = "New Test"
+            newTest.creationDate = Date()
+            
+            for _ in 0..<5 {
+                let newQuestion = Question(context: viewContext)
+                newQuestion.text = "Sample Question"
+                newQuestion.correctAnswer = "Sample Answer"
+                newQuestion.test = newTest
+            }
         }
         do {
             try viewContext.save()

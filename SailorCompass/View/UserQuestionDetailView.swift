@@ -44,4 +44,5 @@ struct UserQuestionDetailView: View {
 
 #Preview {
     UserQuestionDetailView(question: Question.example)
+        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
 }
