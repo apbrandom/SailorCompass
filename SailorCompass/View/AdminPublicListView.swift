@@ -13,6 +13,10 @@ struct AdminPublicListView: View {
     @State private var tests = [CloudTestModel]()
     
     var body: some View {
+        
+        if tests.isEmpty {
+            Text("No tests to public")
+        }
             List(tests) { test in
                 NavigationLink {
                     AdminPublicDetailView(test: test)

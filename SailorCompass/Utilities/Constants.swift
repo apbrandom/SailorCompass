@@ -11,7 +11,7 @@ enum Constants {
     
     enum LocalizedStrings {
         static let main = "Main"
-        static let myTests = "My Tests"
+        static let savedTests = "Saved Tests"
         static let newTest = "Creating a new test"
         static let save = "Save"
         static let alertTestName = "Please enter the test name in the provied field."

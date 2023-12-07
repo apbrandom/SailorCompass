@@ -13,7 +13,7 @@ struct CatalogCell: View {
     let title: String
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
                 HStack {
                     Image(systemName: icon)
                         .resizable()
@@ -34,5 +34,5 @@ struct CatalogCell: View {
 }
 
 #Preview {
-    CatalogCell(icon: "externaldrive.badge.person.crop", title: "My Tests")
+    CatalogCell(icon: "externaldrive.badge.person.crop", title: "Saved Tests")
 }

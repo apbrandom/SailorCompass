@@ -47,7 +47,7 @@ struct SavedListTestsView: View {
             Text("This test will be deleted permanently.")
         }
         .listStyle(.plain)
-        .navigationTitle(Constants.LocalizedStrings.myTests)
+        .navigationTitle(Constants.LocalizedStrings.savedTests)
         .toolbar {
             ToolbarItemGroup {
                 EditButton()

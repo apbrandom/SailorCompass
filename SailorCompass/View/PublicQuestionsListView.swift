@@ -14,6 +14,7 @@ struct PublicQuestionsListView: View {
     @State private var searchText = ""
     
     var body: some View {
+//        VStack {
         TextField("Search", text: $searchText)
             .padding()
             .background(Color(.systemGray6))
@@ -24,6 +25,7 @@ struct PublicQuestionsListView: View {
             }
         
         List(questions) { question in
+            
             VStack(alignment: .leading) {
                 Text(question.testTitle)
                     .font(.headline)
@@ -40,6 +42,7 @@ struct PublicQuestionsListView: View {
             }
         }
         .onAppear(perform: fetchItems)
+//    }
     }
     
     // Необходимо доработать поисковый запрос с CONTAINS

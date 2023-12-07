@@ -66,6 +66,7 @@ struct AdminPublicDetailView: View {
     // Перемещаем вопросы в новый Record Type CloudKit.
     func moveQuestionsToNewRecordType() {
         var newRecords: [CKRecord] = []
+        var recordIDsToDelete: [CKRecord.ID] = []
         let fetchGroup = DispatchGroup()
         
         // Перебирает вопросы и клонирует их в новый Record Type.
@@ -77,35 +78,37 @@ struct AdminPublicDetailView: View {
                 if let record = record, error == nil {
                     let newRecord = CloudKitService.shared.cloneRecord(original: record, to: "PublicQuestion")
                     newRecords.append(newRecord)
+                    recordIDsToDelete.append(originalRecordID) // Добавляем ID для удаления
                 } else {
-                    print("Error fetching while moveQuestionsToNewRecordType record: \(String(describing: error))")
+                    print("Error fetching record: \(String(describing: error))")
                 }
             }
         }
         
+//        recordIDsToDelete.append(test.id)
+        
         // Сохраняет клонированные записи.
         fetchGroup.notify(queue: .main) {
-            self.saveNewRecords(records: newRecords)
+            saveAndDeleteRecords(newRecords: newRecords, recordIDsToDelete: recordIDsToDelete)
         }
     }
     
     // Сохраняет переданные записи в CloudKit.
-    func saveNewRecords(records: [CKRecord]) {
+    func saveAndDeleteRecords(newRecords: [CKRecord], recordIDsToDelete: [CKRecord.ID]) {
         // Создает операцию модификации для сохранения новых записей.
-        let modifyOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
-        modifyOperation.modifyRecordsResultBlock = { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(_):
-                    print("Records successfully moved to new Record Type")
-                case .failure(let error):
-                    print("Error saving new records: \(error)")
+        let modifyOperation = CKModifyRecordsOperation(recordsToSave: newRecords, recordIDsToDelete: recordIDsToDelete)
+            modifyOperation.modifyRecordsResultBlock = { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(_):
+                        print("Records successfully moved to new Record Type and old records deleted")
+                    case .failure(let error):
+                        print("Error in modifying records: \(error)")
+                    }
                 }
             }
+            CKContainer.default().publicCloudDatabase.add(modifyOperation)
         }
-        
-        CKContainer.default().publicCloudDatabase.add(modifyOperation)
-    }
 }
 
 #Preview {

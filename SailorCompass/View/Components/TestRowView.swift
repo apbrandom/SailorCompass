@@ -12,7 +12,6 @@ struct TestRowView: View {
     @ObservedObject var test: Test
     
     var body: some View {
-        
         VStack(alignment: .leading) {
             HStack {
                 Text(test.title)
@@ -23,12 +22,10 @@ struct TestRowView: View {
                         .font(.headline)
                     
                 }
-                
                 Spacer()
-                Image(systemName: test.isPublished ? "checkmark.seal.fill" : "")
-                    .foregroundColor(.green)
+                Image(systemName: test.isPublished ? "checkmark.seal.fill" : "checkmark.seal.fill")
+                    .foregroundColor(test.isPublished ? .green : .gray)
             }
-            
             Spacer()
             HStack {
                 Image(systemName: "doc.questionmark.fill")
@@ -36,10 +33,6 @@ struct TestRowView: View {
     
             }
             HStack {
-                HStack {
-//                    Image(systemName: "ferry.fill")
-//                    Text("\(test.likes)")
-                }
                 Spacer()
                 VStack(alignment: .leading) {
                     Text("Created at:")
@@ -50,12 +43,6 @@ struct TestRowView: View {
             }
         }.padding()
     }
-    
-//    let itemFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .short
-//        return formatter
-//    }()
 }
 
 #Preview {

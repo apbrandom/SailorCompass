@@ -165,7 +165,6 @@ struct UserQuestionListView: View {
                         }
                     }
                 }
-                
                 CKContainer.default().publicCloudDatabase.add(modifyRecordsOperation)
             }
         }

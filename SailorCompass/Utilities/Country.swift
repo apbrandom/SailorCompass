@@ -20,5 +20,15 @@ struct Country {
         "🇪🇸": "Spain",
         "🇮🇹": "Italy",
         "🇧🇷": "Brazil",
+        "🇷🇺": "Russia",
+        "🇺🇦": "Ukrain",
+        "🇵🇭": "Philippines",
+        "🇮🇳": "India",
+        "🇨🇳": "China",
+        "🇮🇩": "Indonesia",
+        "🇬🇷": "Greece",
+        "🇹🇷": "Turkey",
+        "🇰🇷": "South Korea",
+        "🇯🇵": "Japan"
     ]
 }
