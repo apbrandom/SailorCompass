@@ -13,26 +13,34 @@ struct TabBarView: View {
         TabView{
             NavigationStack {
                 MainView()
+                    .applyBackground()
             }
             .tabItem {
                 Image(systemName: TabBarItem.catalog.iconName)
                 Text(TabBarItem.catalog.title)
+                
             }
-            ProfileView()
+            
+            //            MapView()
+            //                .tabItem {
+            //                    Image(systemName: TabBarItem.map.iconName)
+            //                    Text(TabBarItem.map.title)
+            //                }
+            
+            NavigationStack {
+                ProfileView()
+                
+            }
+            .tabItem {
+                Image(systemName: TabBarItem.profile.iconName)
+                Text(TabBarItem.profile.title)
+            }
+            
+            SettingsView()
                 .tabItem {
-                    Image(systemName: TabBarItem.profile.iconName)
-                    Text(TabBarItem.profile.title)
+                    Image(systemName: TabBarItem.settings.iconName)
+                    Text(TabBarItem.settings.title)
                 }
-//            MapView()
-//                .tabItem {
-//                    Image(systemName: TabBarItem.map.iconName)
-//                    Text(TabBarItem.map.title)
-//                }
-//            SettingsView()
-//                .tabItem {
-//                    Image(systemName: TabBarItem.settings.iconName)
-//                    Text(TabBarItem.settings.title)
-//                }
         }
     }
 }

@@ -15,4 +15,12 @@ extension Color {
     static var grenToBlue: LinearGradient {
         LinearGradient(gradient: Gradient(colors: [.green, .blue]), startPoint: .leading, endPoint: .trailing)
     }
+    
+    static var backgroundSkyDay: LinearGradient {
+        LinearGradient(gradient: Gradient(colors: [.customBeige, .customSea]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
+    
+    static var backgroundSkyNight: LinearGradient {
+        LinearGradient(gradient: Gradient(colors: [.customBlack, .customSea]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    }
 }

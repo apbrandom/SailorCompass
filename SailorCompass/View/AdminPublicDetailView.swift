@@ -85,8 +85,6 @@ struct AdminPublicDetailView: View {
             }
         }
         
-//        recordIDsToDelete.append(test.id)
-        
         // Сохраняет клонированные записи.
         fetchGroup.notify(queue: .main) {
             saveAndDeleteRecords(newRecords: newRecords, recordIDsToDelete: recordIDsToDelete)

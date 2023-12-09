@@ -43,60 +43,81 @@ struct UserQuestionListView: View {
     }
     
     var body: some View {
-        List {
-            ForEach(filteredQuestions, id: \.self) { question in
-                NavigationLink(destination: UserQuestionDetailView(question: question)) {
-                    VStack(alignment: .leading) {
-                        Text(question.text)
-                        Text(question.correctAnswer)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+        Group {
+            if selectedTest.qcount == 0 {
+                VStack {
+                    Text("There are no questions added to this test yet.")
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .ignoresSafeArea()
+                .applyBackground()
+            } else {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 10) {
+                        ForEach(filteredQuestions, id: \.self) { question in
+                            NavigationLink(destination: UserQuestionDetailView(question: question)) {
+                                VStack(alignment: .leading) {
+                                    Text(question.text)
+                                        .multilineTextAlignment(.leading)
+                                    Text(question.correctAnswer)
+                                        .font(.subheadline)
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding(.horizontal, 20)
+                            }
+                        }
+                        .onDelete { offsets in
+                            deletionIndexSet = offsets
+                            isShowingDeleteAlert = true
+                        }
                     }
                 }
-            }
-            .onDelete { offsets in
-                deletionIndexSet = offsets
-                isShowingDeleteAlert = true
-            }
-        }
-        .alert(alertMessage, isPresented: $isShowingAlert, actions: {
-            Button("Ok", role: .cancel, action: { })
-        })
-        .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
-            Button("Cancel", role: .cancel) { }
-            Button("Delete", role: .destructive) {
-                if let offsets = deletionIndexSet {
-                    deleteItems(offsets: offsets)
+//                .applyBackground()
+                .navigationTitle(selectedTest.title)
+                .searchable(text: $searchTerm, prompt: "Serach Question")
+                .alert(alertMessage, isPresented: $isShowingAlert, actions: {
+                    Button("Ok", role: .cancel, action: { })
+                })
+                .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Delete", role: .destructive) {
+                        if let offsets = deletionIndexSet {
+                            deleteItems(offsets: offsets)
+                        }
+                    }
+                } message: {
+                    Text("This question will be deleted permanently.")
                 }
-            }
-        } message: {
-            Text("This question will be deleted permanently.")
-        }
-        .alert("Are you sure?", isPresented: $isShowingPublishAlert) {
-            Button("Cancel", role: .cancel) { }
-            Button("Yes") {
-                publishTest(test: selectedTest)
-            }
-        } message: {
-            Text("This test will be published permanently, and you won't be able to modify it in the future.")
-        }
-        .navigationTitle(selectedTest.title)
-        .searchable(text: $searchTerm, prompt: "Serach Question")
-        .toolbar {
-            ToolbarItemGroup {
-                if selectedTest.isPublished {
-                    Image(systemName: "checkmark.seal.fill")
-                        .foregroundStyle(.green)
-                } else {
-                    Button {
-                        isShowingPublishAlert = true
-                    } label: {
-                        Image(systemName: "paperplane.fill")
+                .alert("Are you sure?", isPresented: $isShowingPublishAlert) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Yes") {
+                        publishTest(test: selectedTest)
                     }
-                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-                        Image(systemName: "plus")
+                } message: {
+                    Text("This test will be published permanently, and you won't be able to modify it in the future.")
+                }
+                
+                .toolbar {
+                    ToolbarItemGroup {
+                        if selectedTest.isPublished {
+                            Image(systemName: "checkmark.seal.fill")
+                                .foregroundStyle(.green)
+                        } else {
+                            Button {
+                                isShowingPublishAlert = true
+                            } label: {
+                                Image(systemName: "paperplane.fill")
+                            }
+                            NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+                                Image(systemName: "plus")
+                            }
+                            EditButton()
+                        }
                     }
-                    EditButton()
                 }
             }
         }

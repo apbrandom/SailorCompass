@@ -24,9 +24,17 @@ struct CatalogCell: View {
                     Spacer()
                 }
                 .frame(height: 100)
-                .background(.regularMaterial)
+                .background(
+                    GlassView(removeEffects: true)
+                    .blur(radius: 10, opaque: true)
+                )
+
                 .clipShape(.rect(cornerRadius: 10))
-                .shadow(color: .black.opacity(0.3), radius: 10)
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.white.opacity(0.3), lineWidth: 3 )
+                )
+                .shadow(color: .customGrey.opacity(0.5), radius: 3)
                 .padding(.horizontal)
                 .padding(.vertical, 5)
         }

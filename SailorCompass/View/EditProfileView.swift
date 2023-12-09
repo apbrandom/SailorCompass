@@ -26,7 +26,7 @@ struct EditProfileView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             Form {
                 TextField("Enter Nickname", text: $tempNickname)
                 
@@ -54,7 +54,7 @@ struct EditProfileView: View {
                 tempVesselName = vesselName
                 tempFlag = flag
             }
-        }
+//        }
     }
 }
 

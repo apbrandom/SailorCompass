@@ -15,6 +15,8 @@ struct SailorCompassApp: App {
         WindowGroup {
             TabBarView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .accentColor(Color("PrimaryTextColor"))
+                
         }
     }
 }

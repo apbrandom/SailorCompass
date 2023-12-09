@@ -20,7 +20,6 @@ struct TestRowView: View {
                 if let version = test.version, !version.isEmpty {
                     Text("v\(version)")
                         .font(.headline)
-                    
                 }
                 Spacer()
                 Image(systemName: test.isPublished ? "checkmark.seal.fill" : "checkmark.seal.fill")
@@ -30,7 +29,6 @@ struct TestRowView: View {
             HStack {
                 Image(systemName: "doc.questionmark.fill")
                 Text("\(test.qcount)")
-    
             }
             HStack {
                 Spacer()
@@ -41,7 +39,11 @@ struct TestRowView: View {
                 .font(.caption.italic())
                 .foregroundStyle(.gray)
             }
-        }.padding()
+        }
+        .padding()
+        .background(Color.customBeige) // Вы можете выбрать любой фоновый цвет
+        .cornerRadius(10)
+        .shadow(color: .gray, radius: 5, x: 0, y: 2)
     }
 }
 

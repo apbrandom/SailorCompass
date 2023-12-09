@@ -27,14 +27,18 @@ struct SavedListTestsView: View {
             ForEach(tests, id: \.self) { test in
                 NavigationLink {
                     UserQuestionListView(selectedTest: test)
+                        .applyBackground()
                 } label: {
                     TestRowView(test: test)
                 }
+                .listRowBackground(Color.clear)
             }
             .onDelete { offsets in
                 showingAlert = true
                 deletionIndexSet = offsets
             }
+            .listRowSeparator(.hidden)
+            .padding(.vertical, 5)
         }
         .alert("Are you sure?", isPresented: $showingAlert) {
             Button("Cancel", role: .cancel) { }
@@ -48,6 +52,7 @@ struct SavedListTestsView: View {
         }
         .listStyle(.plain)
         .navigationTitle(Constants.LocalizedStrings.savedTests)
+        
         .toolbar {
             ToolbarItemGroup {
                 EditButton()

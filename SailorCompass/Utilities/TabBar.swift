@@ -11,7 +11,7 @@ struct TabBarItem {
     let title: String
     let iconName: String
     
-    static let catalog = TabBarItem(title: "Main", iconName: "ferry")
+    static let catalog = TabBarItem(title: "Menu", iconName: "ferry")
     static let profile = TabBarItem(title: "Profile", iconName: "person.circle")
     static let map = TabBarItem(title: "Map", iconName: "globe")
     static let settings = TabBarItem(title: "Settings", iconName: "gear")

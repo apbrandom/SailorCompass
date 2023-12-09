@@ -20,7 +20,8 @@ struct ProfileView: View {
     @AppStorage("signOfDate") var signOfDate = ""
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
+//        VStack
             Form {
                 Section("Personal information") {
                     HStack {
@@ -89,7 +90,7 @@ struct ProfileView: View {
                                 signOnDate: $signOnDate,
                                 signOffDate: $signOfDate)
             }
-        }
+//        }
     }
 }
 //

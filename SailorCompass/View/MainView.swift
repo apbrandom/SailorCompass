@@ -17,6 +17,7 @@ struct MainView: View {
         ScrollView {
             NavigationLink {
                 SavedListTestsView()
+                    .applyBackground()
             } label: {
                 CatalogCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
             }
@@ -33,8 +34,8 @@ struct MainView: View {
                 CatalogCell(icon: CatalogIcon.publicQuestion.icon, title: CatalogIcon.publicQuestion.title)
             }
         }
-        .navigationTitle(Constants.LocalizedStrings.main)
         .navigationBarTitleDisplayMode(.large)
+        .navigationTitle(Constants.LocalizedStrings.main).tint(Color("PrimaryTextColor"))
     }
 }
 
