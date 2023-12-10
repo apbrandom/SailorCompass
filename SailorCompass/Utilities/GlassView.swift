@@ -10,23 +10,18 @@ import SwiftUI
 struct GlassView: UIViewRepresentable {
     
     var removeEffects = false
+    @Environment(\.colorScheme) var colorScheme
     
-    func makeUIView(context: Context) -> some UIView {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-        return view
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        DispatchQueue.main.async {
-            if let sublayer = uiView.layer.sublayers?.first {
-                if removeEffects  {
-                    sublayer.filters?.removeAll()
-                } else {
-                    sublayer.filters?.removeAll(where: { filter in
-                        String(describing: filter) != "gaussianBlur"
-                    })
-                }
-            }
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        if removeEffects {
+            uiView.effect = nil
+        } else {
+            uiView.effect = UIBlurEffect(style: .systemUltraThinMaterial)
         }
-    } 
+    }
 }
+

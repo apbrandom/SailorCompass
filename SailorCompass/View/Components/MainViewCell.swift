@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CatalogCell: View {
+struct MainViewCell: View {
     let frame = Constants.LayoutMetrics.screen.width
     let icon: String
     let title: String
@@ -28,13 +28,12 @@ struct CatalogCell: View {
                     GlassView(removeEffects: true)
                     .blur(radius: 10, opaque: true)
                 )
-
                 .clipShape(.rect(cornerRadius: 10))
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(.white.opacity(0.3), lineWidth: 3 )
+                        .stroke(.white.opacity(0.3), lineWidth: 2)
                 )
-                .shadow(color: .customGrey.opacity(0.5), radius: 3)
+                .shadow(color: .customGrey.opacity(0.3), radius: 3)
                 .padding(.horizontal)
                 .padding(.vertical, 5)
         }
@@ -42,5 +41,6 @@ struct CatalogCell: View {
 }
 
 #Preview {
-    CatalogCell(icon: "externaldrive.badge.person.crop", title: "Saved Tests")
+    MainViewCell(icon: "externaldrive.badge.person.crop", title: "Saved Tests")
+        .applyBackground()
 }

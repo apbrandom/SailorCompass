@@ -13,5 +13,5 @@ struct CatalogIcon {
     
     static let myTest = CatalogIcon(icon: "memorychip", title: "Saved Tests")
     static let publicTest = CatalogIcon(icon: "folder", title: "Tests to Public Library")
-    static let publicQuestion = CatalogCell(icon: "books.vertical", title: "Global Maritime Community Questions Hub")
+    static let publicQuestion = MainViewCell(icon: "books.vertical", title: "Global Maritime Community Questions Hub")
 }

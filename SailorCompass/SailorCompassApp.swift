@@ -16,7 +16,6 @@ struct SailorCompassApp: App {
             TabBarView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .accentColor(Color("PrimaryTextColor"))
-                
         }
     }
 }

@@ -19,19 +19,19 @@ struct MainView: View {
                 SavedListTestsView()
                     .applyBackground()
             } label: {
-                CatalogCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
+                MainViewCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
             }
             if vm.isAdmin {
                 NavigationLink {
                     AdminPublicListView()
                 } label: {
-                    CatalogCell(icon: CatalogIcon.publicTest.icon, title: CatalogIcon.publicTest.title)
+                    MainViewCell(icon: CatalogIcon.publicTest.icon, title: CatalogIcon.publicTest.title)
                 }
             }
             NavigationLink {
                 PublicQuestionsListView()
             } label: {
-                CatalogCell(icon: CatalogIcon.publicQuestion.icon, title: CatalogIcon.publicQuestion.title)
+                MainViewCell(icon: CatalogIcon.publicQuestion.icon, title: CatalogIcon.publicQuestion.title)
             }
         }
         .navigationBarTitleDisplayMode(.large)

@@ -15,7 +15,7 @@
 		CB0C51702AF0257E0063C5AD /* Answer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0C516F2AF0257E0063C5AD /* Answer+Extension.swift */; };
 		CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */; };
 		CB36AF392B18FA8D0086B69E /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB36AF382B18FA8D0086B69E /* EditProfileView.swift */; };
-		CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A07742AF652B4007755C0 /* CatalogCell.swift */; };
+		CB3A07752AF652B4007755C0 /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A07742AF652B4007755C0 /* MainViewCell.swift */; };
 		CB3A07772AF655CC007755C0 /* GlassBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A07762AF655CC007755C0 /* GlassBackground.swift */; };
 		CB3A077B2AF65E11007755C0 /* CatalogIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */; };
 		CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */; };
@@ -91,7 +91,7 @@
 		CB0C516F2AF0257E0063C5AD /* Answer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Answer+Extension.swift"; sourceTree = "<group>"; };
 		CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButtonLabel.swift; sourceTree = "<group>"; };
 		CB36AF382B18FA8D0086B69E /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		CB3A07742AF652B4007755C0 /* CatalogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCell.swift; sourceTree = "<group>"; };
+		CB3A07742AF652B4007755C0 /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
 		CB3A07762AF655CC007755C0 /* GlassBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassBackground.swift; sourceTree = "<group>"; };
 		CB3A077A2AF65E11007755C0 /* CatalogIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogIcon.swift; sourceTree = "<group>"; };
 		CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonLabel.swift; sourceTree = "<group>"; };
@@ -320,7 +320,7 @@
 		CB8A50462AE8062200088727 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				CB3A07742AF652B4007755C0 /* CatalogCell.swift */,
+				CB3A07742AF652B4007755C0 /* MainViewCell.swift */,
 				CB03A3552AECFDA3005C3157 /* TestRowView.swift */,
 				CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */,
 				CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */,
@@ -502,7 +502,7 @@
 				CBA867112B175E6D00C6A649 /* Country.swift in Sources */,
 				CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */,
 				CB568DDF2B1299DF00D8B799 /* GradientColors.swift in Sources */,
-				CB3A07752AF652B4007755C0 /* CatalogCell.swift in Sources */,
+				CB3A07752AF652B4007755C0 /* MainViewCell.swift in Sources */,
 				CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
 				CBA8670F2B175BEA00C6A649 /* FlagPicker.swift in Sources */,
