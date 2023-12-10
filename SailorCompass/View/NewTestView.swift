@@ -34,7 +34,9 @@ struct NewTestView: View {
                 Toggle(isVersionEnable ? "" : Constants.LocalizedStrings.versionName, isOn: $isVersionEnable)
             }
             .padding(.vertical, 30)
+            
         }
+        
         .navigationTitle(Constants.LocalizedStrings.newTest)
         .animation(.easeInOut, value: isVersionEnable)
         
@@ -45,6 +47,7 @@ struct NewTestView: View {
             .alert(alertMessage, isPresented: $showingAlert) { }
         }
         .padding()
+        .applyBackground()
     }
     
     private func saveTest() {

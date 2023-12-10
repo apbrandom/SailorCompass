@@ -76,7 +76,6 @@ struct UserQuestionListView: View {
                         }
                     }
                 }
-//                .applyBackground()
                 .navigationTitle(selectedTest.title)
                 .searchable(text: $searchTerm, prompt: "Serach Question")
                 .alert(alertMessage, isPresented: $isShowingAlert, actions: {

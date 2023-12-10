@@ -16,7 +16,6 @@ struct TestRowView: View {
             HStack {
                 Text(test.title)
                     .font(.title2.bold())
-                    .foregroundColor(.blue)
                 if let version = test.version, !version.isEmpty {
                     Text("v\(version)")
                         .font(.headline)
@@ -25,12 +24,11 @@ struct TestRowView: View {
                 Image(systemName: test.isPublished ? "checkmark.seal.fill" : "checkmark.seal.fill")
                     .foregroundColor(test.isPublished ? .green : .gray)
             }
+            
             Spacer()
             HStack {
                 Image(systemName: "doc.questionmark.fill")
                 Text("\(test.qcount)")
-            }
-            HStack {
                 Spacer()
                 VStack(alignment: .leading) {
                     Text("Created at:")
@@ -41,12 +39,20 @@ struct TestRowView: View {
             }
         }
         .padding()
-        .background(Color.customBeige) // Вы можете выбрать любой фоновый цвет
-        .cornerRadius(10)
-        .shadow(color: .gray, radius: 5, x: 0, y: 2)
+        .clipShape(.rect(cornerRadius: 10))
+        .background(
+            GlassView(removeEffects: true)
+            .blur(radius: 10, opaque: true)
+        )
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.white.opacity(0.3), lineWidth: 2)
+        )
+        .shadow(color: .customGrey.opacity(0.3), radius: 3)
     }
 }
 
 #Preview {
     TestRowView(test: Test.example)
+        .applyBackground()
 }

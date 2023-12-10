@@ -56,7 +56,7 @@ struct SavedListTestsView: View {
         .toolbar {
             ToolbarItemGroup {
                 EditButton()
-                NavigationLink(destination: NewTestView()) {
+                NavigationLink(destination: NewTestView().applyBackground()) {
                     Image(systemName: Constants.icon.plus)
                 }
             }

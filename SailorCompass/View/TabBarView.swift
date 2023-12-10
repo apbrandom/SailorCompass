@@ -21,14 +21,9 @@ struct TabBarView: View {
                 
             }
             
-            //            MapView()
-            //                .tabItem {
-            //                    Image(systemName: TabBarItem.map.iconName)
-            //                    Text(TabBarItem.map.title)
-            //                }
-            
             NavigationStack {
                 ProfileView()
+                    .applyBackground()
                 
             }
             .tabItem {
@@ -36,11 +31,20 @@ struct TabBarView: View {
                 Text(TabBarItem.profile.title)
             }
             
-            SettingsView()
-                .tabItem {
-                    Image(systemName: TabBarItem.settings.iconName)
-                    Text(TabBarItem.settings.title)
-                }
+            
+            //
+            //            SettingsView()
+            //                .tabItem {
+            //                    Image(systemName: TabBarItem.settings.iconName)
+            //                    Text(TabBarItem.settings.title)
+            //                }
+            
+            
+            //            MapView()
+            //                .tabItem {
+            //                    Image(systemName: TabBarItem.map.iconName)
+            //                    Text(TabBarItem.map.title)
+            //                }
         }
     }
 }

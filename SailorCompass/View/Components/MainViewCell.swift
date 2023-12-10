@@ -24,11 +24,11 @@ struct MainViewCell: View {
                     Spacer()
                 }
                 .frame(height: 100)
+                .clipShape(.rect(cornerRadius: 10))
                 .background(
                     GlassView(removeEffects: true)
                     .blur(radius: 10, opaque: true)
                 )
-                .clipShape(.rect(cornerRadius: 10))
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.white.opacity(0.3), lineWidth: 2)
