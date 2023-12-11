@@ -18,7 +18,11 @@ The application allows users to:
 ## Key Features
 - **SwiftUI** for a modern and responsive user interface.
 - **Core Data** and **CloudKit** for reliable data storage and synchronization.
-Adherence to clean code principles and modern iOS development practices.
+- Adherence to clean code principles and modern iOS development practices.
 
 ## Project Goals
 The aim of the project is to provide mariners with a reliable and convenient tool for test preparation, contributing to their professional growth and development.
+
+![Menu Light]([ссылка на изображение](https://github.com/apbrandom/SailorCompass/blob/main/Screenshots/Menu%20Light.png)https://github.com/apbrandom/SailorCompass/blob/main/Screenshots/Menu%20Light.png)
+
+
