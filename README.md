@@ -23,17 +23,13 @@ The application allows users to:
 ## Project Goals
 The primary objective of the Sailor Compass app is to serve as a robust and efficient tool for mariners in their professional endeavors, facilitating test preparation and enhancing skills. Planned future developments aim to broaden the app’s utility and effectiveness:
 
-- **Enhanced Question Creation**: The app will be upgraded to enable more sophisticated question creation, including the ability to incorporate images and diverse answer options. This will elevate the test creation process, making it more comprehensive and adaptable to various testing scenarios.
-
-- **Editable Published Tests and User Attribution**: Upcoming updates will introduce functionalities allowing users to edit their published tests. Additionally, a system to credit users for their test contributions will be implemented, acknowledging and valuing individual input.
-
-- **Interactive Quiz Feature**: A dynamic quiz mode is in development to further assist mariners in consolidating their professional knowledge through interactive learning experiences.
-
-- **Contract Duration Tracking and Widget**: Recognizing the critical nature of contract management in maritime professions, the app will include features for monitoring contract durations and progress, supplemented by a widget for convenient access to this information.
-
-- **Route Mapping and Saving**: Enhancements are planned to incorporate navigational aids, such as the capability to plot and save maritime routes, thereby assisting mariners in efficient journey planning and execution.
-
-- **Friend Locator on Map**: To enhance the sense of professional community and networking, a feature is being developed to enable users to locate their colleagues on the map, promoting professional connections and collaborations.
+- **Unified Question Database:** A key goal is to establish a unified database of questions, aimed at assisting mariners in their test preparation. This centralized resource will offer a wide range of questions, making study and revision more accessible and efficient.
+- **Enhanced Question Creation:** The app will be upgraded to enable more sophisticated question creation, including the ability to incorporate images and diverse answer options. This will elevate the test creation process, making it more comprehensive and adaptable to various testing scenarios.
+- **Editable Published Tests and User Attribution:** Upcoming updates will introduce functionalities allowing users to edit their published tests. Additionally, a system to credit users for their test contributions will be implemented, acknowledging and valuing individual input.
+- **Interactive Quiz Feature:** A dynamic quiz mode is in development to further assist mariners in consolidating their professional knowledge through interactive learning experiences.
+- **Contract Duration Tracking and Widget:** Recognizing the critical nature of contract management in maritime professions, the app will include features for monitoring contract durations and progress, supplemented by a widget for convenient access to this information.
+- **Route Mapping and Saving:** Enhancements are planned to incorporate navigational aids, such as the capability to plot and save maritime routes, thereby assisting mariners in efficient journey planning and execution.
+- **Friend Locator on Map:** To enhance the sense of professional community and networking, a feature is being developed to enable users to locate their colleagues on the map, promoting professional connections and collaborations.
 
 The aspiration for Sailor Compass is to evolve into a comprehensive tool, supporting mariners not only in test preparation but also in various aspects of their professional activities at sea.
 
