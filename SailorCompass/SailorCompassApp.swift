@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 @main
 struct SailorCompassApp: App {
@@ -16,6 +17,11 @@ struct SailorCompassApp: App {
             TabBarView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .accentColor(Color("PrimaryTextColor"))
+                .task {
+                    if #available(iOS 17, *) {
+                        configureTipsIfAvailable()
+                    } 
+                }
         }
     }
 }

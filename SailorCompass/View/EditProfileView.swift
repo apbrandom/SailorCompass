@@ -31,10 +31,10 @@ struct EditProfileView: View {
                 
                 FlagPicker(flag: $tempFlag)
                 
-                DatePicker("Sign-on Date", selection: $tempSignOnDate, displayedComponents: .date)
-                DatePicker("Sign-off Date", selection: $tempSignOffDate, displayedComponents: .date)
+//                DatePicker("Sign-on Date", selection: $tempSignOnDate, displayedComponents: .date)
+//                DatePicker("Sign-off Date", selection: $tempSignOffDate, displayedComponents: .date)
                 
-                TextField("Enter Vessel Name", text: $tempVesselName)
+//                TextField("Enter Vessel Name", text: $tempVesselName)
             }
             .navigationTitle("Edit Profile")
             .toolbar() {

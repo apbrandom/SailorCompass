@@ -68,6 +68,7 @@ struct UserQuestionListView: View {
                                         .foregroundColor(.secondary)
                                 }
                                 .padding(.horizontal, 20)
+                                .padding(.vertical, 10)
                             }
                         }
                         .onDelete { offsets in
@@ -76,6 +77,7 @@ struct UserQuestionListView: View {
                         }
                     }
                 }
+//                .padding()
                 .navigationTitle(selectedTest.title)
                 .searchable(text: $searchTerm, prompt: "Serach Question")
                 .alert(alertMessage, isPresented: $isShowingAlert, actions: {

@@ -18,6 +18,7 @@ struct ProfileView: View {
     @AppStorage("flag") var flag = "🏴‍☠️"
     @AppStorage("signOnDate") var signOnDate = ""
     @AppStorage("signOfDate") var signOfDate = ""
+    @AppStorage("appTheme") private var appTheme: AppTheme = .system
     
     var body: some View {
         Form {
@@ -29,6 +30,7 @@ struct ProfileView: View {
                     Spacer()
                     Text(vm.isAdmin ? "Admin" : "User")
                 }
+                
                 if vm.isLoading {
                     ProgressView()
                 } else {
@@ -41,40 +43,51 @@ struct ProfileView: View {
                 }
             }
             
-            Section("Achivment") {
-                Text("Days at sea")
-                Text("Miles traveled")
+            Section("Settings") {
+                Picker("Theme", selection: $appTheme) {
+                    ForEach(AppTheme.allCases) { theme in
+                        Text(theme.displayText).tag(theme)
+                    }
+                }
             }
             
-            Section("Sailing") {
-                Toggle(isOn: $vm.isAtSea) {
-                    Text("Currently at Sea")
-                }
-                
-                HStack {
-                    Text("Sign-on Date")
-                    Spacer()
-                    Text(signOnDate)
-                }
-                
-                HStack {
-                    Text("Sign-off Date")
-                    Spacer()
-                    Text(signOfDate)
-                }
-                
-                HStack {
-                    Text("Vessel")
-                    Spacer()
-                    Text(vesselName)
-                }
-                
-                CrewRolePicker()
-                
-                Text("Location")
-            }
+//            Section("Achivment") {
+//                Text("Days at sea")
+//                Text("Miles traveled")
+//            }
+            
+//            Section("Sailing") {
+//                Toggle(isOn: $vm.isAtSea) {
+//                    Text("Currently at Sea")
+//                }
+//                
+//                HStack {
+//                    Text("Sign-on Date")
+//                    Spacer()
+//                    Text(signOnDate)
+//                }
+//                
+//                HStack {
+//                    Text("Sign-off Date")
+//                    Spacer()
+//                    Text(signOfDate)
+//                }
+//                
+//                HStack {
+//                    Text("Vessel")
+//                    Spacer()
+//                    Text(vesselName)
+//                }
+//                
+//                CrewRolePicker()
+//                
+//                Text("Location")
+//            }
         }
         .navigationTitle("Profile")
+        .onChange(of: appTheme) { newTheme in
+            newTheme.apply()
+        }
         .toolbar {
             Button("Edit") {
                 vm.showingEditScreen = true

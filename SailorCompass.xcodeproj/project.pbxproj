@@ -39,6 +39,9 @@
 		CB6750A32AE699610049E7A8 /* SailorCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750A22AE699610049E7A8 /* SailorCompassTests.swift */; };
 		CB6750AD2AE699610049E7A8 /* SailorCompassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */; };
 		CB6750AF2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */; };
+		CB70EA462B2721F900BA019B /* PublicQuestionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70EA452B2721F900BA019B /* PublicQuestionsListViewModel.swift */; };
+		CB70EA482B27236800BA019B /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70EA472B27236800BA019B /* AppTheme.swift */; };
+		CB70EA4A2B272AA200BA019B /* AddTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB70EA492B272AA200BA019B /* AddTip.swift */; };
 		CB7887CA2AFD23D800367B50 /* QuestionTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */; };
 		CB7887CC2AFD2B2500367B50 /* AnswerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */; };
 		CB8A50322AE7CE4500088727 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A50312AE7CE4500088727 /* SettingsView.swift */; };
@@ -120,6 +123,9 @@
 		CB6750A82AE699610049E7A8 /* SailorCompassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SailorCompassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6750AC2AE699610049E7A8 /* SailorCompassUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITests.swift; sourceTree = "<group>"; };
 		CB6750AE2AE699610049E7A8 /* SailorCompassUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailorCompassUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CB70EA452B2721F900BA019B /* PublicQuestionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicQuestionsListViewModel.swift; sourceTree = "<group>"; };
+		CB70EA472B27236800BA019B /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		CB70EA492B272AA200BA019B /* AddTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTip.swift; sourceTree = "<group>"; };
 		CB7887C92AFD23D800367B50 /* QuestionTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTextEditor.swift; sourceTree = "<group>"; };
 		CB7887CB2AFD2B2500367B50 /* AnswerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTextField.swift; sourceTree = "<group>"; };
 		CB8A50312AE7CE4500088727 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -301,6 +307,8 @@
 				CBA867142B179CA400C6A649 /* Crew.swift */,
 				CBE678852B222CDF004D7EBC /* GlassView.swift */,
 				CB6697AE2B24F874000D52A0 /* BackgroundModifier.swift */,
+				CB70EA472B27236800BA019B /* AppTheme.swift */,
+				CB70EA492B272AA200BA019B /* AddTip.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -313,6 +321,7 @@
 				CB46179D2AF7BC8B00AD5BA5 /* AnswerViewModel.swift */,
 				CB46179F2AF7C0B400AD5BA5 /* NewQuestionViewModel.swift */,
 				CB0087552AFAD9A900B92075 /* CloudKitUserViewModel.swift */,
+				CB70EA452B2721F900BA019B /* PublicQuestionsListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -475,6 +484,7 @@
 				CB9495FD2AF3F507007A850C /* TestTitleTextField.swift in Sources */,
 				CB4617A02AF7C0B400AD5BA5 /* NewQuestionViewModel.swift in Sources */,
 				CB0C51702AF0257E0063C5AD /* Answer+Extension.swift in Sources */,
+				CB70EA462B2721F900BA019B /* PublicQuestionsListViewModel.swift in Sources */,
 				CB03A3522AEC5ABA005C3157 /* Test+Extension.swift in Sources */,
 				CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */,
 				CB46179E2AF7BC8B00AD5BA5 /* AnswerViewModel.swift in Sources */,
@@ -492,6 +502,7 @@
 				CBA867152B179CA400C6A649 /* Crew.swift in Sources */,
 				CBF7545C2B1CF34900243978 /* CloudKitService.swift in Sources */,
 				CB03A3562AECFDA3005C3157 /* TestRowView.swift in Sources */,
+				CB70EA482B27236800BA019B /* AppTheme.swift in Sources */,
 				CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */,
 				CB0C516E2AF023100063C5AD /* UserQuestionDetailView.swift in Sources */,
 				CB67508D2AE699600049E7A8 /* SavedListTestsView.swift in Sources */,
@@ -506,6 +517,7 @@
 				CB564F632B0630A500F70C66 /* PublicQuestionsListView.swift in Sources */,
 				CB8A50352AE7CF0C00088727 /* TabBarView.swift in Sources */,
 				CBA8670F2B175BEA00C6A649 /* FlagPicker.swift in Sources */,
+				CB70EA4A2B272AA200BA019B /* AddTip.swift in Sources */,
 				CB3F773E2AEEAA6400DA3970 /* CustomButtonLabel.swift in Sources */,
 				CB6697AF2B24F874000D52A0 /* BackgroundModifier.swift in Sources */,
 				CB3049362AEFC7EE005F8574 /* CheckBoxButtonLabel.swift in Sources */,
@@ -603,7 +615,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -660,7 +672,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

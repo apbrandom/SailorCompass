@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct MainViewCell: View {
     let frame = Constants.LayoutMetrics.screen.width
     let icon: String
     let title: String
+    
+    let addTestTip = AddTestTip()
     
     var body: some View {
         VStack(alignment: .leading) {

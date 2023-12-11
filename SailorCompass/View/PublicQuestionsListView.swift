@@ -22,26 +22,23 @@ struct PublicQuestionsListView: View {
             .onChange(of: searchText) { _ in
                 fetchItems()
             }
-            .applyBackground()
         List(questions) { question in
             VStack(alignment: .leading) {
                 Text(question.testTitle)
                     .font(.headline)
                     .foregroundColor(.blue)
                     .padding(.bottom, 2)
-                
                 Text(question.text)
                     .padding(.bottom, 2)
-                
                 Text(question.correctAnswer)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .padding(.bottom, 2)
             }
-            
         }
-        .applyBackground()
         .onAppear(perform: fetchItems)
+        .navigationTitle("Questions Hub")
+        .navigationBarTitleDisplayMode(.automatic)
     }
     // Необходимо доработать поисковый запрос с CONTAINS
     func fetchItems() {
