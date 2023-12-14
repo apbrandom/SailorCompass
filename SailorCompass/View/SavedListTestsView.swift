@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CoreData
+//import CoreData
 import CloudKit
 
 struct SavedListTestsView: View {
@@ -16,11 +16,13 @@ struct SavedListTestsView: View {
     
     var tests: FetchedResults<Test>
     
-    @State private var showingAlert = false
+    @StateObject var vm = SavedListTestsViewModel()
+    
+//    @State private var showingAlert = false
     @State private var alertMessage = ""
-    @State private var deletionIndexSet: IndexSet?
-    @State private var isPublishing = false
-    @State private var showingPublishConfirmation = false
+//    @State private var deletionIndexSet: IndexSet?
+//    @State private var isPublishing = false
+//    @State private var showingPublishConfirmation = false
     
     var body: some View {
         List {
@@ -34,16 +36,16 @@ struct SavedListTestsView: View {
                 .listRowBackground(Color.clear)
             }
             .onDelete { offsets in
-                showingAlert = true
-                deletionIndexSet = offsets
+                vm.showingAlert = true
+                vm.deletionIndexSet = offsets
             }
             .listRowSeparator(.hidden)
             .padding(.vertical, 5)
         }
-        .alert("Are you sure?", isPresented: $showingAlert) {
+        .alert("Are you sure?", isPresented: $vm.showingAlert) {
             Button("Cancel", role: .cancel) { }
             Button("Delete", role: .destructive) {
-                if let offsets = deletionIndexSet {
+                if let offsets = vm.deletionIndexSet {
                     deleteItems(offsets: offsets)
                 }
             }
@@ -64,7 +66,7 @@ struct SavedListTestsView: View {
     }
     
     private func deleteItems(offsets: IndexSet) {
-        showingAlert = true
+        vm.showingAlert = true
         for index in offsets {
             let test = tests[index]
             viewContext.delete(test)

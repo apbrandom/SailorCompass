@@ -52,11 +52,9 @@ struct UserQuestionListView: View {
                         .padding()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .ignoresSafeArea()
-                .applyBackground()
             } else {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading) {
                         ForEach(filteredQuestions, id: \.self) { question in
                             NavigationLink(destination: UserQuestionDetailView(question: question)) {
                                 VStack(alignment: .leading) {
@@ -76,6 +74,8 @@ struct UserQuestionListView: View {
                             isShowingDeleteAlert = true
                         }
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
                 }
 //                .padding()
                 .navigationTitle(selectedTest.title)
@@ -101,24 +101,24 @@ struct UserQuestionListView: View {
                 } message: {
                     Text("This test will be published permanently, and you won't be able to modify it in the future.")
                 }
-                
-                .toolbar {
-                    ToolbarItemGroup {
-                        if selectedTest.isPublished {
-                            Image(systemName: "checkmark.seal.fill")
-                                .foregroundStyle(.green)
-                        } else {
-                            Button {
-                                isShowingPublishAlert = true
-                            } label: {
-                                Image(systemName: "paperplane.fill")
-                            }
-                            NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-                                Image(systemName: "plus")
-                            }
-                            EditButton()
-                        }
+            }
+        }
+        .applyBackground()
+        .toolbar {
+            ToolbarItemGroup {
+                if selectedTest.isPublished {
+                    Image(systemName: "checkmark.seal.fill")
+                        .foregroundStyle(.green)
+                } else {
+                    Button {
+                        isShowingPublishAlert = true
+                    } label: {
+                        Image(systemName: "paperplane.fill")
                     }
+                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+                        Image(systemName: "plus")
+                    }
+                    EditButton()
                 }
             }
         }
@@ -214,5 +214,6 @@ struct UserQuestionListView: View {
 #Preview {
     UserQuestionListView(selectedTest: Test.example)
         .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        .applyBackground()
 }
 
