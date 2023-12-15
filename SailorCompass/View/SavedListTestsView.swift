@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-//import CoreData
-import CloudKit
 
 struct SavedListTestsView: View {
     
@@ -18,15 +16,9 @@ struct SavedListTestsView: View {
     
     @StateObject var vm = SavedListTestsViewModel()
     
-//    @State private var showingAlert = false
-    @State private var alertMessage = ""
-//    @State private var deletionIndexSet: IndexSet?
-//    @State private var isPublishing = false
-//    @State private var showingPublishConfirmation = false
-    
     var body: some View {
         List {
-            ForEach(tests) { test in
+            ForEach(tests, id: \.self) { test in
                 NavigationLink {
                     UserQuestionListView(selectedTest: test)
                 } label: {
@@ -53,11 +45,12 @@ struct SavedListTestsView: View {
         }
         .listStyle(.plain)
         .navigationTitle(Constants.LocalizedStrings.savedTests)
-        
         .toolbar {
             ToolbarItemGroup {
                 EditButton()
-                NavigationLink(destination: NewTestView().applyBackground()) {
+                NavigationLink {
+                    NewTestView().applyBackground()
+                } label: {
                     Image(systemName: Constants.icon.plus)
                 }
             }
@@ -84,6 +77,6 @@ struct SavedListTestsView: View {
 
 #Preview {
     SavedListTestsView()
-        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         .applyBackground()
 }

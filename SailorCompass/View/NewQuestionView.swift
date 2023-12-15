@@ -14,25 +14,20 @@ struct NewQuestionView: View {
     
     var selectedTest: Test
     
-    @State private var questionText = ""
-    @State private var answerText = ""
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
-    @State private var questionTextInvalid = false
-    @State private var answerTextInvalid = false
-    
+    @StateObject var vm = NewQuestionViewViewModel()
+        
     var body: some View {
         Form {
-            QuestionTextEditor(text: $questionText, isInvalid: $questionTextInvalid)
+            QuestionTextEditor(text: $vm.questionText, isInvalid: $vm.questionTextInvalid)
             Section {
                 VStack {
-                        HStack {
-                            Button {
-                            } label: {
-                                CheckBoxButtonLabel()
-                            }
-                            AnswerTextField(text: $answerText, isInvalid: $answerTextInvalid)
+                    HStack {
+                        Button {
+                        } label: {
+                            CheckBoxButtonLabel()
                         }
+                        AnswerTextField(text: $vm.answerText, isInvalid: $vm.answerTextInvalid)
+                    }
                 }
             }
         }
@@ -44,34 +39,34 @@ struct NewQuestionView: View {
         } label: {
             CustomButtonLabel(text: Constants.LocalizedStrings.save)
         }
-        .alert(alertMessage, isPresented: $showingAlert) { }
+        .alert(vm.alertMessage, isPresented: $vm.showingAlert) { }
         .padding()
     }
     
     func saveToCoreData() {
-        if questionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            questionTextInvalid.toggle()
-            alertMessage = Constants.LocalizedStrings.alertQuestion
-            showingAlert.toggle()
+        if vm.questionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            vm.questionTextInvalid.toggle()
+            vm.alertMessage = Constants.LocalizedStrings.alertQuestion
+            vm.showingAlert.toggle()
             return
         }
         
-        if answerText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            answerTextInvalid.toggle()
-            alertMessage = Constants.LocalizedStrings.alertAnswer
-            showingAlert.toggle()
+        if vm.answerText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            vm.answerTextInvalid.toggle()
+            vm.alertMessage = Constants.LocalizedStrings.alertAnswer
+            vm.showingAlert.toggle()
             return
         }
- 
+        
         let newQuestion = Question(context: viewContext)
         let newAnswer = Answer(context: viewContext)
-        newQuestion.text = questionText
-        newQuestion.correctAnswer = answerText
+        newQuestion.text = vm.questionText
+        newQuestion.correctAnswer = vm.answerText
         selectedTest.qcount += 1
         newAnswer.question = newQuestion
         newAnswer.isCorrect = true
-        newAnswer.text = answerText
-
+        newAnswer.text = vm.answerText
+        
         newQuestion.test = selectedTest
         
         do {

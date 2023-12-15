@@ -39,7 +39,7 @@ extension Question {
     
     static var example: Question {
         
-        let context = CoreDataController.preview.container.viewContext
+        let context = PersistenceController.preview.container.viewContext
         let question = Question(context: context)
         question.text = "Example Question Text"
         question.correctAnswer = "Correct Answer Example"

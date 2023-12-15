@@ -10,7 +10,7 @@ import TipKit
 
 @main
 struct SailorCompassApp: App {
-    let persistenceController = CoreDataController.shared
+    let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {

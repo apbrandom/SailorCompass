@@ -17,7 +17,7 @@ extension Answer {
     
     //Preview
     static var example: Answer {
-        let context = CoreDataController.preview.container.viewContext
+        let context = PersistenceController.preview.container.viewContext
         let answer = Answer(text: "New Answer", context: context)
         return answer
     }

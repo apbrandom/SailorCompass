@@ -23,18 +23,7 @@ struct UserQuestionListView: View {
     @State private var alertMessage = ""
     @State private var isShowingAlert = false
     
-    //Searching Bar
-    //    var filteredQuestions: [Question] {
-    //        if searchTerm.isEmpty {
-    //            return Array(questions)
-    //        } else {
-    //            return questions.filter { question in
-    //                question.text.localizedCaseInsensitiveContains(searchTerm) ||
-    //                question.correctAnswer.localizedCaseInsensitiveContains(searchTerm)
-    //            }
-    //        }
-    //    }
-    
+ 
     init(selectedTest: Test) {
         self.selectedTest = selectedTest
         let sortDescriptor = NSSortDescriptor(keyPath: \Question.dateCreated, ascending: true)
@@ -42,126 +31,82 @@ struct UserQuestionListView: View {
         _questions = FetchRequest<Question>(sortDescriptors: [sortDescriptor], predicate: predicate)
     }
     
-    
     var body: some View {
         Group {
             if selectedTest.qcount == 0 {
-                VStack {
-                    EmptyListText()
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .toolbar {
-                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-                        Image(systemName: "plus")
-                    }
-                }
-            } else {
-                List {
-                    ForEach(questions) { question in
+                EmptyViewText()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .toolbar {
                         NavigationLink {
-                            UserQuestionDetailView(question: question)
+                            NewQuestionView(selectedTest: selectedTest)
                         } label: {
-                            QuestionRowView(question: question)
+                            Image(systemName: "plus")
                         }
                     }
-                    .onDelete(perform: deleteItems)
+            } else {
+                List {
+                    ForEach(questions, id: \.self) { question in
+                        if shouldShowQuestion(question) {
+                            NavigationLink {
+                                UserQuestionDetailView(question: question)
+                            } label: {
+                                QuestionRowView(question: question)
+                            }
+                        }
+                    }
+                    .onDelete { offsets in
+                        deletionIndexSet = offsets
+                        isShowingDeleteAlert = true
+                    }
                 }
                 .navigationTitle(selectedTest.title)
+                .searchable(text: $searchTerm, prompt: "Serach Question")
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
+                    ToolbarItemGroup {
+                        if selectedTest.isPublished {
+                            Image(systemName: "checkmark.seal.fill")
+                                .foregroundStyle(.green)
+                        } else {
+                            Button {
+                                isShowingPublishAlert = true
+                            } label: {
+                                Image(systemName: "paperplane.fill")
+                            }
+                            NavigationLink {
+                                NewQuestionView(selectedTest: selectedTest)
+                            } label: {
+                                Image(systemName: "plus")
+                            }
+                            
+                            EditButton()
+                        }
                     }
+                }
+                .alert(alertMessage, isPresented: $isShowingAlert) {
+                    Button("Ok", role: .cancel, action: { })
+                }
+                .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Delete", role: .destructive) {
+                        if let offsets = deletionIndexSet {
+                            deleteItems(offsets: offsets)
+                        }
+                    }
+                } message: {
+                    Text(Constants.LocalizedStrings.qDelitionAlert)
+                }
+                .alert("Are you sure?", isPresented: $isShowingPublishAlert) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Yes") {
+                        publishTest(test: selectedTest)
+                    }
+                } message: {
+                    Text(Constants.LocalizedStrings.publishAlert)
                 }
             }
         }
         .applyBackground()
-        // Остальные модификаторы...
     }
-    
-    
-    //    var body: some View {
-    //        Group {
-    //            if selectedTest.qcount == 0 {
-    //                VStack {
-    //                    EmptyListText()
-    //                }
-    //                .frame(maxWidth: .infinity, maxHeight: .infinity)
-    //                .toolbar {
-    //                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-    //                        Image(systemName: "plus")
-    //                    }
-    //                }
-    //            } else {
-    //                List {
-    //                        ForEach(questions, id: \.self) { question in
-    ////                            if shouldShowQuestion(question) {
-    //                                NavigationLink(destination: UserQuestionDetailView(question: question)) {
-    //                                    VStack(alignment: .leading) {
-    //                                        Text(question.text)
-    //                                            .multilineTextAlignment(.leading)
-    //                                        Text(question.correctAnswer)
-    //                                            .font(.subheadline)
-    //                                            .multilineTextAlignment(.leading)
-    //                                            .foregroundColor(.secondary)
-    //                                    }
-    //                                    .padding(.horizontal, 20)
-    //                                    .padding(.vertical, 10)
-    //                                }
-    ////                            }
-    //                        }
-    //                        .onDelete { offsets in
-    //                            deletionIndexSet = offsets
-    //                            isShowingDeleteAlert = true
-    //                        }
-    //
-    //                    }
-    //                    .frame(maxWidth: .infinity, alignment: .leading)
-    //                    .toolbar {
-    //                        ToolbarItemGroup {
-    //                            if selectedTest.isPublished {
-    //                                Image(systemName: "checkmark.seal.fill")
-    //                                    .foregroundStyle(.green)
-    //                            } else {
-    //                                Button {
-    //                                    isShowingPublishAlert = true
-    //                                } label: {
-    //                                    Image(systemName: "paperplane.fill")
-    //                                }
-    //                                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-    //                                    Image(systemName: "plus")
-    //                                }
-    //                                EditButton()
-    //                            }
-    //                        }
-    //                    }
-    //                }
-    //                .navigationTitle(selectedTest.title)
-    ////                .searchable(text: $searchTerm, prompt: "Serach Question")
-    //                .alert(alertMessage, isPresented: $isShowingAlert, actions: {
-    //                    Button("Ok", role: .cancel, action: { })
-    //                })
-    //                .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
-    //                    Button("Cancel", role: .cancel) { }
-    //                    Button("Delete", role: .destructive) {
-    //                        if let offsets = deletionIndexSet {
-    //                            deleteItems(offsets: offsets)
-    //                        }
-    //                    }
-    //                } message: {
-    //                    Text(Constants.LocalizedStrings.qDelitionAlert)
-    //                }
-    //                .alert("Are you sure?", isPresented: $isShowingPublishAlert) {
-    //                    Button("Cancel", role: .cancel) { }
-    //                    Button("Yes") {
-    //                        publishTest(test: selectedTest)
-    //                    }
-    //                } message: {
-    //                    Text(Constants.LocalizedStrings.publishAlert)
-    //                }
-    //            }
-    //        }
-    //        .applyBackground()
-    //    }
     
     func shouldShowQuestion(_ question: Question) -> Bool {
         if searchTerm.isEmpty {
@@ -260,7 +205,7 @@ struct UserQuestionListView: View {
 
 #Preview {
     UserQuestionListView(selectedTest: Test.example)
-        .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
         .applyBackground()
 }
 

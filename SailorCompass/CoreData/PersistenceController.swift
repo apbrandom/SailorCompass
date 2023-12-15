@@ -8,13 +8,13 @@
 import CoreData
 import SwiftUI
 
-struct CoreDataController {
-    static let shared = CoreDataController()
+struct PersistenceController {
+    static let shared = PersistenceController()
     @Environment(\.managedObjectContext) private var viewContext
 
     //MARK: - Preview
-    static var preview: CoreDataController = {
-        let result = CoreDataController(inMemory: true)
+    static var preview: PersistenceController = {
+        let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newTest = Test(context: viewContext)
@@ -55,7 +55,7 @@ struct CoreDataController {
 }
 
 //MARK: - Methods
-extension CoreDataController {
+extension PersistenceController {
     
     func deleteEntities<T: NSManagedObject>(offsets: IndexSet, entities: FetchedResults<T>, in context: NSManagedObjectContext) {
         offsets.map { entities[$0] }.forEach(context.delete)

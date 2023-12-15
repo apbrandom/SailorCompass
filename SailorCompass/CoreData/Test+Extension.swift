@@ -40,7 +40,7 @@ extension Test {
     }
     
     static var example: Test {
-        let context = CoreDataController.preview.container.viewContext
+        let context = PersistenceController.preview.container.viewContext
                 let test = Test(context: context)
                 test.title = "Title example"
                 test.version = "1.0"

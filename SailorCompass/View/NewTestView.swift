@@ -20,7 +20,6 @@ struct NewTestView: View {
     @State private var testVersionInvalid = false
     @State private var showingAlert = false
     
-    
     var body: some View {
         Form {
             Section {
@@ -47,7 +46,6 @@ struct NewTestView: View {
             .alert(alertMessage, isPresented: $showingAlert) { }
         }
         .padding()
-        .applyBackground()
     }
     
     private func saveTest() {
@@ -65,7 +63,7 @@ struct NewTestView: View {
             return
         }
         
-        if CoreDataController.shared.testWithNameExists(name: testTitle, in: viewContext) {
+        if PersistenceController.shared.testWithNameExists(name: testTitle, in: viewContext) {
             testNameInvalid.toggle()
             alertMessage = Constants.LocalizedStrings.sameTestName
             showingAlert.toggle()
