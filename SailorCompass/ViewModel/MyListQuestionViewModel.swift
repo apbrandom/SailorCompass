@@ -5,11 +5,14 @@
 //  Created by Vadim Vinogradov on 26.10.2023.
 //
 
-//import CoreData
-//import SwiftUI
-//
-//    class MyListQuestionViewModel: ObservableObject {
-//        
+import CoreData
+import SwiftUI
+
+    class MyListQuestionViewModel: ObservableObject {
+        
+        
+        
+        
 //        var selectedTest: CDTest
 //        @Published var viewContext: NSManagedObjectContext
 //       
@@ -38,4 +41,4 @@
 //            print("Deleting question failed: \(error)")
 //        }
 //    }
-//}
+}

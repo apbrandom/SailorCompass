@@ -24,16 +24,16 @@ struct UserQuestionListView: View {
     @State private var isShowingAlert = false
     
     //Searching Bar
-    var filteredQuestions: [Question] {
-        if searchTerm.isEmpty {
-            return Array(questions)
-        } else {
-            return questions.filter { question in
-                question.text.localizedCaseInsensitiveContains(searchTerm) ||
-                question.correctAnswer.localizedCaseInsensitiveContains(searchTerm)
-            }
-        }
-    }
+    //    var filteredQuestions: [Question] {
+    //        if searchTerm.isEmpty {
+    //            return Array(questions)
+    //        } else {
+    //            return questions.filter { question in
+    //                question.text.localizedCaseInsensitiveContains(searchTerm) ||
+    //                question.correctAnswer.localizedCaseInsensitiveContains(searchTerm)
+    //            }
+    //        }
+    //    }
     
     init(selectedTest: Test) {
         self.selectedTest = selectedTest
@@ -42,85 +42,133 @@ struct UserQuestionListView: View {
         _questions = FetchRequest<Question>(sortDescriptors: [sortDescriptor], predicate: predicate)
     }
     
+    
     var body: some View {
         Group {
             if selectedTest.qcount == 0 {
                 VStack {
-                    Text("There are no questions added to this test yet.")
-                        .font(.title)
-                        .multilineTextAlignment(.center)
-                        .padding()
+                    EmptyListText()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .toolbar {
+                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+                        Image(systemName: "plus")
+                    }
+                }
             } else {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        ForEach(filteredQuestions, id: \.self) { question in
-                            NavigationLink(destination: UserQuestionDetailView(question: question)) {
-                                VStack(alignment: .leading) {
-                                    Text(question.text)
-                                        .multilineTextAlignment(.leading)
-                                    Text(question.correctAnswer)
-                                        .font(.subheadline)
-                                        .multilineTextAlignment(.leading)
-                                        .foregroundColor(.secondary)
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 10)
-                            }
-                        }
-                        .onDelete { offsets in
-                            deletionIndexSet = offsets
-                            isShowingDeleteAlert = true
+                List {
+                    ForEach(questions) { question in
+                        NavigationLink {
+                            UserQuestionDetailView(question: question)
+                        } label: {
+                            QuestionRowView(question: question)
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    
+                    .onDelete(perform: deleteItems)
                 }
-//                .padding()
                 .navigationTitle(selectedTest.title)
-                .searchable(text: $searchTerm, prompt: "Serach Question")
-                .alert(alertMessage, isPresented: $isShowingAlert, actions: {
-                    Button("Ok", role: .cancel, action: { })
-                })
-                .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
-                    Button("Cancel", role: .cancel) { }
-                    Button("Delete", role: .destructive) {
-                        if let offsets = deletionIndexSet {
-                            deleteItems(offsets: offsets)
-                        }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
                     }
-                } message: {
-                    Text("This question will be deleted permanently.")
-                }
-                .alert("Are you sure?", isPresented: $isShowingPublishAlert) {
-                    Button("Cancel", role: .cancel) { }
-                    Button("Yes") {
-                        publishTest(test: selectedTest)
-                    }
-                } message: {
-                    Text("This test will be published permanently, and you won't be able to modify it in the future.")
                 }
             }
         }
         .applyBackground()
-        .toolbar {
-            ToolbarItemGroup {
-                if selectedTest.isPublished {
-                    Image(systemName: "checkmark.seal.fill")
-                        .foregroundStyle(.green)
-                } else {
-                    Button {
-                        isShowingPublishAlert = true
-                    } label: {
-                        Image(systemName: "paperplane.fill")
-                    }
-                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
-                        Image(systemName: "plus")
-                    }
-                    EditButton()
-                }
-            }
+        // Остальные модификаторы...
+    }
+    
+    
+    //    var body: some View {
+    //        Group {
+    //            if selectedTest.qcount == 0 {
+    //                VStack {
+    //                    EmptyListText()
+    //                }
+    //                .frame(maxWidth: .infinity, maxHeight: .infinity)
+    //                .toolbar {
+    //                    NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+    //                        Image(systemName: "plus")
+    //                    }
+    //                }
+    //            } else {
+    //                List {
+    //                        ForEach(questions, id: \.self) { question in
+    ////                            if shouldShowQuestion(question) {
+    //                                NavigationLink(destination: UserQuestionDetailView(question: question)) {
+    //                                    VStack(alignment: .leading) {
+    //                                        Text(question.text)
+    //                                            .multilineTextAlignment(.leading)
+    //                                        Text(question.correctAnswer)
+    //                                            .font(.subheadline)
+    //                                            .multilineTextAlignment(.leading)
+    //                                            .foregroundColor(.secondary)
+    //                                    }
+    //                                    .padding(.horizontal, 20)
+    //                                    .padding(.vertical, 10)
+    //                                }
+    ////                            }
+    //                        }
+    //                        .onDelete { offsets in
+    //                            deletionIndexSet = offsets
+    //                            isShowingDeleteAlert = true
+    //                        }
+    //
+    //                    }
+    //                    .frame(maxWidth: .infinity, alignment: .leading)
+    //                    .toolbar {
+    //                        ToolbarItemGroup {
+    //                            if selectedTest.isPublished {
+    //                                Image(systemName: "checkmark.seal.fill")
+    //                                    .foregroundStyle(.green)
+    //                            } else {
+    //                                Button {
+    //                                    isShowingPublishAlert = true
+    //                                } label: {
+    //                                    Image(systemName: "paperplane.fill")
+    //                                }
+    //                                NavigationLink(destination: NewQuestionView(selectedTest: selectedTest)) {
+    //                                    Image(systemName: "plus")
+    //                                }
+    //                                EditButton()
+    //                            }
+    //                        }
+    //                    }
+    //                }
+    //                .navigationTitle(selectedTest.title)
+    ////                .searchable(text: $searchTerm, prompt: "Serach Question")
+    //                .alert(alertMessage, isPresented: $isShowingAlert, actions: {
+    //                    Button("Ok", role: .cancel, action: { })
+    //                })
+    //                .alert("Are you sure?", isPresented: $isShowingDeleteAlert) {
+    //                    Button("Cancel", role: .cancel) { }
+    //                    Button("Delete", role: .destructive) {
+    //                        if let offsets = deletionIndexSet {
+    //                            deleteItems(offsets: offsets)
+    //                        }
+    //                    }
+    //                } message: {
+    //                    Text(Constants.LocalizedStrings.qDelitionAlert)
+    //                }
+    //                .alert("Are you sure?", isPresented: $isShowingPublishAlert) {
+    //                    Button("Cancel", role: .cancel) { }
+    //                    Button("Yes") {
+    //                        publishTest(test: selectedTest)
+    //                    }
+    //                } message: {
+    //                    Text(Constants.LocalizedStrings.publishAlert)
+    //                }
+    //            }
+    //        }
+    //        .applyBackground()
+    //    }
+    
+    func shouldShowQuestion(_ question: Question) -> Bool {
+        if searchTerm.isEmpty {
+            return true
+        } else {
+            return question.text.localizedCaseInsensitiveContains(searchTerm) ||
+            question.correctAnswer.localizedCaseInsensitiveContains(searchTerm)
         }
     }
     
@@ -210,10 +258,26 @@ struct UserQuestionListView: View {
     }
 }
 
-
 #Preview {
     UserQuestionListView(selectedTest: Test.example)
         .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
         .applyBackground()
 }
 
+
+
+//struct View: View {
+//
+//    @ObservedObject var question: Question
+//
+//    var body: some View {
+//        VStack(alignment: .leading) {
+//            Text(question.text)
+//                .multilineTextAlignment(.leading)
+//            Text(question.correctAnswer)
+//                .font(.subheadline)
+//                .multilineTextAlignment(.leading)
+//                .foregroundColor(.secondary)
+//        }
+//    }
+//}

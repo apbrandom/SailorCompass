@@ -20,6 +20,8 @@ enum Constants {
         static let sameTestName = "A test with the same name already exists"
         static let alertQuestion = "Please enter a question in the provided field."
         static let alertAnswer = "Please enter a answer in the provied field."
+        static let publishAlert = "This test will be permanently published in a public database, and you will not be able to modify it in the future."
+        static let qDelitionAlert = "This question will be deleted permanently."
     }
     
     enum LayoutMetrics {

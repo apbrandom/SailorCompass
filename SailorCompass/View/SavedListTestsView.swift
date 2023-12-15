@@ -26,10 +26,9 @@ struct SavedListTestsView: View {
     
     var body: some View {
         List {
-            ForEach(tests, id: \.self) { test in
+            ForEach(tests) { test in
                 NavigationLink {
                     UserQuestionListView(selectedTest: test)
-                        .applyBackground()
                 } label: {
                     TestRowView(test: test)
                 }
@@ -86,4 +85,5 @@ struct SavedListTestsView: View {
 #Preview {
     SavedListTestsView()
         .environment(\.managedObjectContext, CoreDataController.preview.container.viewContext)
+        .applyBackground()
 }
