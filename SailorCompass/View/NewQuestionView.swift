@@ -15,32 +15,42 @@ struct NewQuestionView: View {
     var selectedTest: Test
     
     @StateObject var vm = NewQuestionViewViewModel()
-        
+    
     var body: some View {
         Form {
-            QuestionTextEditor(text: $vm.questionText, isInvalid: $vm.questionTextInvalid)
-            Section {
-                VStack {
-                    HStack {
-                        Button {
-                        } label: {
-                            CheckBoxButtonLabel()
-                        }
-                        AnswerTextField(text: $vm.answerText, isInvalid: $vm.answerTextInvalid)
-                    }
+            Section("Question") {
+                QuestionTextEditor(text: $vm.questionText, isInvalid: $vm.questionTextInvalid)
+            }
+            
+            Section("Correct Answer") {
+                AnswerTextEditor(text: $vm.answerText, isInvalid: $vm.answerTextInvalid)
+            }
+            
+            Section("Other Answers") {
+                ForEach($vm.otherAnswers.indices, id: \.self) { index in
+                    AnswerTextEditor(text: $vm.otherAnswers[index].text, isInvalid: $vm.answerTextInvalid)
                 }
             }
         }
         .navigationTitle("Creation of a new question")
         .navigationBarTitleDisplayMode(.inline)
         
-        Button {
-            saveToCoreData()
-        } label: {
-            CustomButtonLabel(text: Constants.LocalizedStrings.save)
+        VStack {
+            Button {
+                vm.addAnotherAnswer(context: viewContext)
+            } label: {
+                Image(systemName: "plus")
+                    .padding()
+            }
+            
+            Button {
+                saveToCoreData()
+            } label: {
+                CustomButtonLabel(text: Constants.LocalizedStrings.save)
+            }
+            .alert(vm.alertMessage, isPresented: $vm.showingAlert) { }
+            .padding()
         }
-        .alert(vm.alertMessage, isPresented: $vm.showingAlert) { }
-        .padding()
     }
     
     func saveToCoreData() {
@@ -59,22 +69,30 @@ struct NewQuestionView: View {
         }
         
         let newQuestion = Question(context: viewContext)
-        let newAnswer = Answer(context: viewContext)
         newQuestion.text = vm.questionText
-        newQuestion.correctAnswer = vm.answerText
         selectedTest.qcount += 1
-        newAnswer.question = newQuestion
-        newAnswer.isCorrect = true
-        newAnswer.text = vm.answerText
-        
         newQuestion.test = selectedTest
+        
+        let correctAnswer = Answer(context: viewContext)
+        newQuestion.correctAnswer = vm.answerText
+        correctAnswer.isCorrect = true
+        correctAnswer.text = vm.answerText
+        correctAnswer.question = newQuestion
+        
+        for answer in vm.otherAnswers {
+            let newAnswer = Answer(context: viewContext)
+            newAnswer.text = answer.text
+            newAnswer.isCorrect = false
+            newAnswer.question = newQuestion
+        }
         
         do {
             try viewContext.save()
+            presentationMode.wrappedValue.dismiss()
         } catch {
-            print("Saving test failed: \(error.localizedDescription)")
+            vm.alertMessage = "Saving failed: \(error.localizedDescription)"
+            vm.showingAlert.toggle()
         }
-        presentationMode.wrappedValue.dismiss()
     }
 }
 

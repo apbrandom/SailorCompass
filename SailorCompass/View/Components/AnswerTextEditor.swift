@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-struct AnswerTextField: View {
+struct AnswerTextEditor: View {
     
     @Binding var text: String
     @Binding var isInvalid: Bool
     
     let placeholder = "Answer"
-    let maxLength: Int = 120
+    let maxLength = 150
     
     var body: some View {
-        TextField(placeholder, text: $text)
+        TextEditor(text: $text)
+            .frame(height: 80)
+            .padding(.zero)
             .textFieldStyle(.roundedBorder)
             .border(isInvalid ? Color.red : Color.clear, width: isInvalid ? 2 : 0)
             .onChange(of: text) { newValue in
@@ -28,5 +30,5 @@ struct AnswerTextField: View {
 }
 
 #Preview {
-    AnswerTextField(text: .constant("Answer Text Example"), isInvalid: .constant(false))
+    AnswerTextEditor(text: .constant("Answer Text Example"), isInvalid: .constant(false))
 }

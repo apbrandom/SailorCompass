@@ -29,10 +29,15 @@ struct UserQuestionDetailView: View {
             Section(header: Text("Question")) {
                 Text(question.text)
             }
-            Section(header: Text("Answer")) {
+            Section(header: Text("Answers")) {
                 ForEach(answers, id: \.self) { answer in
                     HStack {
                         Text(answer.text)
+                        Spacer()
+                        if answer.isCorrect {
+                            Image(systemName: "checkmark.circle")
+                                .foregroundStyle(.green)
+                        }
                     }
                 }
             }

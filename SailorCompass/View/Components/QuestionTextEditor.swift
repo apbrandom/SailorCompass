@@ -16,7 +16,7 @@ struct QuestionTextEditor: View {
     
     var body: some View {
         TextEditor(text: $text)
-            .frame(height: 150)
+            .frame(height: 80)
             .textFieldStyle(.roundedBorder)
             .border(isInvalid ? Color.red : Color.clear, width: isInvalid ? 2 : 0)
             .onChange(of: text) { newValue in

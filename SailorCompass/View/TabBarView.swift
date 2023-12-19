@@ -20,7 +20,6 @@ struct TabBarView: View {
                 Text(TabBarItem.catalog.title)
                 
             }
-            
             NavigationStack {
                 ProfileView()
                     .applyBackground()
@@ -30,21 +29,6 @@ struct TabBarView: View {
                 Image(systemName: TabBarItem.profile.iconName)
                 Text(TabBarItem.profile.title)
             }
-            
-            
-            //
-            //            SettingsView()
-            //                .tabItem {
-            //                    Image(systemName: TabBarItem.settings.iconName)
-            //                    Text(TabBarItem.settings.title)
-            //                }
-            
-            
-            //            MapView()
-            //                .tabItem {
-            //                    Image(systemName: TabBarItem.map.iconName)
-            //                    Text(TabBarItem.map.title)
-            //                }
         }
     }
 }
