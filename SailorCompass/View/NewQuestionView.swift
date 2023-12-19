@@ -49,7 +49,6 @@ struct NewQuestionView: View {
                 } label: {
                     PlusMinusButtonLabel(systemImageName: "plus", color: .primaryText)
                 }
-                
             }
             .padding()
             .padding(.top, 10)

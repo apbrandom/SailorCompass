@@ -16,22 +16,51 @@ struct AdminPublicListView: View {
         if tests.isEmpty {
             Text("No tests to public")
         }
-        List(tests) { test in
-            NavigationLink {
-                AdminPublicDetailView(test: test)
-            } label: {
-                VStack(alignment: .leading) {
-                    Text(test.title).font(.headline)
-                    if let version = test.version {
-                        Text("Version: \(version)")
+        
+        List {
+            ForEach(tests) { test in
+                NavigationLink {
+                    AdminPublicDetailView(test: test)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(test.title).font(.headline)
+                        if let version = test.version {
+                            Text("Version: \(version)")
+                        }
+                        Text("Publication date: \(test.publicDate, formatter: DateFormatter.shortDate)")
                     }
-                    Text("Publication date: \(test.publicDate, formatter: DateFormatter.shortDate)")
                 }
             }
+//            .onDelete(perform: deleteTest)
         }
         .onAppear(perform: fetchItems)
+//        .toolbar {
+//            EditButton()
+//        }
     }
     
+//    func deleteTest(at offsets: IndexSet) {
+//        // Получаем ID записей для удаления
+//        let idsToDelete = offsets.map { tests[$0].id }
+//        tests.remove(atOffsets: offsets)
+//
+//        // Создаем операцию для удаления записей из CloudKit
+//        let modifyOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: idsToDelete)
+//        modifyOperation.modifyRecordsResultBlock = { result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(_):
+//                    print("Records successfully deleted")
+//                case .failure(let error):
+//                    print("Error deleting records: \(error)")
+//                }
+//            }
+//        }
+//        
+//        // Добавляем операцию в базу данных CloudKit
+//        CKContainer.default().publicCloudDatabase.add(modifyOperation)
+//    }
+
     func fetchItems() {
         self.tests = []
         let predicate = NSPredicate(value: true)

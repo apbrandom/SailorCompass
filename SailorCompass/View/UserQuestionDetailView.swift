@@ -15,6 +15,8 @@ struct UserQuestionDetailView: View {
     
     @FetchRequest var answers: FetchedResults<Answer>
     
+    @State private var isEditing = false
+    
     init(question: Question) {
         self.question = question
         self._answers = FetchRequest<Answer>(
@@ -25,14 +27,25 @@ struct UserQuestionDetailView: View {
     }
     
     var body: some View {
-        List {
-            Section(header: Text("Question")) {
-                Text(question.text)
+        Form {
+            Section("Question") {
+                if isEditing {
+                    TextField("Edit Question", text: $question.text)
+                } else {
+                    Text(question.text)
+                }
             }
-            Section(header: Text("Answers")) {
+            Section("Answers") {
                 ForEach(answers, id: \.self) { answer in
                     HStack {
-                        Text(answer.text)
+                        if isEditing {
+                            TextField("Edit Answer", text: Binding(
+                                get: { answer.text },
+                                set: { answer.text = $0 }
+                            ))
+                        } else {
+                            Text(answer.text)
+                        }
                         Spacer()
                         if answer.isCorrect {
                             Image(systemName: "checkmark.circle")
@@ -44,6 +57,14 @@ struct UserQuestionDetailView: View {
         }
         .navigationTitle("Question Details")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+                    Button(isEditing ? "Done" : "Edit") {
+                        isEditing.toggle()
+                        if !isEditing {
+                            try? viewContext.save()
+                        }
+                    }
+                }
     }
 }
 

@@ -64,6 +64,7 @@ struct UserQuestionListView: View {
                 .toolbar {
                     ToolbarItemGroup {
                         if selectedTest.isPublished {
+                            EditButton()
                             Image(systemName: "checkmark.seal.fill")
                                 .foregroundStyle(.green)
                         } else {
@@ -77,7 +78,6 @@ struct UserQuestionListView: View {
                             } label: {
                                 Image(systemName: "plus")
                             }
-                            
                             EditButton()
                         }
                     }

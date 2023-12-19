@@ -68,7 +68,7 @@
 		CBE678862B222CDF004D7EBC /* GlassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE678852B222CDF004D7EBC /* GlassView.swift */; };
 		CBEB6D672B2BB39000B678F2 /* SavedListTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB6D662B2BB39000B678F2 /* SavedListTestsViewModel.swift */; };
 		CBEB6D692B2C74B600B678F2 /* CustomTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB6D682B2C74B600B678F2 /* CustomTexts.swift */; };
-		CBEB6D6C2B2CAB2200B678F2 /* QuestionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB6D6B2B2CAB2200B678F2 /* QuestionListView.swift */; };
+		CBEB6D6C2B2CAB2200B678F2 /* QuestionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB6D6B2B2CAB2200B678F2 /* QuestionRowView.swift */; };
 		CBF7545C2B1CF34900243978 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545B2B1CF34900243978 /* CloudKitService.swift */; };
 		CBF7545E2B1D145C00243978 /* CloudUserAdminIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545D2B1D145C00243978 /* CloudUserAdminIdModel.swift */; };
 		CBF754602B1E042100243978 /* AdminPublicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545F2B1E042100243978 /* AdminPublicDetailView.swift */; };
@@ -158,7 +158,7 @@
 		CBE678852B222CDF004D7EBC /* GlassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassView.swift; sourceTree = "<group>"; };
 		CBEB6D662B2BB39000B678F2 /* SavedListTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListTestsViewModel.swift; sourceTree = "<group>"; };
 		CBEB6D682B2C74B600B678F2 /* CustomTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTexts.swift; sourceTree = "<group>"; };
-		CBEB6D6B2B2CAB2200B678F2 /* QuestionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListView.swift; sourceTree = "<group>"; };
+		CBEB6D6B2B2CAB2200B678F2 /* QuestionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRowView.swift; sourceTree = "<group>"; };
 		CBF7545B2B1CF34900243978 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		CBF7545D2B1D145C00243978 /* CloudUserAdminIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUserAdminIdModel.swift; sourceTree = "<group>"; };
 		CBF7545F2B1E042100243978 /* AdminPublicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPublicDetailView.swift; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 				CBEB6D6A2B2C755D00B678F2 /* CustomText */,
 				CB3A07742AF652B4007755C0 /* MainViewCell.swift */,
 				CB03A3552AECFDA3005C3157 /* TestRowView.swift */,
-				CBEB6D6B2B2CAB2200B678F2 /* QuestionListView.swift */,
+				CBEB6D6B2B2CAB2200B678F2 /* QuestionRowView.swift */,
 				CB3F773D2AEEAA6400DA3970 /* CustomButtonLabel.swift */,
 				CB3049352AEFC7EE005F8574 /* CheckBoxButtonLabel.swift */,
 				CB9495FC2AF3F507007A850C /* TestTitleTextField.swift */,
@@ -557,7 +557,7 @@
 				CBF7545E2B1D145C00243978 /* CloudUserAdminIdModel.swift in Sources */,
 				CB93DF182B2CEFCD009CCC95 /* CoreDataManager.swift in Sources */,
 				CB8A50452AE8033500088727 /* MyListTestsViewModel.swift in Sources */,
-				CBEB6D6C2B2CAB2200B678F2 /* QuestionListView.swift in Sources */,
+				CBEB6D6C2B2CAB2200B678F2 /* QuestionRowView.swift in Sources */,
 				CB8A50382AE7CF9400088727 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,7 +28,11 @@ struct AdminPublicDetailView: View {
         .navigationTitle(test.title)
         .onAppear(perform: fetchQuestions)
         .toolbar {
-            Button("Move Questions", action: moveQuestionsToNewRecordType)
+            Button {
+                moveQuestionsToNewRecordType()
+            } label: {
+                Image(systemName: "paperplane.fill")
+            }
         }
     }
     
@@ -84,6 +88,19 @@ struct AdminPublicDetailView: View {
                 }
             }
         }
+        
+//        // Клонирование теста
+//        fetchGroup.enter()
+//        CKContainer.default().publicCloudDatabase.fetch(withRecordID: test.id) { record, error in
+//            defer { fetchGroup.leave() }
+//            if let record = record, error == nil {
+//                let newTestRecord = CloudKitService.shared.cloneRecord(original: record, to: "PublicTest")
+//                newRecords.append(newTestRecord)
+//                recordIDsToDelete.append(test.id) // Добавляем ID теста для удаления
+//            } else {
+//                print("Error fetching test record: \(String(describing: error))")
+//            }
+//        }
         
         // Сохраняет клонированные записи.
         fetchGroup.notify(queue: .main) {

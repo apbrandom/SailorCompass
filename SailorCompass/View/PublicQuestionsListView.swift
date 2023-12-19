@@ -40,7 +40,7 @@ struct PublicQuestionsListView: View {
         .navigationTitle("Questions Hub")
         .navigationBarTitleDisplayMode(.automatic)
     }
-    // Необходимо доработать поисковый запрос с CONTAINS
+
     func fetchItems() {
         self.questions.removeAll()
         
@@ -51,7 +51,7 @@ struct PublicQuestionsListView: View {
         if searchText.isEmpty {
             predicate = NSPredicate(value: true)
         } else {
-            predicate = NSPredicate(format:"%K BEGINSWITH %@", key, value)
+            predicate = NSPredicate(format: "%K BEGINSWITH %@", key, value)
         }
         
         let query = CKQuery(recordType: "PublicQuestion", predicate: predicate)
