@@ -10,12 +10,6 @@ import CoreData
 
 class NewQuestionViewViewModel: ObservableObject {
     
-//    private var viewContext: NSManagedObjectContext
-//
-//    init(context: NSManagedObjectContext) {
-//        self.viewContext = context
-//    }
-    
     @Published var otherAnswers: [Answer] = []
     @Published var questionText = ""
     @Published var answerText = ""
@@ -24,9 +18,37 @@ class NewQuestionViewViewModel: ObservableObject {
     @Published var questionTextInvalid = false
     @Published var answerTextInvalid = false
     
-    func addAnotherAnswer(context: NSManagedObjectContext) {
+    func checkTextEditorIsEpmty() -> Bool {
+        if questionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            questionTextInvalid.toggle()
+            alertMessage = Constants.LocalizedStrings.alertQuestion
+            showingAlert.toggle()
+            return true
+        }
+        
+        if answerText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            answerTextInvalid.toggle()
+            alertMessage = Constants.LocalizedStrings.alertAnswer
+            showingAlert.toggle()
+            return true
+        }
+        
+        if otherAnswers.contains(where: { $0.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }) {
+            alertMessage = Constants.LocalizedStrings.alertAnswer
+            showingAlert.toggle()
+            return true
+        }
+        
+        return false
+    }
+    
+    func addOtherAnswer(context: NSManagedObjectContext) {
         let newAnswer = Answer(context: context)
         newAnswer.isCorrect = false
         otherAnswers.append(newAnswer)
+    }
+    
+    func removeOtherAnswer(context: NSManagedObjectContext) {
+        otherAnswers.removeLast()
     }
 }

@@ -36,12 +36,23 @@ struct NewQuestionView: View {
         .navigationBarTitleDisplayMode(.inline)
         
         VStack {
-            Button {
-                vm.addAnotherAnswer(context: viewContext)
-            } label: {
-                Image(systemName: "plus")
-                    .padding()
+            HStack {
+                if !vm.otherAnswers.isEmpty {
+                    Button {
+                        vm.removeOtherAnswer(context: viewContext)
+                    } label: {
+                        PlusMinusButtonLabel(systemImageName: "minus", color: .red)
+                    }
+                }
+                Button {
+                    vm.addOtherAnswer(context: viewContext)
+                } label: {
+                    PlusMinusButtonLabel(systemImageName: "plus", color: .primaryText)
+                }
+                
             }
+            .padding()
+            .padding(.top, 10)
             
             Button {
                 saveToCoreData()
@@ -51,23 +62,14 @@ struct NewQuestionView: View {
             .alert(vm.alertMessage, isPresented: $vm.showingAlert) { }
             .padding()
         }
+        .animation(.easeIn, value: vm.otherAnswers)
     }
     
     func saveToCoreData() {
-        if vm.questionText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            vm.questionTextInvalid.toggle()
-            vm.alertMessage = Constants.LocalizedStrings.alertQuestion
-            vm.showingAlert.toggle()
+        if vm.checkTextEditorIsEpmty() {
             return
         }
-        
-        if vm.answerText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            vm.answerTextInvalid.toggle()
-            vm.alertMessage = Constants.LocalizedStrings.alertAnswer
-            vm.showingAlert.toggle()
-            return
-        }
-        
+                
         let newQuestion = Question(context: viewContext)
         newQuestion.text = vm.questionText
         selectedTest.qcount += 1
