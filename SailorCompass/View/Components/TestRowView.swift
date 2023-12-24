@@ -24,7 +24,7 @@ struct TestRowView: View {
                 Image(systemName: test.isPublished ? "checkmark.seal.fill" : "checkmark.seal.fill")
                     .foregroundColor(test.isPublished ? .green : .gray)
             }
-            Spacer()
+//            Spacer()
             HStack {
                 Image(systemName: "doc.questionmark.fill")
                 Text("\(test.qcount)")

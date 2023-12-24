@@ -23,7 +23,7 @@ struct QuizAnswerRow: View {
                 .bold()
                 .foregroundStyle(.primaryText)
             Spacer()
-            Image(systemName: answer.isCorrect ? "checkmar.circle.fill" : "x.circle.fill")
+            Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill")
                 .foregroundStyle(answer.isCorrect ? .green : .red)
         }
         .padding()
@@ -31,9 +31,9 @@ struct QuizAnswerRow: View {
         .foregroundStyle(isSelected ? .gray : .primaryText)
         .background(.customBeige)
         .clipShape(.rect(cornerRadius: 10))
-        .shadow(color: qwizManager.answeSelected ? (answer.isCorrect ? .green : .red) : .gray, radius: 5)
+        .shadow(color: qwizManager.answerSelected ? (answer.isCorrect ? .green : .red) : .gray, radius: 5)
         .onTapGesture {
-            if !qwizManager.answeSelected {
+            if !qwizManager.answerSelected {
                 isSelected = true
                 qwizManager.selectAnswer(answer: answer)
             }
@@ -42,7 +42,7 @@ struct QuizAnswerRow: View {
     }
 }
 
-#Preview {
-    QuizAnswerRow(answer: Answer.example)
-        .environmentObject(QuizManager())
-}
+//#Preview {
+//    QuizAnswerRow(answer: Answer.example)
+//        .environmentObject(QuizManager())
+//}

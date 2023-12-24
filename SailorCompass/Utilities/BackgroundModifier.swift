@@ -13,7 +13,6 @@ struct BackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .background(colorScheme == .dark ? Color.backgroundSkyNight : Color.backgroundSkyDay)
-//            .edgesIgnoringSafeArea(.all)
     }
 }
 

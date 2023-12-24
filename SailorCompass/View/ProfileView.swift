@@ -103,7 +103,7 @@ struct ProfileView: View {
         }
     }
 }
-//
-//#Preview {
-//    ProfileView(vm: .preview)
-//}
+
+#Preview {
+    ProfileView(vm: .preview)
+}

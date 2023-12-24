@@ -31,7 +31,6 @@ struct SavedListTestsView: View {
                 vm.deletionIndexSet = offsets
             }
             .listRowSeparator(.hidden)
-            .padding(.vertical, 5)
         }
         .alert("Are you sure?", isPresented: $vm.showingAlert) {
             Button("Cancel", role: .cancel) { }
@@ -49,7 +48,7 @@ struct SavedListTestsView: View {
             ToolbarItemGroup {
                 EditButton()
                 NavigationLink {
-                    NewTestView().applyBackground()
+                    NewTestView()
                 } label: {
                     Image(systemName: Constants.icon.plus)
                 }

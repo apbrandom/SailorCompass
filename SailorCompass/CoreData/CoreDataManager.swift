@@ -15,6 +15,16 @@ class CoreDataManager {
     private init() {
         viewContext = PersistenceController.shared.container.viewContext
     }
+    
+    func fetchQuestions(for test: Test) async throws -> [Question] {
+        let context = viewContext
+
+        let request: NSFetchRequest<Question> = Question.fetchRequest()
+        request.predicate = NSPredicate(format: "test == %@", test)
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \Question.dateCreated, ascending: true)]
+
+        return try context.fetch(request)
+    }
 
     func saveQuestion(text: String, answer: String, in test: Test) {
         let newQuestion = Question(context: viewContext)

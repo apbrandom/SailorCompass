@@ -63,6 +63,7 @@
 		CB98D5172B3869FE00B29379 /* QuizQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98D5162B3869FE00B29379 /* QuizQuestionView.swift */; };
 		CB98D51A2B386B4800B29379 /* QuizAnswerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98D5192B386B4800B29379 /* QuizAnswerRow.swift */; };
 		CB98D51C2B38727500B29379 /* QuizTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98D51B2B38727500B29379 /* QuizTitle.swift */; };
+		CB98D51E2B3895F500B29379 /* QuizListTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB98D51D2B3895F500B29379 /* QuizListTestView.swift */; };
 		CBA8670F2B175BEA00C6A649 /* FlagPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA8670E2B175BEA00C6A649 /* FlagPicker.swift */; };
 		CBA867112B175E6D00C6A649 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867102B175E6D00C6A649 /* Country.swift */; };
 		CBA867132B179C6E00C6A649 /* CrewRolePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */; };
@@ -157,6 +158,7 @@
 		CB98D5162B3869FE00B29379 /* QuizQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionView.swift; sourceTree = "<group>"; };
 		CB98D5192B386B4800B29379 /* QuizAnswerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAnswerRow.swift; sourceTree = "<group>"; };
 		CB98D51B2B38727500B29379 /* QuizTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTitle.swift; sourceTree = "<group>"; };
+		CB98D51D2B3895F500B29379 /* QuizListTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListTestView.swift; sourceTree = "<group>"; };
 		CBA8670E2B175BEA00C6A649 /* FlagPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagPicker.swift; sourceTree = "<group>"; };
 		CBA867102B175E6D00C6A649 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		CBA867122B179C6E00C6A649 /* CrewRolePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewRolePicker.swift; sourceTree = "<group>"; };
@@ -300,9 +302,10 @@
 				CB8A50342AE7CF0C00088727 /* TabBarView.swift */,
 				CB8A503D2AE7D75A00088727 /* MainView.swift */,
 				CB67508C2AE699600049E7A8 /* SavedListTestsView.swift */,
-				CB98D5162B3869FE00B29379 /* QuizQuestionView.swift */,
 				CBAB26AE2AEA6ED200C72AE1 /* UserQuestionListView.swift */,
 				CB0C516D2AF023100063C5AD /* UserQuestionDetailView.swift */,
+				CB98D51D2B3895F500B29379 /* QuizListTestView.swift */,
+				CB98D5162B3869FE00B29379 /* QuizQuestionView.swift */,
 				CB8A50492AE8096700088727 /* AdminPublicListView.swift */,
 				CBF7545F2B1E042100243978 /* AdminPublicDetailView.swift */,
 				CB564F622B0630A500F70C66 /* PublicQuestionsListView.swift */,
@@ -544,6 +547,7 @@
 				CB8A503C2AE7D25800088727 /* ProfileView.swift in Sources */,
 				CB46179E2AF7BC8B00AD5BA5 /* AnswerViewModel.swift in Sources */,
 				CB8A503A2AE7D1F800088727 /* MapView.swift in Sources */,
+				CB98D51E2B3895F500B29379 /* QuizListTestView.swift in Sources */,
 				CB3A07772AF655CC007755C0 /* GlassBackground.swift in Sources */,
 				CB8A504C2AE80E6B00088727 /* Constants.swift in Sources */,
 				CB8A503E2AE7D75A00088727 /* MainView.swift in Sources */,

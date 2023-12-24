@@ -21,6 +21,13 @@ struct MainView: View {
             } label: {
                 MainViewCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
             }
+            NavigationLink {
+                QuizListTestView()
+                    .applyBackground()
+            } label: {
+                MainViewCell(icon: CatalogIcon.quiz.icon, title: CatalogIcon.quiz.title)
+            }
+            
             if vm.isAdmin {
                 NavigationLink {
                     AdminPublicListView()

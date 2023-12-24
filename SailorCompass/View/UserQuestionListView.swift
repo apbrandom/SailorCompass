@@ -23,7 +23,7 @@ struct UserQuestionListView: View {
     @State private var alertMessage = ""
     @State private var isShowingAlert = false
     
- 
+    
     init(selectedTest: Test) {
         self.selectedTest = selectedTest
         let sortDescriptor = NSSortDescriptor(keyPath: \Question.dateCreated, ascending: true)
@@ -203,26 +203,13 @@ struct UserQuestionListView: View {
     }
 }
 
-#Preview {
-    UserQuestionListView(selectedTest: Test.example)
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-        .applyBackground()
-}
-
-
-
-//struct View: View {
+//#Preview {
+//    let context = PersistenceController.preview.container.viewContext
 //
-//    @ObservedObject var question: Question
+//    // Получение экземпляра Test для предварительного просмотра
+//    let exampleTest = Test.example
 //
-//    var body: some View {
-//        VStack(alignment: .leading) {
-//            Text(question.text)
-//                .multilineTextAlignment(.leading)
-//            Text(question.correctAnswer)
-//                .font(.subheadline)
-//                .multilineTextAlignment(.leading)
-//                .foregroundColor(.secondary)
-//        }
-//    }
+//    // Возвращение UserQuestionListView в качестве предварительного просмотра
+//    UserQuestionListView(selectedTest: exampleTest)
+//        .environment(\.managedObjectContext, context)
 //}

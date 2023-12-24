@@ -22,8 +22,6 @@ struct TabBarView: View {
             }
             NavigationStack {
                 ProfileView()
-                    .applyBackground()
-                
             }
             .tabItem {
                 Image(systemName: TabBarItem.profile.iconName)
