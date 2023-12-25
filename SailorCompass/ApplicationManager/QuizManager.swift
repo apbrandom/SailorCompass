@@ -9,9 +9,9 @@ import Foundation
 
 class QuizManager: ObservableObject {
     
+    @Published var reachedEnd = false
     @Published private (set) var length = 0
     @Published private (set) var index = 0
-    @Published private (set) var reachedEnd = false
     @Published private (set) var answerSelected = false
     @Published private (set) var question = ""
     @Published private (set) var answerChoices: [Answer] = []
@@ -53,10 +53,22 @@ class QuizManager: ObservableObject {
     func setQuestion() {
         answerSelected = false
         progress = CGFloat(Double(index + 1) / Double(questions.count))
+
         if index < questions.count {
             let currentQuestion = questions[index]
-            self.question = currentQuestion.text // Адаптируйте в соответствии с вашей моделью данных
-            self.answerChoices = currentQuestion.answers?.allObjects as? [Answer] ?? [] // Адаптируйте в соответствии с вашей моделью данных
+            self.question = currentQuestion.text
+           
+            //print
+            print("Текущий вопрос: \(currentQuestion.text)")
+            
+            if let answersSet = currentQuestion.answers as? Set<Answer> {
+                self.answerChoices = Array(answersSet).shuffled()
+                
+                //print
+                print("Ответы: \(self.answerChoices.map { $0.text })")
+            } else {
+                self.answerChoices = []
+            }
         }
     }
     

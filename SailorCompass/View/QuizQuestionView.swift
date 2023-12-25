@@ -12,8 +12,6 @@ struct QuizQuestionView: View {
     @EnvironmentObject var quizManager: QuizManager
     @Environment(\.presentationMode) var presentationMode
     
-//    var test: Test
-    
     var body: some View {
         VStack(spacing: 15) {
             if quizManager.reachedEnd {
@@ -22,6 +20,7 @@ struct QuizQuestionView: View {
                 Spacer()
                 Button {
                     presentationMode.wrappedValue.dismiss()
+                    quizManager.reachedEnd = false
                 } label: {
                     CustomButtonLabel(text: "OK")
                 }
@@ -33,7 +32,7 @@ struct QuizQuestionView: View {
                     .bold()
                     .foregroundStyle(.gray)
                 
-                ForEach(quizManager.answerChoices, id: \.id) { answer in
+                ForEach(quizManager.answerChoices, id: \.self) { answer in
                     QuizAnswerRow(answer: answer)
                         .environmentObject(quizManager)
                 }

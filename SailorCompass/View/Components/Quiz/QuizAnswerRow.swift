@@ -16,15 +16,15 @@ struct QuizAnswerRow: View {
 
     var body: some View {
         HStack(spacing: 20) {
-            Image(systemName: "circle.fill")
-                .font(.caption)
-                .foregroundStyle(.primaryText)
             Text(answer.text)
                 .bold()
                 .foregroundStyle(.primaryText)
             Spacer()
-            Image(systemName: answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill")
+            Image(systemName: qwizManager.answerSelected ? (answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill") : "")
                 .foregroundStyle(answer.isCorrect ? .green : .red)
+        }
+        .onAppear {
+            print("Ответ в строке: \(answer.text)")
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -16,6 +16,7 @@ class CoreDataManager {
         viewContext = PersistenceController.shared.container.viewContext
     }
     
+    //For QuizManager
     func fetchQuestions(for test: Test) async throws -> [Question] {
         let context = viewContext
 
@@ -26,6 +27,7 @@ class CoreDataManager {
         return try context.fetch(request)
     }
 
+    //Not using...
     func saveQuestion(text: String, answer: String, in test: Test) {
         let newQuestion = Question(context: viewContext)
         let newAnswer = Answer(context: viewContext)
