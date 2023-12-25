@@ -19,9 +19,12 @@ struct QuizAnswerRow: View {
             Text(answer.text)
                 .bold()
                 .foregroundStyle(.primaryText)
+            
             Spacer()
-            Image(systemName: qwizManager.answerSelected ? (answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill") : "")
-                .foregroundStyle(answer.isCorrect ? .green : .red)
+            if qwizManager.answerSelected {
+                Image(systemName: (answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill"))
+                    .foregroundStyle(answer.isCorrect ? .green : .red)
+            }
         }
         .onAppear {
             print("Ответ в строке: \(answer.text)")

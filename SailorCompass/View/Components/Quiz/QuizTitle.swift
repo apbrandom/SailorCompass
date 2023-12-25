@@ -10,9 +10,9 @@ import SwiftUI
 
 struct QuizTitle: View {
 
-    @Binding var questionIndex: Int
-    @Binding var questionLenght: Int
-    @Binding var testTitle: String
+     var questionIndex: Int
+     var questionLenght: Int
+     var testTitle: String
 
     var body: some View {
         HStack {
@@ -28,5 +28,5 @@ struct QuizTitle: View {
 }
 
 #Preview {
-    QuizTitle(questionIndex: .constant(0), questionLenght: .constant(10), testTitle: .constant("Test Title"))
+    QuizTitle(questionIndex: 0, questionLenght: 1, testTitle: "Test title")
 }

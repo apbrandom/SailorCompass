@@ -17,7 +17,7 @@ struct QuizListTestView: View {
         List {
             ForEach(tests, id: \.self) { test in
                 NavigationLink {
-                    QuizQuestionView()
+                    QuizQuestionView(selectedTest: test)
                         .environmentObject(QuizManager(selectedTest: test))
                 } label: {
                     TestRowView(test: test)

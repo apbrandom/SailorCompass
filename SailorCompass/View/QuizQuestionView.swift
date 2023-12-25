@@ -12,8 +12,10 @@ struct QuizQuestionView: View {
     @EnvironmentObject var quizManager: QuizManager
     @Environment(\.presentationMode) var presentationMode
     
+    var selectedTest: Test
+    
     var body: some View {
-        VStack(spacing: 15) {
+        ScrollView {
             if quizManager.reachedEnd {
                 Text("Test comleted! Your score: \(quizManager.score) из \(quizManager.length)")
                 
@@ -26,11 +28,12 @@ struct QuizQuestionView: View {
                 }
                 
             } else {
+                QuizTitle(questionIndex: quizManager.index, questionLenght: quizManager.length, testTitle: selectedTest.title)
                 Text(quizManager.question)
-                    .padding(.top, 40)
                     .font(.system(size: 20))
                     .bold()
                     .foregroundStyle(.gray)
+                    .padding()
                 
                 ForEach(quizManager.answerChoices, id: \.self) { answer in
                     QuizAnswerRow(answer: answer)
