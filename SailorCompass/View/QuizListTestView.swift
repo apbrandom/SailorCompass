@@ -27,6 +27,7 @@ struct QuizListTestView: View {
             .listRowSeparator(.hidden)
         }
         .navigationTitle("select a test to practice")
+        .navigationBarTitleDisplayMode(.inline)
         .listStyle(.plain)
         .applyBackground()
     }

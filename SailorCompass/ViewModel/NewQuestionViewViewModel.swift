@@ -38,17 +38,20 @@ class NewQuestionViewViewModel: ObservableObject {
             showingAlert.toggle()
             return true
         }
-        
         return false
     }
     
     func addOtherAnswer(context: NSManagedObjectContext) {
         let newAnswer = Answer(context: context)
-        newAnswer.isCorrect = false
-        otherAnswers.append(newAnswer)
+        if otherAnswers.count <= 9 {
+            newAnswer.isCorrect = false
+            otherAnswers.append(newAnswer)
+        }
     }
     
     func removeOtherAnswer(context: NSManagedObjectContext) {
-        otherAnswers.removeLast()
+        if !otherAnswers.isEmpty {
+            otherAnswers.removeLast()
+        }
     }
 }
