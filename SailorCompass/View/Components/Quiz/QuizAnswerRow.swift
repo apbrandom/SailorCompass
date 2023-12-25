@@ -42,10 +42,11 @@ struct QuizAnswerRow: View {
             }
         }
         .padding(.horizontal)
+        .padding(.vertical, 10)
     }
 }
 
-//#Preview {
-//    QuizAnswerRow(answer: Answer.example)
-//        .environmentObject(QuizManager())
-//}
+#Preview {
+    QuizAnswerRow(answer: Answer.example)
+        .environmentObject(QuizManager(selectedTest: Test.example))
+}

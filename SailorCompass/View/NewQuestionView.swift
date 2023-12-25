@@ -56,7 +56,7 @@ struct NewQuestionView: View {
             Button {
                 saveToCoreData()
             } label: {
-                CustomButtonLabel(text: Constants.LocalizedStrings.save)
+                CustomButtonLabel(text: Constants.LocalizedStrings.save, isActive: true)
             }
             .alert(vm.alertMessage, isPresented: $vm.showingAlert) { }
             .padding()

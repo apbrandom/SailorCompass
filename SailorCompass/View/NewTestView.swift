@@ -41,7 +41,7 @@ struct NewTestView: View {
         
         VStack {
             Button(action: saveTest) {
-                CustomButtonLabel(text: Constants.LocalizedStrings.save)
+                CustomButtonLabel(text: Constants.LocalizedStrings.save, isActive: true)
             }
             .alert(alertMessage, isPresented: $showingAlert) { }
         }

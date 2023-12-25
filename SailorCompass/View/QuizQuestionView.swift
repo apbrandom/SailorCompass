@@ -15,45 +15,52 @@ struct QuizQuestionView: View {
     var selectedTest: Test
     
     var body: some View {
-        ScrollView {
+        VStack {
+            Spacer()
             if quizManager.reachedEnd {
-                Text("Test comleted! Your score: \(quizManager.score) из \(quizManager.length)")
+                Text("Test completed! Your score: \(quizManager.score) out of \(quizManager.length)")
+                    .padding()
                 
-                Spacer()
                 Button {
                     presentationMode.wrappedValue.dismiss()
                     quizManager.reachedEnd = false
                 } label: {
-                    CustomButtonLabel(text: "OK")
+                    CustomButtonLabel(text: "OK", isActive: true)
                 }
-                
-            } else {
-                QuizTitle(questionIndex: quizManager.index, questionLenght: quizManager.length, testTitle: selectedTest.title)
-                Text(quizManager.question)
-                    .font(.system(size: 20))
-                    .bold()
-                    .foregroundStyle(.gray)
-                    .padding()
-                
-                ForEach(quizManager.answerChoices, id: \.self) { answer in
-                    QuizAnswerRow(answer: answer)
-                        .environmentObject(quizManager)
-                }
-                
+                .padding()
                 Spacer()
-                Button {
-                    quizManager.goToNextQuestion()
-                } label: {
-                    CustomButtonLabel(text: "Next")
+            } else {
+                ScrollView {
+                    QuizTitle(questionIndex: quizManager.index, questionLenght: quizManager.length, testTitle: selectedTest.title)
+                    Text(quizManager.question)
+                        .font(.system(size: 20))
+                        .bold()
+                        .foregroundStyle(.gray)
+                        .padding()
+                    
+                    ForEach(quizManager.answerChoices, id: \.self) { answer in
+                        QuizAnswerRow(answer: answer)
+                            .environmentObject(quizManager)
+                    }
+                    
+                    Spacer()
+                    Button {
+                        quizManager.goToNextQuestion()
+                    } label: {
+                        CustomButtonLabel(text: "Next", isActive: quizManager.answerSelected)
+                            .frame(maxWidth: 250)
+                    }
+                    .padding()
+                    .disabled(!quizManager.answerSelected)
+                    Spacer()
                 }
-                .disabled(!quizManager.answerSelected)
             }
         }
         .applyBackground()
     }
 }
-//
-//#Preview {
-//    QuizQuestionView(test: Test.example)
-//        .environmentObject(QuizManager(selectedTest: Test.example))
-//}
+
+#Preview {
+    QuizQuestionView(selectedTest: Test.example)
+        .environmentObject(QuizManager(selectedTest: Test.example))
+}
