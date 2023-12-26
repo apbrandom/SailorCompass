@@ -10,9 +10,8 @@ import SwiftUI
 struct SavedListTestsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(fetchRequest: Test.fetch(), animation: .bouncy)
-    
-    var tests: FetchedResults<Test>
+    @FetchRequest(fetchRequest: Test.fetch(), animation: .bouncy
+    ) var tests: FetchedResults<Test>
     
     @StateObject var vm = SavedListTestsViewModel()
     

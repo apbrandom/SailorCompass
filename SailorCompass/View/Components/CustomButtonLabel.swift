@@ -16,7 +16,7 @@ struct CustomButtonLabel: View {
         Text(text)
         .padding()
         .frame(maxWidth: .infinity)
-        .background(isActive ? LinearGradient(colors: [.green, .blue], startPoint: .leading, endPoint: .trailing) : LinearGradient(colors: [.gray, .black], startPoint: .leading, endPoint: .trailing))
+        .background(isActive ? LinearGradient(colors: [.green, .blue], startPoint: .leading, endPoint: .trailing) : LinearGradient(colors: [.gray, .gray], startPoint: .leading, endPoint: .trailing))
         .font(.title3.bold())
         .foregroundStyle(.white)
         .clipShape(.rect(cornerRadius: 10))

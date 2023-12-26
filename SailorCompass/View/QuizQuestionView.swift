@@ -18,9 +18,10 @@ struct QuizQuestionView: View {
         VStack {
             Spacer()
             if quizManager.reachedEnd {
-                Text("Test completed! Your score: \(quizManager.score) out of \(quizManager.length)")
+                Text("Test completed! Your score: \(quizManager.score)")
                     .padding()
-                
+                    .font(.largeTitle)
+                Spacer()
                 Button {
                     presentationMode.wrappedValue.dismiss()
                     quizManager.reachedEnd = false

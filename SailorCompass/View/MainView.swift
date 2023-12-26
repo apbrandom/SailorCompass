@@ -10,6 +10,8 @@ import SwiftUI
 struct MainView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(fetchRequest: Test.fetch(), animation: .bouncy
+    ) var tests: FetchedResults<Test>
     
     @StateObject var vm = CloudKitUserViewModel()
     
@@ -21,11 +23,14 @@ struct MainView: View {
             } label: {
                 MainViewCell(icon: CatalogIcon.myTest.icon, title: CatalogIcon.myTest.title)
             }
-            NavigationLink {
-                QuizListTestView()
-                    .applyBackground()
-            } label: {
-                MainViewCell(icon: CatalogIcon.quiz.icon, title: CatalogIcon.quiz.title)
+            
+            if !tests.isEmpty {
+                NavigationLink {
+                    QuizListTestView()
+                        .applyBackground()
+                } label: {
+                    MainViewCell(icon: CatalogIcon.quiz.icon, title: CatalogIcon.quiz.title)
+                }
             }
             
             if vm.isAdmin {

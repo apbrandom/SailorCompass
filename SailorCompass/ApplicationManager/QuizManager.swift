@@ -18,6 +18,7 @@ class QuizManager: ObservableObject {
     @Published private (set) var progress: CGFloat = 0.00
     @Published private (set) var score = 0
     
+    private var accumulatedPoints = 0.0
     private var questions: [Question] = []
     private var selectedTest: Test
     
@@ -47,6 +48,9 @@ class QuizManager: ObservableObject {
             setQuestion()
         } else {
             reachedEnd = true
+            finalizeScore()
+            index = 0
+            score = 0
         }
     }
     
@@ -58,14 +62,8 @@ class QuizManager: ObservableObject {
             let currentQuestion = questions[index]
             self.question = currentQuestion.text
            
-            //print
-            print("Текущий вопрос: \(currentQuestion.text)")
-            
             if let answersSet = currentQuestion.answers as? Set<Answer> {
                 self.answerChoices = Array(answersSet).shuffled()
-                
-                //print
-                print("Ответы: \(self.answerChoices.map { $0.text })")
             } else {
                 self.answerChoices = []
             }
@@ -74,8 +72,11 @@ class QuizManager: ObservableObject {
     
     func selectAnswer(answer: Answer) {
         answerSelected = true
-        if answer.isCorrect {
-            score += 1
-        }
+        let pointsPerQuestion = Double(100) / Double(length)
+           accumulatedPoints += pointsPerQuestion
+    }
+    
+    private func finalizeScore() {
+        score = Int(accumulatedPoints.rounded())
     }
 }
