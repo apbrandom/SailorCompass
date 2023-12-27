@@ -28,40 +28,39 @@ class QuizManager: ObservableObject {
             await loadQuestions()
         }
     }
-
+    
     func loadQuestions() async {
-         do {
-             let questions = try await CoreDataManager.shared.fetchQuestions(for: selectedTest)
-             DispatchQueue.main.async { [weak self] in
-                 self?.questions = questions
-                 self?.length = questions.count
-                 self?.setQuestion()
-             }
-         } catch {
-             print("Error fetching questions: \(error)")
-         }
-     }
+        do {
+            let questions = try await CoreDataManager.shared.fetchQuestions(for: selectedTest)
+            DispatchQueue.main.async { [weak self] in
+                self?.questions = questions
+                self?.length = questions.count
+                self?.setQuestion()
+            }
+        } catch {
+            print("Error fetching questions: \(error)")
+        }
+    }
     
     func goToNextQuestion() {
         if index + 1 < length {
-             index += 1
+            index += 1
             setQuestion()
         } else {
             reachedEnd = true
             finalizeScore()
-            index = 0
-            score = 0
+            
         }
     }
     
     func setQuestion() {
         answerSelected = false
         progress = CGFloat(Double(index + 1) / Double(questions.count))
-
+        
         if index < questions.count {
             let currentQuestion = questions[index]
             self.question = currentQuestion.text
-           
+            
             if let answersSet = currentQuestion.answers as? Set<Answer> {
                 self.answerChoices = Array(answersSet).shuffled()
             } else {
@@ -73,10 +72,21 @@ class QuizManager: ObservableObject {
     func selectAnswer(answer: Answer) {
         answerSelected = true
         let pointsPerQuestion = Double(100) / Double(length)
-           accumulatedPoints += pointsPerQuestion
+        accumulatedPoints += pointsPerQuestion
     }
     
     private func finalizeScore() {
         score = Int(accumulatedPoints.rounded())
+    }
+    
+    func finishTest() {
+        index = 0
+        accumulatedPoints = 0.0
+        score = 0
+        answerSelected = false
+        reachedEnd = false
+        questions = []
+        answerChoices = []
+        
     }
 }

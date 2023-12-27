@@ -24,7 +24,7 @@ struct QuizQuestionView: View {
                 Spacer()
                 Button {
                     presentationMode.wrappedValue.dismiss()
-                    quizManager.reachedEnd = false
+                    quizManager.finishTest()
                 } label: {
                     CustomButtonLabel(text: "OK", isActive: true)
                 }
@@ -58,6 +58,11 @@ struct QuizQuestionView: View {
             }
         }
         .applyBackground()
+        .onAppear {
+            Task {
+                await quizManager.loadQuestions()
+            }
+        }
     }
 }
 
