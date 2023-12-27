@@ -29,6 +29,7 @@ struct QuizQuestionView: View {
                     CustomButtonLabel(text: "OK", isActive: true)
                 }
                 .padding()
+                
                 Spacer()
             } else {
                 ScrollView {

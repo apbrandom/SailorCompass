@@ -17,7 +17,8 @@ class QuizManager: ObservableObject {
     @Published private (set) var answerChoices: [Answer] = []
     @Published private (set) var progress: CGFloat = 0.00
     @Published private (set) var score = 0
-    
+   
+    private(set) var selectedAnswer: Answer?
     private var accumulatedPoints = 0.0
     private var questions: [Question] = []
     private var selectedTest: Test
@@ -71,6 +72,7 @@ class QuizManager: ObservableObject {
     
     func selectAnswer(answer: Answer) {
         answerSelected = true
+        selectedAnswer = answer
         let pointsPerQuestion = Double(100) / Double(length)
         accumulatedPoints += pointsPerQuestion
     }
@@ -87,6 +89,5 @@ class QuizManager: ObservableObject {
         reachedEnd = false
         questions = []
         answerChoices = []
-        
     }
 }

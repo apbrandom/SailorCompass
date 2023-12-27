@@ -59,3 +59,16 @@ extension Test {
                 return test
     }
 }
+
+extension Test {
+    var scoresArray: [Int] {
+        get {
+            guard let data = self.scores else { return [] }
+            return (try? PropertyListSerialization.propertyList(from: data, options: [], format: nil)) as? [Int] ?? []
+        }
+        set {
+            self.scores = try? PropertyListSerialization.data(fromPropertyList: newValue, format: .binary, options: 0)
+        }
+    }
+}
+

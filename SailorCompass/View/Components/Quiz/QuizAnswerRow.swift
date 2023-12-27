@@ -9,10 +9,14 @@ import SwiftUI
 
 struct QuizAnswerRow: View {
 
-    @EnvironmentObject var qwizManager: QuizManager
+    @EnvironmentObject var quizManager: QuizManager
 
     var answer: Answer
-    @State private var isSelected = false
+//    @State private var isSelected = false
+    
+    var isSelected: Bool {
+        quizManager.selectedAnswer == answer
+    }
 
     var body: some View {
         HStack(spacing: 20) {
@@ -21,7 +25,7 @@ struct QuizAnswerRow: View {
                 .foregroundStyle(.primaryText)
             
             Spacer()
-            if qwizManager.answerSelected {
+            if isSelected {
                 Image(systemName: (answer.isCorrect ? "checkmark.circle.fill" : "x.circle.fill"))
                     .foregroundStyle(answer.isCorrect ? .green : .red)
             }
@@ -34,11 +38,10 @@ struct QuizAnswerRow: View {
         .foregroundStyle(isSelected ? .gray : .primaryText)
         .background(.customBeige)
         .clipShape(.rect(cornerRadius: 10))
-        .shadow(color: qwizManager.answerSelected ? (answer.isCorrect ? .green : .red) : .gray, radius: 5)
+        .shadow(color: isSelected ? (answer.isCorrect ? .green : .red) : .gray, radius: 5)
         .onTapGesture {
-            if !qwizManager.answerSelected {
-                isSelected = true
-                qwizManager.selectAnswer(answer: answer)
+            if !quizManager.answerSelected {
+                quizManager.selectAnswer(answer: answer)
             }
         }
         .padding(.horizontal)
