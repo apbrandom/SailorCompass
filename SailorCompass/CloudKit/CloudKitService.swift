@@ -49,6 +49,38 @@ class CloudKitService {
         CKContainer.default().publicCloudDatabase.add(queryOperation)
     }
     
+    func fetchQuestions(testID: CKRecord.ID, completion: @escaping ([CloudQuestionModel]) -> Void) {
+         let predicate = NSPredicate(format: "test == %@", testID)
+         let query = CKQuery(recordType: "AdminPublicQuestion", predicate: predicate)
+         let operation = CKQueryOperation(query: query)
+         
+         var questions = [CloudQuestionModel]()
+         
+         operation.recordMatchedBlock = { (_, result) in
+             switch result {
+             case .success(let record):
+                 let question = CloudQuestionModel(record: record)
+                 questions.append(question)
+             case .failure(let error):
+                 print(error.localizedDescription)
+             }
+         }
+         
+         operation.queryResultBlock = { result in
+             switch result {
+             case .success(_):
+                 print("fetch AdminPublicQuestion completed successfully")
+                 completion(questions)
+             case .failure(let error):
+                 print(error.localizedDescription)
+                 completion([])
+             }
+         }
+         
+         CKContainer.default().publicCloudDatabase.add(operation)
+     }
+    
+    
     func cloneRecord(original: CKRecord, to newType: String) -> CKRecord {
         let newRecord = CKRecord(recordType: newType)
         original.allKeys().forEach { key in
