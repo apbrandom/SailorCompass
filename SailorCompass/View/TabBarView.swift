@@ -20,6 +20,7 @@ struct TabBarView: View {
                 Text(TabBarItem.catalog.title)
                 
             }
+            
             NavigationStack {
                 ProfileView()
             }
