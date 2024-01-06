@@ -86,7 +86,7 @@ class CloudKitUserViewModel: ObservableObject {
                     return
                 }
                 
-                CloudKitService.shared.fetchAdminUserIDs { result in
+                CloudKitManager.shared.fetchAdminUserIDs { result in
                     switch result {
                     case .success(let admins):
                         self.isAdmin = admins.contains(userID)

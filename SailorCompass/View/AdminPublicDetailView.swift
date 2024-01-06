@@ -28,21 +28,52 @@ struct AdminPublicDetailView: View {
         .navigationTitle(test.title)
         .onAppear(perform: fetchQuestions)
         .toolbar {
-            Button {
-                moveQuestionsToNewRecordType()
-            } label: {
-                Image(systemName: "paperplane.fill")
+            ToolbarItemGroup {
+            //    if test.isRejected
+                Button {
+                    approveTest()
+                } label: {
+                    Image(systemName: "paperplane.fill")
+                }
+                Button {
+                    rejectTest()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+                // }
             }
         }
     }
     
     func fetchQuestions() {
-        CloudKitService.shared.fetchQuestions(testID: test.id) { fetchedQuestions in
+        CloudKitManager.shared.fetchQuestions(testID: test.id) { fetchedQuestions in
             self.questions = fetchedQuestions
         }
     }
     
-    func moveQuestionsToNewRecordType() {
+    func approveTest() {
+        moveQuestionsToPublicData()
+//        updateTestStatus()
+    }
+    
+    func rejectTest() {
+        
+    }
+    
+//    func updateTestStatus() {
+//            // Изменяем статус теста в CloudKit
+//            CloudKitService.shared.updateTestStatus(testID: test.recordID, isPending: !isTestApproved) { success in
+//                if success {
+//                    // Обновляем локальный статус в CoreData
+//                    test.isPending = !isTestApproved
+//                    try? test.managedObjectContext?.save()
+//                    // Обновляем состояние для обновления UI
+//                    isTestApproved.toggle()
+//                }
+//            }
+//        }
+    
+    func moveQuestionsToPublicData() {
         var newRecords: [CKRecord] = []
         let fetchGroup = DispatchGroup()
         
@@ -53,7 +84,7 @@ struct AdminPublicDetailView: View {
             CKContainer.default().publicCloudDatabase.fetch(withRecordID: originalRecordID) { record, error in
                 defer { fetchGroup.leave() }
                 if let record = record, error == nil {
-                    let newRecord = CloudKitService.shared.cloneRecord(original: record, to: "PublicQuestion")
+                    let newRecord = CloudKitManager.shared.cloneRecord(original: record, to: "PublicQuestion")
                     newRecords.append(newRecord)
                 } else {
                     print("Error fetching record: \(String(describing: error))")

@@ -74,7 +74,7 @@
 		CBEB6D672B2BB39000B678F2 /* SavedListTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB6D662B2BB39000B678F2 /* SavedListTestsViewModel.swift */; };
 		CBEB6D692B2C74B600B678F2 /* CustomTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB6D682B2C74B600B678F2 /* CustomTexts.swift */; };
 		CBEB6D6C2B2CAB2200B678F2 /* QuestionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEB6D6B2B2CAB2200B678F2 /* QuestionRowView.swift */; };
-		CBF7545C2B1CF34900243978 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545B2B1CF34900243978 /* CloudKitService.swift */; };
+		CBF7545C2B1CF34900243978 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545B2B1CF34900243978 /* CloudKitManager.swift */; };
 		CBF7545E2B1D145C00243978 /* CloudUserAdminIdModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545D2B1D145C00243978 /* CloudUserAdminIdModel.swift */; };
 		CBF754602B1E042100243978 /* AdminPublicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF7545F2B1E042100243978 /* AdminPublicDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -169,7 +169,7 @@
 		CBEB6D662B2BB39000B678F2 /* SavedListTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedListTestsViewModel.swift; sourceTree = "<group>"; };
 		CBEB6D682B2C74B600B678F2 /* CustomTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTexts.swift; sourceTree = "<group>"; };
 		CBEB6D6B2B2CAB2200B678F2 /* QuestionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRowView.swift; sourceTree = "<group>"; };
-		CBF7545B2B1CF34900243978 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
+		CBF7545B2B1CF34900243978 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		CBF7545D2B1D145C00243978 /* CloudUserAdminIdModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudUserAdminIdModel.swift; sourceTree = "<group>"; };
 		CBF7545F2B1E042100243978 /* AdminPublicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminPublicDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,7 +202,7 @@
 		CB0087542AFAD98D00B92075 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				CBF7545B2B1CF34900243978 /* CloudKitService.swift */,
+				CBF7545B2B1CF34900243978 /* CloudKitManager.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -560,7 +560,7 @@
 				CB6046AA2AEAA85F004727A2 /* NewQuestionView.swift in Sources */,
 				CB564F5F2B05094F00F70C66 /* CloudTestModel.swift in Sources */,
 				CBA867152B179CA400C6A649 /* Crew.swift in Sources */,
-				CBF7545C2B1CF34900243978 /* CloudKitService.swift in Sources */,
+				CBF7545C2B1CF34900243978 /* CloudKitManager.swift in Sources */,
 				CB03A3562AECFDA3005C3157 /* TestRowView.swift in Sources */,
 				CB70EA482B27236800BA019B /* AppTheme.swift in Sources */,
 				CBAB26B12AEA78D100C72AE1 /* MyListQuestionViewModel.swift in Sources */,

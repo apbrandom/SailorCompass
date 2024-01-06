@@ -5,6 +5,8 @@
 //  Created by Vadim Vinogradov on 26.10.2023.
 //
 
+//Добавить проверку авторизации и интернета перед отправкой, выввести уведомление что не возможно отпраивить
+
 import SwiftUI
 import CoreData
 import CloudKit
@@ -22,7 +24,7 @@ struct UserQuestionListView: View {
     @State private var searchTerm = ""
     @State private var alertMessage = ""
     @State private var isShowingAlert = false
-    
+    @State private var isTestApproved: Bool = false
     
     init(selectedTest: Test) {
         self.selectedTest = selectedTest
@@ -63,12 +65,17 @@ struct UserQuestionListView: View {
                 .searchable(text: $searchTerm, prompt: "Serach Question")
                 .toolbar {
                     ToolbarItemGroup {
-                        if selectedTest.isPublished {
+                        if selectedTest.isPending {
                             EditButton()
                             Image(systemName: "checkmark.seal.fill")
-                                .foregroundStyle(.green)
+                                .foregroundStyle(isTestApproved ? .yellow : .green)
+                                .onAppear {
+                                    // Проверяем статус теста при появлении view
+                                    isTestApproved = !selectedTest.isPending
+                                }
                         } else {
                             Button {
+                                publishTest(test: selectedTest)
                                 isShowingPublishAlert = true
                             } label: {
                                 Image(systemName: "paperplane.fill")
@@ -118,69 +125,15 @@ struct UserQuestionListView: View {
     }
     
     private func publishTest(test: Test) {
-        DispatchQueue.global(qos: .background).async {
-            CKContainer.default().fetchUserRecordID { (recordID, error) in
-                guard let userID = recordID, error == nil else {
-                    print("Error fetching user record ID: \(String(describing: error))")
-                    return
-                }
-                
-                if questions.isEmpty {
-                    alertMessage = "This test contains no questions. Please ensure at least one question is added."
+        CloudKitManager.shared.publishTest(test: test, context: viewContext) { success in
+            DispatchQueue.main.async {
+                if success {
+                    alertMessage = "Test successfully published."
                     isShowingAlert = true
-                    return
+                } else {
+                    alertMessage = "Failed to publish the test. Please check your internet connection and try again."
+                    isShowingAlert = true
                 }
-                
-                let publicTestRecord = CKRecord(recordType: "AdminPublicTest")
-                publicTestRecord["title"] = test.title
-                publicTestRecord["version"] = test.version
-                publicTestRecord["questionCount"] = test.qcount
-                publicTestRecord["UserID"] = userID.recordName
-                publicTestRecord["likeCount"] = 0
-                let testRecordID = publicTestRecord.recordID
-                
-                var recordsToSave: [CKRecord] = [publicTestRecord]
-                
-                for question in test.questions?.allObjects as? [Question] ?? [] {
-                    let questionRecord = CKRecord(recordType: "AdminPublicQuestion")
-                    questionRecord["text"] = question.text
-                    questionRecord["testTitle"] = test.title
-                    questionRecord["UserID"] = userID.recordName
-                    if let answers = question.answers as? Set<Answer>,
-                       let correctAnswer = answers.first(where: { $0.isCorrect }) {
-                        questionRecord["correctAnswer"] = correctAnswer.text
-                    }
-                    
-                    questionRecord["test"] = CKRecord.Reference(recordID: testRecordID, action: .deleteSelf)
-                    recordsToSave.append(questionRecord)
-                    
-                    let questionRecordID = questionRecord.recordID
-                    
-                    for answer in question.answers?.allObjects as? [Answer] ?? [] {
-                        let answerRecord = CKRecord(recordType: "AdminPublicAnswer")
-                        answerRecord["text"] = answer.text
-                        answerRecord["isCorrect"] = answer.isCorrect
-                        answerRecord["userID"] = userID.recordName
-                        answerRecord["question"] = CKRecord.Reference(recordID: questionRecordID, action: .deleteSelf)
-                        recordsToSave.append(answerRecord)
-                    }
-                }
-                
-                let modifyRecordsOperation = CKModifyRecordsOperation(recordsToSave: recordsToSave, recordIDsToDelete: nil)
-                modifyRecordsOperation.modifyRecordsResultBlock = { result in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(_):
-                            self.viewContext.performAndWait {
-                                test.isPublished = true
-                                self.saveContext()
-                            }
-                        case .failure(let error):
-                            print("Error saving to public database: \(error)")
-                        }
-                    }
-                }
-                CKContainer.default().publicCloudDatabase.add(modifyRecordsOperation)
             }
         }
     }
